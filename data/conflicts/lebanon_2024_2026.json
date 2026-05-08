@@ -1,0 +1,70 @@
+{
+  "conflict_id": "lebanon_2024_2026",
+  "conflict_name": "Lebanon Conflict 2024-2026",
+  "region": "Lebanon",
+  "timeframe": {
+    "start": "2024-10-01",
+    "end": null
+  },
+  "total_casualties": {
+    "killed": 2679,
+    "injured": 8200,
+    "missing": null
+  },
+  "mothers_children": {
+    "children_killed": 177,
+    "children_injured": null,
+    "mothers_killed": 270,
+    "orphans_created": null,
+    "families_destroyed": null
+  },
+  "displacement": {
+    "internally_displaced": 1200000,
+    "refugees": 557000
+  },
+  "healthcare_impact": {
+    "hospitals_damaged": null,
+    "healthcare_workers_killed": 131,
+    "attacks_on_healthcare": null
+  },
+  "education_impact": {
+    "schools_damaged": null,
+    "children_out_of_school": null
+  },
+  "sources": [
+    {
+      "source_name": "Lebanese Ministry of Public Health",
+      "source_type": "government",
+      "data": {
+        "killed": 2679,
+        "injured": 8200,
+        "children_killed": 177,
+        "women_killed": 270,
+        "medics_killed": 131
+      },
+      "confidence_level": "reported",
+      "last_updated": "2026-05-08"
+    },
+    {
+      "source_name": "UN OCHA Lebanon",
+      "source_type": "un",
+      "data": {
+        "internally_displaced": 1200000,
+        "refugees": 557000
+      },
+      "confidence_level": "verified",
+      "last_updated": "2026-05-08"
+    },
+    {
+      "source_name": "BBC News",
+      "source_type": "media",
+      "data": {
+        "killed": 2679,
+        "injured": 8200,
+        "children_killed": 177
+      },
+      "confidence_level": "reported",
+      "last_updated": "2026-05-08"
+    }
+  ]
+}
