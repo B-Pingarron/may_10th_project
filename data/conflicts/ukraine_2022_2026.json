@@ -1,0 +1,74 @@
+{
+  "conflict_id": "ukraine_2022_2026",
+  "conflict_name": "Ukraine-Russia War 2022-2026",
+  "region": "Ukraine",
+  "timeframe": {
+    "start": "2022-02-24",
+    "end": null
+  },
+  "total_casualties": {
+    "killed": 15578,
+    "injured": 41378,
+    "missing": null
+  },
+  "mothers_children": {
+    "children_killed": 600,
+    "children_injured": 1420,
+    "mothers_killed": null,
+    "orphans_created": null,
+    "families_destroyed": null
+  },
+  "displacement": {
+    "internally_displaced": 3500000,
+    "refugees": 6700000
+  },
+  "healthcare_impact": {
+    "hospitals_damaged": 170,
+    "healthcare_workers_killed": 26,
+    "attacks_on_healthcare": 1400
+  },
+  "education_impact": {
+    "schools_damaged": 3800,
+    "children_out_of_school": 1300000
+  },
+  "monthly_breakdown": {
+    "2026-03": {
+      "killed": 211,
+      "injured": 1206,
+      "increase_percent": 49
+    }
+  },
+  "sources": [
+    {
+      "source_name": "UN Human Rights Monitoring Mission in Ukraine (HRMMU)",
+      "source_type": "un",
+      "data": {
+        "killed": 12799,
+        "injured": 29218
+      },
+      "confidence_level": "verified",
+      "last_updated": "2025-12-31"
+    },
+    {
+      "source_name": "Ukrainian Ministry of Defense",
+      "source_type": "government",
+      "data": {
+        "killed": 15578,
+        "injured": 41378
+      },
+      "confidence_level": "reported",
+      "last_updated": "2026-03-31"
+    },
+    {
+      "source_name": "OCHA Ukraine",
+      "source_type": "un",
+      "data": {
+        "internally_displaced": 3500000,
+        "refugees": 6700000,
+        "schools_damaged": 3800
+      },
+      "confidence_level": "verified",
+      "last_updated": "2026-02-01"
+    }
+  ]
+}
