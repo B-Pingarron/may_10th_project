@@ -1,0 +1,68 @@
+{
+  "conflict_id": "gaza_2023_2026",
+  "conflict_name": "Gaza Conflict 2023-2026",
+  "region": "Gaza Strip, Palestine",
+  "timeframe": {
+    "start": "2023-10-07",
+    "end": null
+  },
+  "total_casualties": {
+    "killed": 42000,
+    "injured": 96000,
+    "missing": 10000
+  },
+  "mothers_children": {
+    "children_killed": 13000,
+    "children_injured": null,
+    "mothers_killed": null,
+    "orphans_created": null,
+    "families_destroyed": null
+  },
+  "displacement": {
+    "internally_displaced": 1900000,
+    "refugees": null
+  },
+  "healthcare_impact": {
+    "hospitals_damaged": 36,
+    "healthcare_workers_killed": 489,
+    "attacks_on_healthcare": 417
+  },
+  "education_impact": {
+    "schools_damaged": null,
+    "children_out_of_school": null
+  },
+  "sources": [
+    {
+      "source_name": "Francesca Albanese - Anatomy of Genocide",
+      "source_type": "un",
+      "data": {
+        "killed": 42000,
+        "injured": 96000,
+        "children_killed": 13000,
+        "babies_killed": 700
+      },
+      "confidence_level": "reported",
+      "last_updated": "2024-03-26"
+    },
+    {
+      "source_name": "Gaza Ministry of Health",
+      "source_type": "government",
+      "data": {
+        "killed": 42000,
+        "injured": 96000
+      },
+      "confidence_level": "reported",
+      "last_updated": "2024-10-01"
+    },
+    {
+      "source_name": "UN OCHA",
+      "source_type": "un",
+      "data": {
+        "killed": 41431,
+        "injured": 95818
+      },
+      "confidence_level": "verified",
+      "last_updated": "2024-09-22"
+    }
+  ]
+}

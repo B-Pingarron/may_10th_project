@@ -1,0 +1,46 @@
+{
+  "conflict_id": "west_bank_2023_2026",
+  "conflict_name": "West Bank Violence 2023-2026",
+  "region": "West Bank, Palestine",
+  "timeframe": {
+    "start": "2023-10-07",
+    "end": null
+  },
+  "total_casualties": {
+    "killed": 469,
+    "injured": null,
+    "missing": null
+  },
+  "mothers_children": {
+    "children_killed": 112,
+    "children_injured": null,
+    "mothers_killed": null,
+    "orphans_created": null,
+    "families_destroyed": null
+  },
+  "displacement": {
+    "internally_displaced": null,
+    "refugees": null
+  },
+  "healthcare_impact": {
+    "hospitals_damaged": null,
+    "healthcare_workers_killed": null,
+    "attacks_on_healthcare": 412
+  },
+  "education_impact": {
+    "schools_damaged": null,
+    "children_out_of_school": null
+  },
+  "sources": [
+    {
+      "source_name": "UN OCHA West Bank",
+      "source_type": "un",
+      "data": {
+        "killed": 469,
+        "children_killed": 112
+      },
+      "confidence_level": "verified",
+      "last_updated": "2024-04-24"
+    }
+  ]
+}
