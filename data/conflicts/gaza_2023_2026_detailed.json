@@ -1,0 +1,242 @@
+{
+  "conflict_id": "gaza_2023_2026_detailed",
+  "conflict_name": "Gaza Conflict 2023-2026 (Detailed Demographics)",
+  "region": "Gaza Strip, Palestine",
+  "timeframe": {
+    "start": "2023-10-07",
+    "end": null
+  },
+  "total_casualties": {
+    "killed": 60199,
+    "injured": 111563,
+    "missing": 10000,
+    "note": "60,199 identified bodies as of latest data. Lancet study estimates 75,200+ violent deaths."
+  },
+  "demographics": {
+    "total_identified": 60199,
+    "gender": {
+      "male": {
+        "total": 30334,
+        "percentage": 50.4,
+        "breakdown": {
+          "men_18_59": 28543,
+          "senior_men_60_plus": 1791
+        }
+      },
+      "female": {
+        "total": 29865,
+        "percentage": 49.6,
+        "breakdown": {
+          "women_18_59": 10271,
+          "senior_women_60_plus": 1137,
+          "girls": 7801,
+          "boy_children": 10656
+        }
+      }
+    },
+    "age_groups": {
+      "children_under_18": {
+        "total": 18457,
+        "percentage": 30.7,
+        "breakdown": {
+          "baby_boy_under_1": 518,
+          "baby_girl_under_1": 450,
+          "toddler_boy_1_2": 1011,
+          "toddler_girl_1_2": 953,
+          "preteen_boy_3_11": 4581,
+          "preteen_girl_3_11": 3997,
+          "teen_boy_12_17": 4546,
+          "teen_girl_12_17": 2401
+        }
+      },
+      "adults_18_59": {
+        "total": 38814,
+        "percentage": 64.5,
+        "breakdown": {
+          "men": 28543,
+          "women": 10271
+        }
+      },
+      "elderly_60_plus": {
+        "total": 2928,
+        "percentage": 4.9,
+        "breakdown": {
+          "men": 1791,
+          "women": 1137
+        }
+      }
+    },
+    "lancet_study_2025": {
+      "total_violent_deaths": 75200,
+      "confidence_interval": "63,600-86,800",
+      "children_under_18": 22800,
+      "women_18_64": 16600,
+      "men_18_64": 32900,
+      "elderly_64_plus": 2870,
+      "women_children_elderly_percentage": 56.2,
+      "excess_non_violent_deaths": 8540
+    }
+  },
+  "babies_infants": {
+    "babies_under_1_year": {
+      "total": 968,
+      "boys": 518,
+      "girls": 450,
+      "percentage_of_total": 1.6
+    },
+    "toddlers_1_2_years": {
+      "total": 1964,
+      "boys": 1011,
+      "girls": 953,
+      "percentage_of_total": 3.3
+    }
+  },
+  "maternal_health": {
+    "pregnant_women_affected": 155000,
+    "pregnancy_complications_percentage": 68,
+    "complications_include": ["anaemia", "hypertension", "preterm labour", "miscarriage"],
+    "maternal_death_increase": "3x higher than pre-war",
+    "miscarriage_increase": "3x higher than pre-war",
+    "embryos_destroyed": 5000,
+    "embryo_transplantation_centers_destroyed": 6,
+    "ivf_clinics_destroyed": 9,
+    "fertility_clinic_attack": "Al-Basma Medical Center destroyed December 2023, 4,000 embryos lost"
+  },
+  "healthcare_infrastructure": {
+    "hospitals_pre_war": 36,
+    "hospitals_destroyed_or_damaged": 34,
+    "hospitals_functional": 10,
+    "hospitals_functional_percentage": 28,
+    "hospitals_completely_destroyed": 18,
+    "field_hospitals": 11,
+    "field_hospitals_functional": 6,
+    "primary_health_centers_pre_war": 72,
+    "primary_health_centers_functional_percentage": 40,
+    "attacks_on_healthcare": 670,
+    "healthcare_workers_killed": 1722,
+    "key_hospitals_destroyed": [
+      {
+        "name": "Al-Shifa Hospital",
+        "status": "Completely destroyed",
+        "note": "Largest hospital in Gaza, now empty shell"
+      },
+      {
+        "name": "Nasser Medical Complex",
+        "status": "Severely damaged",
+        "note": "Largest hospital in southern Gaza"
+      },
+      {
+        "name": "Kamal Adwan Hospital",
+        "status": "Destroyed",
+        "note": "Main pediatric hospital in north"
+      },
+      {
+        "name": "Indonesian Hospital",
+        "status": "Damaged",
+        "note": "Medical devices shattered by bullets"
+      },
+      {
+        "name": "Al-Basma Medical Center",
+        "status": "Destroyed",
+        "note": "Fertility center, 4,000 embryos lost"
+      }
+    ],
+    "maternity_wards_destroyed": "Multiple",
+    "neonatal_units_destroyed": "Multiple",
+    "ambulances_destroyed": 126
+  },
+  "infrastructure": {
+    "housing_units_destroyed_percentage": 92,
+    "population_displaced": 1900000,
+    "population_displaced_percentage": 90,
+    "people_returning": 545000,
+    "debris_tons": 40000000,
+    "unexploded_ordnance": "Widespread"
+  },
+  "special_categories": {
+    "journalists_killed": 219,
+    "aid_workers_killed": null,
+    "un_staff_killed": 165,
+    "students_killed": null,
+    "teachers_killed": null
+  },
+  "sources": [
+    {
+      "source_name": "Palestine Datasets (Tech for Palestine)",
+      "source_type": "academic",
+      "data": {
+        "total_identified": 60199,
+        "demographics": "Full breakdown by age and gender"
+      },
+      "confidence_level": "verified",
+      "last_updated": "2025-08-23",
+      "url": "https://data.techforpalestine.org/docs/killed-in-gaza/"
+    },
+    {
+      "source_name": "The Lancet - Gaza Mortality Survey",
+      "source_type": "academic",
+      "data": {
+        "violent_deaths": 75200,
+        "confidence_interval": "63,600-86,800"
+      },
+      "confidence_level": "verified",
+      "last_updated": "2026-04-01",
+      "url": "https://www.thelancet.com/journals/langlo/article/PIIS2214-109X(25)00522-4/fulltext"
+    },
+    {
+      "source_name": "WHO Health Cluster",
+      "source_type": "un",
+      "data": {
+        "hospitals_functional": 10,
+        "attacks_on_healthcare": 670
+      },
+      "confidence_level": "verified",
+      "last_updated": "2025-02-01"
+    },
+    {
+      "source_name": "UN OHCHR",
+      "source_type": "un",
+      "data": {
+        "hospitals_damaged_percentage": 94,
+        "healthcare_workers_killed": 1722,
+        "maternal_death_increase": "3x"
+      },
+      "confidence_level": "verified",
+      "last_updated": "2025-12-11"
+    },
+    {
+      "source_name": "Francesca Albanese - UN Special Rapporteur",
+      "source_type": "un",
+      "data": {
+        "total_killed": 42000,
+        "children_killed": 13000,
+        "babies_killed": 700
+      },
+      "confidence_level": "reported",
+      "last_updated": "2024-10-01"
+    },
+    {
+      "source_name": "Middle East Fertility Society Journal",
+      "source_type": "academic",
+      "data": {
+        "embryos_destroyed": 5000,
+        "ivf_clinics_destroyed": 9
+      },
+      "confidence_level": "verified",
+      "last_updated": "2025-11-04"
+    },
+    {
+      "source_name": "Statista",
+      "source_type": "academic",
+      "data": {
+        "total_killed": 61158,
+        "men_percentage": 45.86,
+        "women_percentage": 16.17,
+        "children_percentage": 30.62,
+        "elderly_percentage": 7.35
+      },
+      "confidence_level": "verified",
+      "last_updated": "2025-08-05"
+    }
+  ]
+}
