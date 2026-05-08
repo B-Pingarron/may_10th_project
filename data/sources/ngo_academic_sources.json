@@ -1,0 +1,124 @@
+{
+  "sources": [
+    {
+      "source_id": "acled",
+      "source_name": "Armed Conflict Location & Event Data Project",
+      "source_type": "academic",
+      "organization": "ACLED",
+      "url": "https://acleddata.com/",
+      "last_updated": "2026-04-08",
+      "data_quality": "high",
+      "notes": "Comprehensive conflict data globally"
+    },
+    {
+      "source_id": "johns_hopkins",
+      "source_name": "Johns Hopkins University Studies",
+      "source_type": "academic",
+      "organization": "Johns Hopkins University",
+      "url": "https://www.jhu.edu/",
+      "last_updated": null,
+      "data_quality": "high",
+      "notes": "Conflict mortality research"
+    },
+    {
+      "source_id": "uppsala_university",
+      "source_name": "Uppsala University Conflict Database",
+      "source_type": "academic",
+      "organization": "Uppsala University",
+      "url": "https://www.uu.se/",
+      "last_updated": null,
+      "data_quality": "high",
+      "notes": "Armed conflict database"
+    },
+    {
+      "source_id": "lancet",
+      "source_name": "The Lancet Medical Journal",
+      "source_type": "academic",
+      "organization": "The Lancet",
+      "url": "https://www.thelancet.com/",
+      "last_updated": null,
+      "data_quality": "high",
+      "notes": "Health impact studies"
+    },
+    {
+      "source_id": "hrw",
+      "source_name": "Human Rights Watch",
+      "source_type": "ngo",
+      "organization": "Human Rights Watch",
+      "url": "https://www.hrw.org/",
+      "last_updated": null,
+      "data_quality": "high",
+      "notes": "Human rights documentation"
+    },
+    {
+      "source_id": "amnesty",
+      "source_name": "Amnesty International",
+      "source_type": "ngo",
+      "organization": "Amnesty International",
+      "url": "https://www.amnesty.org/",
+      "last_updated": null,
+      "data_quality": "high",
+      "notes": "Human rights documentation"
+    },
+    {
+      "source_id": "icrc",
+      "source_name": "International Committee of the Red Cross",
+      "source_type": "ngo",
+      "organization": "ICRC",
+      "url": "https://www.icrc.org/",
+      "last_updated": null,
+      "data_quality": "high",
+      "notes": "Humanitarian law documentation"
+    },
+    {
+      "source_id": "msf",
+      "source_name": "Médecins Sans Frontières",
+      "source_type": "ngo",
+      "organization": "MSF",
+      "url": "https://www.msf.org/",
+      "last_updated": null,
+      "data_quality": "high",
+      "notes": "Healthcare attack documentation"
+    },
+    {
+      "source_id": "save_children",
+      "source_name": "Save the Children",
+      "source_type": "ngo",
+      "organization": "Save the Children",
+      "url": "https://www.savethechildren.org/",
+      "last_updated": null,
+      "data_quality": "high",
+      "notes": "Child victim data"
+    },
+    {
+      "source_id": "palestinian_red_crescent",
+      "source_name": "Palestinian Red Crescent Society",
+      "source_type": "regional",
+      "organization": "Palestinian Red Crescent Society",
+      "url": "https://www.palestinercs.org/",
+      "last_updated": null,
+      "data_quality": "medium",
+      "notes": "Emergency response data"
+    },
+    {
+      "source_id": "lebanese_red_cross",
+      "source_name": "Lebanese Red Cross",
+      "source_type": "regional",
+      "organization": "Lebanese Red Cross",
+      "url": "https://www.redcross.org.lb/",
+      "last_updated": null,
+      "data_quality": "medium",
+      "notes": "Lebanon emergency data"
+    },
+    {
+      "source_id": "sudanese_doctors_union",
+      "source_name": "Sudanese Doctors Union",
+      "source_type": "regional",
+      "organization": "Sudanese Doctors Union",
+      "url": null,
+      "last_updated": null,
+      "data_quality": "medium",
+      "notes": "Healthcare worker casualties"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "source_id": "francesca_albanese_un",
+  "source_name": "Francesca Albanese - UN Special Rapporteur",
+  "source_type": "un",
+  "organization": "United Nations Human Rights Council",
+  "url": "https://www.ohchr.org/en/special-procedures/sr-palestine/francesca-albanese",
+  "last_updated": "2026-03-23",
+  "data_quality": "high",
+  "notes": "Primary pillar source for Palestine/Gaza data",
+  "reports": [
+    {
+      "title": "Anatomy of Genocide",
+      "date": "2024-03-26",
+      "document_id": "A/HRC/55/83",
+      "key_findings": {
+        "killed": 42000,
+        "injured": 96000,
+        "children_killed": 13000,
+        "babies_killed": 700
+      }
+    },
+    {
+      "title": "Genocide as Colonial Erasure",
+      "date": "2024-10-01",
+      "document_id": "A/79/492",
+      "key_findings": {
+        "killed_since_march_2024": 10037,
+        "injured_since_march_2024": 21767,
+        "total_killed": 42000,
+        "total_injured": 96000
+      }
+    },
+    {
+      "title": "From Economy of Occupation to Economy of Genocide",
+      "date": "2025-06-16",
+      "document_id": "A/HRC/59/23",
+      "key_findings": {
+        "focus": "Corporate complicity analysis"
+      }
+    },
+    {
+      "title": "Gaza Genocide: A Collective Crime",
+      "date": "2025-10-20",
+      "document_id": "A/80/492",
+      "key_findings": {
+        "focus": "Third state complicity",
+        "states_analyzed": 63
+      }
+    },
+    {
+      "title": "Torture and Genocide",
+      "date": "2026-03-23",
+      "document_id": "A/HRC/61/71",
+      "key_findings": {
+        "focus": "Systematic torture documented"
+      }
+    }
+  ]
+}

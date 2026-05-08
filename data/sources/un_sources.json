@@ -1,0 +1,44 @@
+{
+  "sources": [
+    {
+      "source_id": "un_ocha_opt",
+      "source_name": "UN OCHA Occupied Palestinian Territory",
+      "source_type": "un",
+      "organization": "United Nations Office for the Coordination of Humanitarian Affairs",
+      "url": "https://www.ochaopt.org/data/casualties",
+      "last_updated": "2024-09-22",
+      "data_quality": "high",
+      "notes": "Primary source for OPT casualty data"
+    },
+    {
+      "source_id": "who_health_cluster",
+      "source_name": "WHO Health Cluster",
+      "source_type": "un",
+      "organization": "World Health Organization",
+      "url": "https://www.who.int/",
+      "last_updated": "2026-04-14",
+      "data_quality": "high",
+      "notes": "Healthcare impact data globally"
+    },
+    {
+      "source_id": "unrwa",
+      "source_name": "UNRWA Situation Reports",
+      "source_type": "un",
+      "organization": "United Nations Relief and Works Agency for Palestine Refugees",
+      "url": "https://www.unrwa.org/",
+      "last_updated": "2024-04-26",
+      "data_quality": "high",
+      "notes": "Refugee and displacement data"
+    },
+    {
+      "source_id": "un_commission_inquiry",
+      "source_name": "UN Commission of Inquiry",
+      "source_type": "un",
+      "organization": "United Nations",
+      "url": "https://www.ohchr.org/",
+      "last_updated": "2025-09-16",
+      "data_quality": "high",
+      "notes": "Genocide findings September 2025"
+    }
+  ]
+}
