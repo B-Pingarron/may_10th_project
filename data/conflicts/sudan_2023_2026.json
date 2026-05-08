@@ -1,0 +1,77 @@
+{
+  "conflict_id": "sudan_2023_2026",
+  "conflict_name": "Sudan Civil War 2023-2026",
+  "region": "Sudan",
+  "timeframe": {
+    "start": "2023-04-15",
+    "end": null
+  },
+  "total_casualties": {
+    "killed": 59000,
+    "injured": 33000,
+    "missing": 11000
+  },
+  "mothers_children": {
+    "children_killed": 4300,
+    "children_injured": null,
+    "mothers_killed": null,
+    "orphans_created": null,
+    "families_destroyed": null
+  },
+  "displacement": {
+    "internally_displaced": 9000000,
+    "refugees": 4400000
+  },
+  "healthcare_impact": {
+    "hospitals_damaged": null,
+    "healthcare_workers_killed": null,
+    "attacks_on_healthcare": 217
+  },
+  "education_impact": {
+    "schools_damaged": null,
+    "children_out_of_school": null
+  },
+  "sources": [
+    {
+      "source_name": "ACLED",
+      "source_type": "academic",
+      "data": {
+        "killed": 59000,
+        "civilians_killed_direct_attacks": 7500
+      },
+      "confidence_level": "reported",
+      "last_updated": "2026-04-15"
+    },
+    {
+      "source_name": "WHO Sudan",
+      "source_type": "un",
+      "data": {
+        "killed": 40000,
+        "attacks_on_healthcare": 217,
+        "healthcare_deaths": 2052
+      },
+      "confidence_level": "verified",
+      "last_updated": "2026-04-14"
+    },
+    {
+      "source_name": "UNICEF Sudan",
+      "source_type": "un",
+      "data": {
+        "children_killed_or_maimed": 4300,
+        "grave_violations_children": 5700
+      },
+      "confidence_level": "verified",
+      "last_updated": "2026-04-14"
+    },
+    {
+      "source_name": "BBC/AP",
+      "source_type": "media",
+      "data": {
+        "killed_estimate": 150000,
+        "note": "True toll could exceed 150,000"
+      },
+      "confidence_level": "estimated",
+      "last_updated": "2026-04-15"
+    }
+  ]
+}
