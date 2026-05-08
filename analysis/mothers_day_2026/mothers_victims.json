@@ -1,0 +1,37 @@
+{
+  "analysis_id": "mothers_victims_2026",
+  "title": "Mothers and Women Victims Across Conflicts",
+  "date": "2026-05-08",
+  "description": "Analysis of mothers and women killed across all documented conflicts",
+  "data": [
+    {
+      "conflict": "Gaza/Palestine",
+      "women_killed": null,
+      "note": "Part of 60% women/children figure",
+      "source": "Francesca Albanese - UN Special Rapporteur",
+      "confidence": "reported"
+    },
+    {
+      "conflict": "Lebanon",
+      "women_killed": 270,
+      "source": "Lebanese Ministry of Public Health",
+      "confidence": "reported"
+    },
+    {
+      "conflict": "Sudan",
+      "women_killed": null,
+      "note": "Sexual violence documented as weapon of war",
+      "source": "UNICEF/WHO",
+      "confidence": "unknown"
+    },
+    {
+      "conflict": "Ukraine",
+      "women_killed": null,
+      "note": "Data not available in current sources",
+      "source": "Multiple",
+      "confidence": "unknown"
+    }
+  ],
+  "total_women_killed": 270,
+  "notes": "Limited data available for mothers/women specifically. Most sources report combined women/children figures."
+}

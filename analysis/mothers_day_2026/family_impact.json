@@ -1,0 +1,42 @@
+{
+  "analysis_id": "family_impact_2026",
+  "title": "Family Destruction and Displacement Across Conflicts",
+  "date": "2026-05-08",
+  "description": "Analysis of families destroyed and displaced across all documented conflicts",
+  "data": [
+    {
+      "conflict": "Gaza/Palestine",
+      "families_destroyed": null,
+      "displaced": 1900000,
+      "source": "UN OCHA",
+      "confidence": "verified"
+    },
+    {
+      "conflict": "Lebanon",
+      "families_destroyed": null,
+      "displaced": 1200000,
+      "refugees": 557000,
+      "source": "UN OCHA/Lebanese Government",
+      "confidence": "verified"
+    },
+    {
+      "conflict": "Sudan",
+      "families_destroyed": null,
+      "displaced": 9000000,
+      "refugees": 4400000,
+      "source": "UNHCR/WHO",
+      "confidence": "verified"
+    },
+    {
+      "conflict": "Ukraine",
+      "families_destroyed": null,
+      "displaced": 3500000,
+      "refugees": 6700000,
+      "source": "UNHCR",
+      "confidence": "verified"
+    }
+  ],
+  "total_displaced": 15600000,
+  "total_refugees": 11657000,
+  "notes": "Displacement figures represent confirmed numbers. Actual displacement likely higher due to ongoing movements."
+}

@@ -1,0 +1,42 @@
+{
+  "analysis_id": "children_victims_2026",
+  "title": "Children Victims Across Conflicts",
+  "date": "2026-05-08",
+  "description": "Analysis of children killed and injured across all documented conflicts",
+  "data": [
+    {
+      "conflict": "Gaza/Palestine",
+      "children_killed": 13000,
+      "babies_killed": 700,
+      "source": "Francesca Albanese - UN Special Rapporteur",
+      "confidence": "reported"
+    },
+    {
+      "conflict": "West Bank",
+      "children_killed": 112,
+      "source": "UN OCHA",
+      "confidence": "verified"
+    },
+    {
+      "conflict": "Lebanon",
+      "children_killed": 177,
+      "source": "Lebanese Ministry of Public Health",
+      "confidence": "reported"
+    },
+    {
+      "conflict": "Sudan",
+      "children_killed_or_maimed": 4300,
+      "source": "UNICEF",
+      "confidence": "verified"
+    },
+    {
+      "conflict": "Ukraine",
+      "children_killed": null,
+      "note": "Data not available in current sources",
+      "source": "Multiple",
+      "confidence": "unknown"
+    }
+  ],
+  "total_children_killed": 17589,
+  "notes": "Total represents confirmed figures only. Actual numbers likely higher due to missing data from Ukraine and underreporting in all conflicts."
+}
