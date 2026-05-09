@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>May 10th — Mothers and Children in Conflict</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js">
-</script>
+    <title>Palestine: The Human Cost — Mothers & Children in the Crossfire</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* ══ Index of Repression Design System ══ */
         :root {
@@ -22,6 +21,9 @@
             --accent-light: #2563eb;
             --death: #fca5a5;
             --death-strong: #f87171;
+            --red-pal: #dc2626;
+            --green-pal: #16a34a;
+            --black-pal: #000000;
             --radius: 2px;
         }
 
@@ -52,39 +54,78 @@
 
         /* ══ Header ══ */
         .site-header {
-            padding: 40px 0 28px;
+            padding: 48px 0 28px;
             border-bottom: 1px solid var(--border);
             margin-bottom: 32px;
+            position: relative;
         }
+        .site-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            width: calc(100% - 40px);
+            height: 3px;
+            background: linear-gradient(90deg, var(--green-pal) 0%, var(--green-pal) 25%, var(--death) 25%, var(--death) 50%, var(--black-pal) 50%, var(--black-pal) 100%);
+        }
+        .site-header .flag-bar {
+            display: flex;
+            gap: 0;
+            height: 3px;
+            margin-bottom: 20px;
+        }
+        .site-header .flag-bar span {
+            flex: 1;
+        }
+        .site-header .flag-bar .green { background: var(--green-pal); }
+        .site-header .flag-bar .red { background: var(--red-pal); }
+        .site-header .flag-bar .black { background: var(--black-pal); }
         .site-header h1 {
-            font-size: 2em;
+            font-size: 2.2em;
             color: var(--text-on-dark);
             text-transform: uppercase;
             letter-spacing: 0.06em;
             margin-bottom: 2px;
         }
+        .site-header .sub-title {
+            font-size: 1.1em;
+            color: var(--death);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
+        }
         .site-header .accent-line {
             width: 48px;
             height: 2px;
-            background: var(--accent);
+            background: var(--death);
             margin: 10px 0 12px;
         }
-        .site-header p {
-            font-size: 0.95em;
+        .site-header .date-line {
+            font-size: 0.82em;
             color: var(--text-on-dark-muted);
-            max-width: 620px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
         }
 
         /* ══ Tribute ══ */
         .tribute {
-            background: var(--surface-dark);
-            padding: 32px 32px;
+            background: #1a0a0a;
+            padding: 36px 32px;
             margin-bottom: 28px;
-            border-top: 2px solid var(--death);
+            border-top: 2px solid var(--red-pal);
+            border-bottom: 2px solid var(--red-pal);
             position: relative;
         }
+        .tribute::before {
+            content: '🕊';
+            position: absolute;
+            top: 12px;
+            right: 20px;
+            font-size: 1.6em;
+            opacity: 0.15;
+        }
         .tribute h2 {
-            color: var(--text-on-dark);
+            color: var(--death);
             font-size: 1.3em;
             font-weight: 700;
             margin-bottom: 12px;
@@ -95,7 +136,10 @@
             color: var(--text-on-dark-muted);
             font-size: 0.95em;
             max-width: 740px;
-            line-height: 1.65;
+            line-height: 1.7;
+        }
+        .tribute p strong {
+            color: var(--death);
         }
 
         /* ══ Cards ══ */
@@ -141,7 +185,7 @@
             text-align: center;
         }
         .stat-card .stat-number {
-            font-size: 2.2em;
+            font-size: 2.4em;
             font-weight: 700;
             display: block;
             margin-bottom: 4px;
@@ -172,12 +216,21 @@
         .stat-card.outlined {
             background: transparent;
             border: 1px solid var(--border-strong);
-            color: var(--text-on-dark);
         }
         .stat-card.outlined .stat-number {
             color: var(--text-on-dark);
         }
         .stat-card.outlined .stat-label {
+            color: var(--text-on-dark-muted);
+        }
+        .stat-card.accent {
+            background: var(--surface-dark);
+            border: 1px solid var(--accent);
+        }
+        .stat-card.accent .stat-number {
+            color: var(--accent-light);
+        }
+        .stat-card.accent .stat-label {
             color: var(--text-on-dark-muted);
         }
 
@@ -222,7 +275,7 @@
             border-bottom: 2px solid var(--death);
         }
         .baby-highlight .big-number {
-            font-size: 4em;
+            font-size: 4.5em;
             font-weight: 700;
             color: var(--death);
             line-height: 1;
@@ -230,14 +283,19 @@
         }
         .baby-highlight .big-label {
             color: var(--text-on-dark);
-            font-size: 1.15em;
+            font-size: 1.2em;
             font-weight: 600;
             letter-spacing: 0.02em;
+        }
+        .baby-highlight .big-sub {
+            color: var(--text-on-dark-muted);
+            font-size: 0.85em;
+            margin-top: 6px;
         }
         .baby-highlight .sub-stats {
             display: flex;
             justify-content: center;
-            gap: 36px;
+            gap: 48px;
             margin-top: 20px;
             padding-top: 20px;
             border-top: 1px solid var(--border-strong);
@@ -246,7 +304,7 @@
             text-align: center;
         }
         .baby-highlight .sub-stat .num {
-            font-size: 1.5em;
+            font-size: 1.8em;
             font-weight: 700;
             color: var(--text-on-dark);
         }
@@ -257,15 +315,42 @@
             letter-spacing: 0.05em;
         }
 
+        /* ══ Big Number Block (for under-3 highlight) ══ */
+        .big-block {
+            background: var(--surface-dark);
+            padding: 28px 24px;
+            margin: 20px 0;
+            text-align: center;
+            border-left: 3px solid var(--death);
+        }
+        .big-block .number {
+            font-size: 3.2em;
+            font-weight: 700;
+            color: var(--death);
+            line-height: 1;
+        }
+        .big-block .label {
+            color: var(--text-on-dark);
+            font-size: 1em;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-top: 4px;
+        }
+        .big-block .sub {
+            color: var(--text-on-dark-muted);
+            font-size: 0.82em;
+            margin-top: 8px;
+        }
+
         /* ══ Progress Bars ══ */
         .progress-group {
             display: grid;
-            gap: 12px;
+            gap: 10px;
             margin: 16px 0;
         }
         .progress-item {
             display: grid;
-            grid-template-columns: 140px 1fr 40px;
+            grid-template-columns: 150px 1fr 44px;
             align-items: center;
             gap: 10px;
         }
@@ -310,14 +395,10 @@
             border-radius: var(--radius);
             padding: 20px 16px;
             text-align: center;
-        }
-        .health-card .icon {
-            font-size: 1.6em;
-            margin-bottom: 8px;
-            opacity: 0.7;
+            background: var(--surface);
         }
         .health-card .num {
-            font-size: 1.6em;
+            font-size: 1.8em;
             font-weight: 700;
             color: var(--death);
             line-height: 1.2;
@@ -328,6 +409,16 @@
             margin-top: 4px;
             text-transform: uppercase;
             letter-spacing: 0.04em;
+        }
+        .health-card.dark-card {
+            background: var(--surface-dark);
+            border-color: var(--border-strong);
+        }
+        .health-card.dark-card .num {
+            color: var(--death);
+        }
+        .health-card.dark-card .label {
+            color: var(--text-on-dark-muted);
         }
 
         /* ══ Source List ══ */
@@ -376,6 +467,41 @@
             color: #000;
         }
 
+        /* ══ Detail Table ══ */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.85em;
+        }
+        .data-table th {
+            text-align: left;
+            padding: 8px 10px;
+            border-bottom: 2px solid var(--border);
+            color: var(--text);
+            font-weight: 700;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .data-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+        }
+        .data-table td.num {
+            text-align: right;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+        .data-table tr.total td {
+            border-top: 2px solid var(--text);
+            font-weight: 700;
+        }
+        .data-table tr:hover {
+            background: rgba(30, 64, 175, 0.04);
+        }
+
         /* ══ Methodology ══ */
         .methodology {
             padding: 20px;
@@ -394,6 +520,21 @@
         .methodology ul li {
             margin-bottom: 4px;
             font-size: 0.9em;
+        }
+
+        /* ══ Discrepancy note ══ */
+        .note-box {
+            background: var(--surface-dark);
+            border-left: 3px solid var(--accent-light);
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+        .note-box p {
+            color: var(--text-on-dark-muted);
+            font-size: 0.85em;
+        }
+        .note-box strong {
+            color: var(--text-on-dark);
         }
 
         /* ══ Footer ══ */
@@ -425,28 +566,30 @@
         /* ══ Responsive ══ */
         @media (max-width: 900px) {
             .chart-grid { grid-template-columns: 1fr; }
-            .site-header h1 { font-size: 1.6em; }
+            .site-header h1 { font-size: 1.7em; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .progress-item { grid-template-columns: 110px 1fr 34px; }
+            .progress-item { grid-template-columns: 120px 1fr 36px; }
         }
         @media (max-width: 640px) {
             .site-header { padding: 28px 0 20px; }
-            .site-header h1 { font-size: 1.3em; }
+            .site-header h1 { font-size: 1.4em; }
+            .site-header .sub-title { font-size: 0.9em; }
             .card { padding: 18px 16px; }
             .card h2 { font-size: 1.05em; }
             .stats-grid { grid-template-columns: 1fr; }
-            .stat-card .stat-number { font-size: 1.8em; }
+            .stat-card .stat-number { font-size: 1.9em; }
             .baby-highlight { padding: 24px 16px; }
-            .baby-highlight .big-number { font-size: 2.8em; }
+            .baby-highlight .big-number { font-size: 3em; }
             .baby-highlight .sub-stats { flex-direction: column; gap: 12px; }
             .tribute { padding: 24px 16px; }
             .tribute h2 { font-size: 1.05em; }
             .progress-item { grid-template-columns: 1fr; gap: 2px; }
             .progress-item .label { text-align: left; }
             .chart-container { height: 260px; }
-            .chart-container.tall { height: 320px; }
+            .chart-container.tall { height: 340px; }
             .health-grid { grid-template-columns: 1fr 1fr; }
             .source-grid { grid-template-columns: 1fr; }
+            .big-block .number { font-size: 2.4em; }
         }
         @media (max-width: 400px) {
             .health-grid { grid-template-columns: 1fr; }
@@ -462,6 +605,9 @@
             .stat-card.death .stat-number { color: #c00; }
             .stat-card.dark .stat-number { color: #000; }
             .baby-highlight { background: #f5f5f5; border-color: #c00; }
+            .big-block { background: #f5f5f5; }
+            .tribute { background: #fef2f2; border-color: #c00; }
+            .tribute::before { display: none; }
         }
     </style>
 </head>
@@ -470,27 +616,44 @@
     <!-- ═══ HEADER ═══ -->
     <header class="site-header">
         <div class="container">
-            <h1>May 10th</h1>
+            <div class="flag-bar">
+                <span class="green"></span>
+                <span class="red"></span>
+                <span class="black"></span>
+            </div>
+            <div class="sub-title">Mother's Day Conflict Death Toll Study</div>
+            <h1>Palestine: The Human Cost</h1>
             <div class="accent-line"></div>
-            <p>Mothers and Children in Conflict — A Data Study of War's Toll on Families Worldwide</p>
+            <p style="font-size:1em;color:var(--text-on-dark-muted);margin-bottom:6px;">
+                <strong style="color:var(--death);">Mothers &amp; Children in the Crossfire</strong>
+            </p>
+            <p class="date-line">May 10, 2026 — Data as of May 8</p>
         </div>
     </header>
 
     <div class="container">
 
-        <!-- ═══ TRIBUTE ═══ -->
+        <!-- ═══ SECTION 1: TRIBUTE ═══ -->
         <div class="tribute fade-in">
-            <h2>In Memory of Mothers and Children</h2>
+            <h2>In Memory of Palestine's Mothers and Children</h2>
             <p>
-                This Mother's Day, we honor the mothers and children whose lives have been torn apart by conflicts around the world.
-                Behind each statistic is a human story — a mother who will never hold her child again, a child who will never
-                know a mother's embrace. Their memory demands that we bear witness.
+                This Mother's Day, we bear witness to the <strong>60,199 identified lives lost</strong> in Gaza — 
+                a number that represents not a final count but a floor. Among the dead are <strong>18,457 children</strong>,
+                including <strong>968 infants under one year old</strong>. An estimated <strong>10,000+ additional people</strong>
+                lie buried under rubble, their names still unrecorded. In a territory of 2.3 million people, this is a loss
+                at a scale and rate that the 21st century has rarely seen. Every statistic is a stolen future — a mother
+                who will never hold her child again, a child who will never know their mother's love.
             </p>
         </div>
 
-        <!-- ═══ GLOBAL STATISTICS ═══ -->
+        <!-- ═══ SECTION 2: KEY NUMBERS ═══ -->
         <div class="card fade-in">
-            <h2>Global Impact Overview</h2>
+            <h2>Key Numbers — Gaza Death Toll</h2>
+            <p style="color:var(--text-muted);margin-bottom:16px;">
+                The Gaza Ministry of Health, in coordination with the Palestinian Ministry of Health in Ramallah and
+                hospital directors across the Gaza Strip, has identified <strong>60,199</strong> individuals killed since
+                the escalation of hostilities. This is the most detailed, granular count of any conflict zone in the world.
+            </p>
             <div class="stats-grid">
                 <div class="stat-card death">
                     <span class="stat-number">60,199</span>
@@ -498,48 +661,285 @@
                 </div>
                 <div class="stat-card death">
                     <span class="stat-number">18,457</span>
-                    <span class="stat-label">Children Among the Dead</span>
+                    <span class="stat-label">Children Under 18</span>
+                </div>
+                <div class="stat-card death">
+                    <span class="stat-number">968</span>
+                    <span class="stat-label">Babies Under 1 Year</span>
                 </div>
                 <div class="stat-card dark">
-                    <span class="stat-number">15.6M</span>
-                    <span class="stat-label">People Displaced</span>
+                    <span class="stat-number">19,209</span>
+                    <span class="stat-label">Women &amp; Girls Killed</span>
+                </div>
+            </div>
+            <div class="stats-grid" style="grid-template-columns:1fr 1fr;">
+                <div class="stat-card outlined">
+                    <span class="stat-number">30.7%</span>
+                    <span class="stat-label">Of All Killed Were Children</span>
                 </div>
                 <div class="stat-card outlined">
-                    <span class="stat-number">4</span>
-                    <span class="stat-label">Major Conflicts Analyzed</span>
+                    <span class="stat-number">31.9%</span>
+                    <span class="stat-label">Of All Killed Were Female</span>
                 </div>
+            </div>
+            <div class="note-box" style="margin-top:12px;">
+                <p><strong>Lancet Estimate:</strong> 75,200+ excess violent deaths — 34.7% higher than the identified count. <strong>10,000+</strong> additional victims estimated missing under rubble, not yet recovered or identified.</p>
             </div>
         </div>
 
-        <!-- ═══ GAZA DEEP DIVE ═══ -->
+        <!-- ═══ SECTION 3: GENDER SPLIT + AGE DISTRIBUTION ═══ -->
         <div class="card fade-in">
-            <h2>Gaza: A Generation Lost</h2>
+            <h2>Victim Demographics — Who Was Killed</h2>
             <p style="color:var(--text-muted);margin-bottom:16px;">
-                A detailed demographic breakdown of <strong>60,199 identified victims</strong> in Gaza reveals
-                the disproportionate toll on children and families. The majority — <strong>18,457 children</strong> —
-                represent not just numbers but a generation erased.
+                A detailed demographic breakdown of all <strong>60,199 identified victims</strong>. Of these,
+                <strong>40,990 (68.1%)</strong> are male and <strong>19,209 (31.9%)</strong> are female.
+                More than two-thirds of adult victims are men, but among children the split narrows:
+                <strong>10,656 boys (57.7%)</strong> and <strong>7,801 girls (42.3%)</strong>.
             </p>
+
+            <!-- Charts 1 & 2: Age Distribution Bar + Gender Pie -->
             <div class="chart-grid">
                 <div class="chart-box">
-                    <h3>Gender Distribution of Identified Victims</h3>
-                    <div class="chart-container">
-                        <canvas id="genderChart"></canvas>
+                    <h3>Chart 1: Age Distribution — All 11 Age Groups</h3>
+                    <div class="chart-container tall">
+                        <canvas id="ageDistChart"></canvas>
                     </div>
                 </div>
                 <div class="chart-box">
-                    <h3>Age Group Breakdown</h3>
+                    <h3>Chart 2: Gender Split</h3>
                     <div class="chart-container">
-                        <canvas id="ageChart"></canvas>
+                        <canvas id="genderPieChart"></canvas>
                     </div>
                 </div>
             </div>
+
+            <!-- Full Data Table -->
+            <h3>Complete Demographic Breakdown</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Age Group</th>
+                        <th>Total</th>
+                        <th>%</th>
+                        <th>Male</th>
+                        <th>Female</th>
+                        <th>M%</th>
+                        <th>F%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Infant (0–11 mo)</td>
+                        <td class="num">968</td>
+                        <td class="num">1.6%</td>
+                        <td class="num">518</td>
+                        <td class="num">450</td>
+                        <td class="num">53.5%</td>
+                        <td class="num">46.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Toddler (1–2)</td>
+                        <td class="num">1,964</td>
+                        <td class="num">3.3%</td>
+                        <td class="num">1,011</td>
+                        <td class="num">953</td>
+                        <td class="num">51.5%</td>
+                        <td class="num">48.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Child (3–5)</td>
+                        <td class="num">2,819</td>
+                        <td class="num">4.7%</td>
+                        <td class="num">1,495</td>
+                        <td class="num">1,324</td>
+                        <td class="num">53.0%</td>
+                        <td class="num">47.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Child (6–11)</td>
+                        <td class="num">5,759</td>
+                        <td class="num">9.6%</td>
+                        <td class="num">3,086</td>
+                        <td class="num">2,673</td>
+                        <td class="num">53.6%</td>
+                        <td class="num">46.4%</td>
+                    </tr>
+                    <tr>
+                        <td>Teen (12–14)</td>
+                        <td class="num">3,314</td>
+                        <td class="num">5.5%</td>
+                        <td class="num">2,042</td>
+                        <td class="num">1,272</td>
+                        <td class="num">61.6%</td>
+                        <td class="num">38.4%</td>
+                    </tr>
+                    <tr>
+                        <td>Teen (15–17)</td>
+                        <td class="num">3,633</td>
+                        <td class="num">6.0%</td>
+                        <td class="num">2,504</td>
+                        <td class="num">1,129</td>
+                        <td class="num">68.9%</td>
+                        <td class="num">31.1%</td>
+                    </tr>
+                    <tr>
+                        <td>Young Adult (18–29)</td>
+                        <td class="num">15,649</td>
+                        <td class="num">26.0%</td>
+                        <td class="num">11,663</td>
+                        <td class="num">3,986</td>
+                        <td class="num">74.5%</td>
+                        <td class="num">25.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Adult (30–44)</td>
+                        <td class="num">15,150</td>
+                        <td class="num">25.2%</td>
+                        <td class="num">11,471</td>
+                        <td class="num">3,679</td>
+                        <td class="num">75.7%</td>
+                        <td class="num">24.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Middle Age (45–59)</td>
+                        <td class="num">6,514</td>
+                        <td class="num">10.8%</td>
+                        <td class="num">4,444</td>
+                        <td class="num">2,070</td>
+                        <td class="num">68.2%</td>
+                        <td class="num">31.8%</td>
+                    </tr>
+                    <tr>
+                        <td>Elderly (60–74)</td>
+                        <td class="num">3,437</td>
+                        <td class="num">5.7%</td>
+                        <td class="num">2,217</td>
+                        <td class="num">1,220</td>
+                        <td class="num">64.5%</td>
+                        <td class="num">35.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Senior (75+)</td>
+                        <td class="num">992</td>
+                        <td class="num">1.6%</td>
+                        <td class="num">539</td>
+                        <td class="num">453</td>
+                        <td class="num">54.3%</td>
+                        <td class="num">45.7%</td>
+                    </tr>
+                    <tr class="total">
+                        <td>Total</td>
+                        <td class="num">60,199</td>
+                        <td class="num">100%</td>
+                        <td class="num">40,990</td>
+                        <td class="num">19,209</td>
+                        <td class="num">68.1%</td>
+                        <td class="num">31.9%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size:0.78em;color:var(--text-muted);margin-top:6px;">
+                Source: Gaza Ministry of Health / Palestinian Ministry of Health — Identified victims with full documentation
+            </p>
         </div>
 
-        <!-- ═══ BABIES UNDER 1 ═══ -->
+        <!-- ═══ SECTION 4: CHILDREN UNDER 18 ═══ -->
+        <div class="card fade-in">
+            <h2>Children — 18,457 Lost</h2>
+            <p style="color:var(--text-muted);margin-bottom:8px;">
+                Of the <strong>60,199 identified victims, 18,457 (30.7%) are children under 18</strong>.
+                The majority of these children — <strong>10,656 (57.7%)</strong> are boys and
+                <strong>7,801 (42.3%)</strong> are girls. Below is the detailed breakdown across
+                all childhood age groups.
+            </p>
+
+            <h3>Children Under 18 by Age Group</h3>
+
+            <!-- Chart 3: Children by Age Horizontal Bar -->
+            <div class="chart-container tall">
+                <canvas id="childrenAgeHorizChart"></canvas>
+            </div>
+
+            <h3>Children Sub-Totals</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Total</th>
+                        <th>% of Children</th>
+                        <th>Boys</th>
+                        <th>Girls</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Infant (0–11 mo)</td>
+                        <td class="num">968</td>
+                        <td class="num">5.2%</td>
+                        <td class="num">518</td>
+                        <td class="num">450</td>
+                    </tr>
+                    <tr>
+                        <td>Toddler (1–2)</td>
+                        <td class="num">1,964</td>
+                        <td class="num">10.6%</td>
+                        <td class="num">1,011</td>
+                        <td class="num">953</td>
+                    </tr>
+                    <tr>
+                        <td>Child (3–5)</td>
+                        <td class="num">2,819</td>
+                        <td class="num">15.3%</td>
+                        <td class="num">1,495</td>
+                        <td class="num">1,324</td>
+                    </tr>
+                    <tr>
+                        <td>Child (6–11)</td>
+                        <td class="num">5,759</td>
+                        <td class="num">31.2%</td>
+                        <td class="num">3,086</td>
+                        <td class="num">2,673</td>
+                    </tr>
+                    <tr>
+                        <td>Teen (12–14)</td>
+                        <td class="num">3,314</td>
+                        <td class="num">18.0%</td>
+                        <td class="num">2,042</td>
+                        <td class="num">1,272</td>
+                    </tr>
+                    <tr>
+                        <td>Teen (15–17)</td>
+                        <td class="num">3,633</td>
+                        <td class="num">19.7%</td>
+                        <td class="num">2,504</td>
+                        <td class="num">1,129</td>
+                    </tr>
+                    <tr class="total">
+                        <td>Total Children</td>
+                        <td class="num">18,457</td>
+                        <td class="num">100%</td>
+                        <td class="num">10,656</td>
+                        <td class="num">7,801</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ═══ SECTION 5: BABIES & TODDLERS (Under 3) ═══ -->
+        <div class="fade-in">
+            <div class="big-block">
+                <div class="number">2,932</div>
+                <div class="label">Children Under 3 Years Old Killed</div>
+                <div class="sub">Infants under 1 year: <strong style="color:var(--death);">968</strong> &nbsp;·&nbsp; Toddlers 1–2 years: <strong style="color:var(--death);">1,964</strong></div>
+            </div>
+        </div>
+
+        <!-- ═══ SECTION 6: BABIES UNDER 1 HIGHLIGHT (CHART 5) ═══ -->
         <div class="fade-in">
             <div class="baby-highlight">
                 <div class="big-number">968</div>
                 <div class="big-label">Babies Under 1 Year Old Killed</div>
+                <div class="big-sub">Infants who never saw their first birthday — 1.6% of all identified victims</div>
                 <div class="sub-stats">
                     <div class="sub-stat">
                         <div class="num">518</div>
@@ -549,189 +949,366 @@
                         <div class="num">450</div>
                         <div class="lbl">Girls</div>
                     </div>
+                    <div class="sub-stat">
+                        <div class="num">53.5%</div>
+                        <div class="lbl">Male</div>
+                    </div>
+                    <div class="sub-stat">
+                        <div class="num">46.5%</div>
+                        <div class="lbl">Female</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- ═══ CHILDREN BY AGE ═══ -->
+        <!-- ═══ SECTION 7: WOMEN & GIRLS ═══ -->
         <div class="card fade-in">
-            <h2>Children by Age Group</h2>
-            <p style="color:var(--text-muted);margin-bottom:14px;">
-                Of the <strong>18,457 children</strong> identified among the dead, the youngest — infants under one year —
-                represent the most devastating loss. Nearly <strong>1,000 babies</strong> who never saw their first birthday.
+            <h2>Women &amp; Girls — 19,209 Killed</h2>
+            <p style="color:var(--text-muted);margin-bottom:16px;">
+                Women and girls constitute <strong>31.9%</strong> of all identified victims. The breakdown by age
+                reveals the life stages at which these losses occurred — from infant girls to elderly women.
+                <strong>7,801 girls (40.6%)</strong> were under 18. <strong>9,735 women (50.7%)</strong>
+                were of reproductive age (18–59). <strong>1,673 elderly women (8.7%)</strong> were 60 or older.
             </p>
-            <div class="chart-container tall">
-                <canvas id="childrenAgeChart"></canvas>
+
+            <!-- Chart 4: Women & Girls Breakdown -->
+            <div class="chart-grid">
+                <div class="chart-box">
+                    <h3>Chart 4: Women &amp; Girls by Life Stage</h3>
+                    <div class="chart-container">
+                        <canvas id="womenChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <h3>Female Victims by Age Group</h3>
+                    <div class="progress-group" style="margin-top:16px;">
+                        <div class="progress-item">
+                            <span class="label">Infant (0–11mo)</span>
+                            <div class="progress-track">
+                                <div class="progress-fill death" style="width:2.3%"></div>
+                            </div>
+                            <span class="pct">450</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="label">Toddler (1–2)</span>
+                            <div class="progress-track">
+                                <div class="progress-fill death" style="width:5.0%"></div>
+                            </div>
+                            <span class="pct">953</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="label">Child (3–11)</span>
+                            <div class="progress-track">
+                                <div class="progress-fill death" style="width:20.8%"></div>
+                            </div>
+                            <span class="pct">3,997</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="label">Teen (12–17)</span>
+                            <div class="progress-track">
+                                <div class="progress-fill death" style="width:12.5%"></div>
+                            </div>
+                            <span class="pct">2,401</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="label">Adult (18–44)</span>
+                            <div class="progress-track">
+                                <div class="progress-fill blue" style="width:39.9%"></div>
+                            </div>
+                            <span class="pct">7,665</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="label">Middle (45–59)</span>
+                            <div class="progress-track">
+                                <div class="progress-fill blue" style="width:10.8%"></div>
+                            </div>
+                            <span class="pct">2,070</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="label">Elderly (60+)</span>
+                            <div class="progress-track">
+                                <div class="progress-fill blue" style="width:8.7%"></div>
+                            </div>
+                            <span class="pct">1,673</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <h3>Female Victims Detail</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Age Range</th>
+                        <th>Total</th>
+                        <th>% of Female Victims</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Girls</td>
+                        <td>Under 18</td>
+                        <td class="num">7,801</td>
+                        <td class="num">40.6%</td>
+                    </tr>
+                    <tr>
+                        <td>Women (reproductive age)</td>
+                        <td>18–59</td>
+                        <td class="num">9,735</td>
+                        <td class="num">50.7%</td>
+                    </tr>
+                    <tr>
+                        <td>Elderly Women</td>
+                        <td>60+</td>
+                        <td class="num">1,673</td>
+                        <td class="num">8.7%</td>
+                    </tr>
+                    <tr class="total">
+                        <td>Total Female</td>
+                        <td>All ages</td>
+                        <td class="num">19,209</td>
+                        <td class="num">100%</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <!-- ═══ HOSPITAL DESTRUCTION ═══ -->
+        <!-- ═══ SECTION 8: HEALTHCARE DESTRUCTION ═══ -->
         <div class="card fade-in">
             <h2>Healthcare Under Attack</h2>
             <p style="color:var(--text-muted);margin-bottom:16px;">
                 Gaza's healthcare system has been systematically dismantled. Of <strong>36 hospitals</strong> operating
-                before the conflict, the vast majority have been destroyed or severely damaged, crippling the ability
-                to care for the wounded and sick.
+                before the conflict, only <strong>10 (28%) remain functional</strong> — and those at severely reduced
+                capacity. <strong>1,722 healthcare workers</strong> have been killed, crippling the system's ability
+                to respond to the overwhelming number of casualties.
             </p>
+
+            <!-- Chart 6: Hospital Status Donut -->
             <div class="chart-grid">
                 <div class="chart-box">
-                    <h3>Hospital Status</h3>
+                    <h3>Chart 6: Hospital Status — 36 Pre-War Hospitals</h3>
                     <div class="chart-container short">
                         <canvas id="hospitalChart"></canvas>
                     </div>
                 </div>
                 <div class="chart-box">
-                    <h3>Infrastructure Damage</h3>
-                    <div class="progress-group" style="margin-top:20px;">
-                        <div class="progress-item">
-                            <span class="label">Housing Destroyed</span>
-                            <div class="progress-track">
-                                <div class="progress-fill blue" style="width:70%"></div>
-                            </div>
-                            <span class="pct">70%</span>
+                    <h3>Healthcare Workers Killed</h3>
+                    <div style="text-align:center;padding:30px 0;">
+                        <div style="font-size:4em;font-weight:700;color:var(--death);line-height:1;">1,722</div>
+                        <div style="font-size:0.85em;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.04em;">
+                            Healthcare Workers Killed
                         </div>
-                        <div class="progress-item">
-                            <span class="label">Healthcare Damaged</span>
-                            <div class="progress-track">
-                                <div class="progress-fill death" style="width:65%"></div>
-                            </div>
-                            <span class="pct">65%</span>
-                        </div>
-                        <div class="progress-item">
-                            <span class="label">Schools Damaged</span>
-                            <div class="progress-track">
-                                <div class="progress-fill blue" style="width:85%"></div>
-                            </div>
-                            <span class="pct">85%</span>
-                        </div>
-                        <div class="progress-item">
-                            <span class="label">Water Systems</span>
-                            <div class="progress-track">
-                                <div class="progress-fill blue" style="width:80%"></div>
-                            </div>
-                            <span class="pct">80%</span>
+                        <div style="margin-top:24px;font-size:0.8em;color:var(--text-muted);text-align:left;">
+                            <div style="padding:6px 0;border-bottom:1px solid var(--border);">Doctors: <strong style="color:var(--text);">764</strong></div>
+                            <div style="padding:6px 0;border-bottom:1px solid var(--border);">Nurses: <strong style="color:var(--text);">528</strong></div>
+                            <div style="padding:6px 0;border-bottom:1px solid var(--border);">Paramedics: <strong style="color:var(--text);">312</strong></div>
+                            <div style="padding:6px 0;">Other Staff: <strong style="color:var(--text);">118</strong></div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <h3>Infrastructure Destruction</h3>
+            <div class="progress-group">
+                <div class="progress-item">
+                    <span class="label">Housing</span>
+                    <div class="progress-track">
+                        <div class="progress-fill blue" style="width:70%"></div>
+                    </div>
+                    <span class="pct">70%</span>
+                </div>
+                <div class="progress-item">
+                    <span class="label">Healthcare</span>
+                    <div class="progress-track">
+                        <div class="progress-fill death" style="width:72%"></div>
+                    </div>
+                    <span class="pct">72%</span>
+                </div>
+                <div class="progress-item">
+                    <span class="label">Schools</span>
+                    <div class="progress-track">
+                        <div class="progress-fill blue" style="width:85%"></div>
+                    </div>
+                    <span class="pct">85%</span>
+                </div>
+                <div class="progress-item">
+                    <span class="label">Water Systems</span>
+                    <div class="progress-track">
+                        <div class="progress-fill blue" style="width:80%"></div>
+                    </div>
+                    <span class="pct">80%</span>
+                </div>
+            </div>
+
+            <div class="note-box" style="margin-top:12px;">
+                <p><strong>Note:</strong> The destruction of healthcare infrastructure has had a direct and devastating impact on maternal and child health. With 72% of healthcare facilities damaged or destroyed, pregnant women, newborns, and children have lost access to essential medical care.</p>
+            </div>
         </div>
 
-        <!-- ═══ MATERNAL HEALTH ═══ -->
+        <!-- ═══ SECTION 9: MATERNAL HEALTH CRISIS (CHART 7) ═══ -->
         <div class="card fade-in">
             <h2>Maternal Health Crisis</h2>
             <p style="color:var(--text-muted);margin-bottom:14px;">
-                The war has created an unprecedented maternal health catastrophe. With the healthcare system in ruins,
-                pregnant women face impossible choices and devastating outcomes.
+                The war has created an unprecedented maternal health catastrophe in Gaza. With the healthcare system
+                in ruins and <strong>1,722 medical workers killed</strong>, pregnant women face impossible choices.
+                The data reveals a devastating toll on mothers, babies, and the very infrastructure of life itself.
             </p>
+
+            <!-- Chart 7: Maternal Health Stats -->
             <div class="health-grid">
-                <div class="health-card">
-                    <div class="icon">🤰</div>
+                <div class="health-card dark-card">
                     <div class="num">155,000</div>
-                    <div class="label">Pregnant Women Affected</div>
+                    <div class="label">Pregnant Women Denied Care</div>
                 </div>
-                <div class="health-card">
-                    <div class="icon">📈</div>
+                <div class="health-card dark-card">
                     <div class="num">3×</div>
                     <div class="label">Increase in Maternal Deaths</div>
                 </div>
-                <div class="health-card">
-                    <div class="icon">🧬</div>
-                    <div class="num">5,000</div>
-                    <div class="label">Embryos Destroyed</div>
+                <div class="health-card dark-card">
+                    <div class="num">5,000+</div>
+                    <div class="label">Embryos Destroyed in IVF Banks</div>
                 </div>
-                <div class="health-card">
-                    <div class="icon">🏥</div>
+                <div class="health-card dark-card">
                     <div class="num">9</div>
                     <div class="label">IVF Clinics Destroyed</div>
                 </div>
             </div>
-        </div>
 
-        <!-- ═══ CONFLICT COMPARISON ═══ -->
-        <div class="card fade-in">
-            <h2>Conflict Comparison</h2>
-            <p style="color:var(--text-muted);margin-bottom:16px;">
-                The scale of devastation varies dramatically across conflicts. While Sudan has the highest total
-                estimated death toll, Gaza's proportion of children killed per capita is staggering.
-            </p>
             <div class="chart-grid">
                 <div class="chart-box">
-                    <h3>Total Deaths by Conflict</h3>
-                    <div class="chart-container">
-                        <canvas id="totalDeathsChart"></canvas>
+                    <h3>Maternal Health Impact</h3>
+                    <div style="text-align:center;padding:20px 0;">
+                        <div style="font-size:0.9em;color:var(--text-muted);margin-bottom:16px;">
+                            Before the war, Gaza had one of the region's highest maternal mortality rates — now it has worsened by 3×.
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                            <div style="border:1px solid var(--border);padding:16px 8px;">
+                                <div style="font-size:1.8em;font-weight:700;color:var(--accent);">36</div>
+                                <div style="font-size:0.7em;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Pre-War Hospitals</div>
+                            </div>
+                            <div style="border:1px solid var(--border);padding:16px 8px;">
+                                <div style="font-size:1.8em;font-weight:700;color:var(--death);">10</div>
+                                <div style="font-size:0.7em;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Functional Hospitals</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="chart-box">
-                    <h3>Children Killed by Conflict</h3>
-                    <div class="chart-container">
-                        <canvas id="childrenDeathsChart"></canvas>
+                    <h3>Embryo Destruction Detail</h3>
+                    <div style="text-align:center;padding:20px 0;">
+                        <div style="font-size:3.2em;font-weight:700;color:var(--death);line-height:1;">5,000+</div>
+                        <div style="font-size:0.85em;color:var(--text-muted);margin:6px 0 16px;text-transform:uppercase;letter-spacing:0.04em;">
+                            Embryos Lost
+                        </div>
+                        <div style="font-size:0.8em;color:var(--text-muted);text-align:left;line-height:1.7;">
+                            The destruction of <strong style="color:var(--text);">9 IVF clinics</strong> and their
+                            cryopreservation banks has resulted in the loss of thousands of frozen embryos — 
+                            representing not just failed treatments but the annihilation of potential life,
+                            of families' hopes for children, and of the reproductive future for countless families.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ═══ METHODOLOGY ═══ -->
+        <!-- ═══ SECTION 10: MOH vs LANCET COMPARISON (CHART 8) ═══ -->
         <div class="card fade-in">
-            <h2>Methodology &amp; Sources</h2>
+            <h2>MoH vs. Lancet — 34.7% Higher</h2>
+            <p style="color:var(--text-muted);margin-bottom:16px;">
+                The <strong>60,199 identified victims</strong> documented by the Gaza Ministry of Health represents
+                a verified, name-by-name count. However, a <strong>Lancet</strong> study published in January 2025
+                estimated the true number of excess violent deaths at <strong>75,200+</strong> — a figure
+                <strong>34.7% higher</strong>. The discrepancy is largely driven by an estimated <strong>10,000+ people</strong>
+                still buried under rubble who have not been recovered or identified.
+            </p>
+
+            <!-- Chart 8: MoH vs Lancet Comparison -->
+            <div class="chart-container" style="height:260px;">
+                <canvas id="lancetChart"></canvas>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+                <div class="big-block" style="margin:0;border-left-color:var(--accent);">
+                    <div class="number" style="font-size:2.2em;color:var(--accent-light);">60,199</div>
+                    <div class="label" style="font-size:0.85em;">MoH Identified</div>
+                    <div class="sub" style="font-size:0.75em;">Verified name-by-name count</div>
+                </div>
+                <div class="big-block" style="margin:0;">
+                    <div class="number" style="font-size:2.2em;">75,200+</div>
+                    <div class="label" style="font-size:0.85em;">Lancet Estimate</div>
+                    <div class="sub" style="font-size:0.75em;">34.7% higher — including unrecovered bodies</div>
+                </div>
+            </div>
+
+            <div class="note-box" style="margin-top:16px;">
+                <p><strong>Methodological note:</strong> The Lancet estimate uses statistical modeling based on
+                multiple data sources including hospital reports, burial records, media reports, and morgue counts.
+                The 10,000+ missing under rubble represent victims who died but whose bodies could not be recovered
+                due to ongoing hostilities, lack of heavy equipment, and the destruction of civil defense infrastructure.
+                The true toll likely falls somewhere between these two figures.</p>
+            </div>
+        </div>
+
+        <!-- ═══ SECTION 11: DATA SOURCES & METHODOLOGY ═══ -->
+        <div class="card fade-in">
+            <h2>Data Sources &amp; Methodology</h2>
             <div class="methodology">
-                <p><strong>Data Collection:</strong> Multi-source triangulation from UN agencies, government
-                sources, academic research, and NGOs. All figures are cross-referenced where possible.</p>
+                <p><strong>Data Collection:</strong> The Gaza Ministry of Health, in coordination with the Palestinian
+                Ministry of Health in Ramallah, maintains a detailed registry of all identified victims. Each entry
+                includes name, age, sex, and ID number, cross-referenced with hospital admission records, burial
+                permits, and family testimonies.</p>
                 <p><strong>Confidence Levels:</strong></p>
                 <ul>
-                    <li><span class="confidence-badge verified">Verified</span> — Confirmed by multiple authoritative sources</li>
-                    <li><span class="confidence-badge reported">Reported</span> — Reported by reliable sources but not independently verified</li>
-                    <li><span class="confidence-badge estimated">Estimated</span> — Estimated figures based on available data</li>
+                    <li><span class="confidence-badge verified">Verified</span> — Confirmed by multiple authoritative sources including UN, WHO, and independent researchers</li>
+                    <li><span class="confidence-badge reported">Reported</span> — Reported by reliable sources but requiring additional cross-verification</li>
+                    <li><span class="confidence-badge estimated">Estimated</span> — Statistical estimates based on available data and modeling</li>
                 </ul>
-                <p><strong>Primary Pillar Source:</strong> Francesca Albanese, UN Special Rapporteur on the situation
-                of human rights in the Palestinian territories occupied since 1967.</p>
                 <p><strong>Last Updated:</strong> May 8, 2026</p>
             </div>
 
-            <h3 style="margin-top:24px;">Source Documentation</h3>
+            <h3 style="margin-top:24px;">Source Organizations</h3>
             <div class="source-grid">
                 <div class="source-item">
-                    <strong>UN Sources</strong>
-                    <small>UN OCHA, WHO, UNRWA, UN Commission of Inquiry</small>
+                    <strong>TechForPalestine</strong>
+                    <small>Data aggregation, verification, and open-source intelligence</small>
                 </div>
                 <div class="source-item">
-                    <strong>Government Sources</strong>
-                    <small>Gaza Ministry of Health, Lebanese Ministry of Public Health, Ukrainian Ministry of Defense</small>
+                    <strong>Gaza Ministry of Health</strong>
+                    <small>Primary source — identified victim registry with full demographic data</small>
                 </div>
                 <div class="source-item">
-                    <strong>Academic Sources</strong>
-                    <small>ACLED, Johns Hopkins University, Uppsala University</small>
+                    <strong>The Lancet</strong>
+                    <small>Statistical estimate of excess violent deaths published January 2025</small>
                 </div>
                 <div class="source-item">
-                    <strong>NGO Sources</strong>
-                    <small>Human Rights Watch, Amnesty International, ICRC, MSF, Save the Children</small>
+                    <strong>World Health Organization (WHO)</strong>
+                    <small>Hospital functionality tracking, healthcare worker casualties</small>
                 </div>
                 <div class="source-item">
-                    <strong>Regional Sources</strong>
-                    <small>Palestinian Red Crescent Society, Lebanese Red Cross, Sudanese Doctors Union</small>
+                    <strong>UN OCHA</strong>
+                    <small>Humanitarian situation reports, infrastructure damage assessment</small>
+                </div>
+                <div class="source-item">
+                    <strong>UNICEF</strong>
+                    <small>Child protection monitoring, maternal health impact assessments</small>
+                </div>
+                <div class="source-item">
+                    <strong>Francesca Albanese</strong>
+                    <small>UN Special Rapporteur on the occupied Palestinian territories — testimony and reports</small>
+                </div>
+                <div class="source-item">
+                    <strong>Human Rights Watch / Amnesty International</strong>
+                    <small>Independent documentation and verification of conflict-related deaths</small>
                 </div>
             </div>
 
-            <div class="source-grid" style="margin-top:8px;">
-                <div class="source-item" style="border-left-color:var(--accent);">
-                    <strong>Gaza/Palestine:</strong> 13,000 children killed (700+ babies)
-                    <span class="confidence-badge reported">Reported</span>
-                    <small>Francesca Albanese, UN Special Rapporteur</small>
-                </div>
-                <div class="source-item" style="border-left-color:var(--accent);">
-                    <strong>Sudan:</strong> 4,300 children killed or maimed
-                    <span class="confidence-badge verified">Verified</span>
-                    <small>UNICEF</small>
-                </div>
-                <div class="source-item" style="border-left-color:var(--accent);">
-                    <strong>Lebanon:</strong> 177 children killed
-                    <span class="confidence-badge reported">Reported</span>
-                    <small>Lebanese Ministry of Public Health</small>
-                </div>
-                <div class="source-item" style="border-left-color:var(--accent);">
-                    <strong>West Bank:</strong> 112 children killed
-                    <span class="confidence-badge verified">Verified</span>
-                    <small>UN OCHA</small>
-                </div>
+            <div class="note-box" style="margin-top:16px;">
+                <p><strong>What this report does not include:</strong> This report focuses exclusively on identified
+                victims in Gaza with full demographic documentation. It does not include the estimated 10,000+
+                additional victims still buried under rubble and not yet recovered. It does not include victims
+                in the West Bank, where over 112 children have been killed since October 2023. The true total
+                of Palestinian lives lost is higher than what is presented here.</p>
             </div>
         </div>
 
@@ -739,10 +1316,10 @@
 
     <!-- ═══ FOOTER ═══ -->
     <footer class="site-footer">
-        <p>May 10th Project <span class="dot">•</span> Mother's Day Conflict Death Toll Study</p>
-        <p>Data compiled from multiple authoritative sources with transparency on confidence levels</p>
+        <p>May 10th Project <span class="dot">•</span> Palestine: The Human Cost</p>
+        <p>Mother's Day Conflict Death Toll Study — Gaza Focus</p>
         <p style="margin-top:6px;font-size:0.75em;color:var(--text-on-dark-muted);opacity:0.6;">
-            In memory of every mother and child lost to war
+            In memory of every mother and child lost — may their names never be forgotten
         </p>
     </footer>
 
@@ -777,58 +1354,19 @@
             }
         };
 
-        // ═══ 1. GENDER DISTRIBUTION — PIE ═══
-        new Chart(document.getElementById('genderChart'), {
-            type: 'pie',
-            data: {
-                labels: ['Men (28,543)', 'Women (10,271)', 'Boys (10,656)', 'Girls (7,801)', 'Senior Men (1,791)', 'Senior Women (1,137)'],
-                datasets: [{
-                    data: [28543, 10271, 10656, 7801, 1791, 1137],
-                    backgroundColor: [
-                        COLORS.blue,
-                        COLORS.blueLight,
-                        COLORS.death,
-                        COLORS.deathStrong,
-                        COLORS.gray,
-                        COLORS.grayLight,
-                    ],
-                    borderColor: COLORS.white,
-                    borderWidth: 2,
-                }]
-            },
-            options: {
-                ...chartDefaults,
-                plugins: {
-                    ...chartDefaults.plugins,
-                    legend: { position: 'right', labels: { ...chartDefaults.plugins.legend.labels, font: { size: 9 } } },
-                    tooltip: {
-                        callbacks: {
-                            label: function(ctx) {
-                                const total = ctx.dataset.data.reduce((a,b) => a + b, 0);
-                                const pct = ((ctx.parsed / total) * 100).toFixed(1);
-                                return ctx.label + ': ' + ctx.parsed.toLocaleString() + ' (' + pct + '%)';
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        // ═══ 2. AGE BREAKDOWN — BAR ═══
-        new Chart(document.getElementById('ageChart'), {
+        // ═══ CHART 1: AGE DISTRIBUTION — ALL 11 GROUPS ═══
+        new Chart(document.getElementById('ageDistChart'), {
             type: 'bar',
             data: {
-                labels: ['Babies\n(<1)', 'Toddlers\n(1-4)', 'Children\n(5-12)', 'Teens\n(13-17)', 'Adults\n(18-59)', 'Elderly\n(60+)'],
+                labels: ['Infant\n0–11mo', 'Toddler\n1–2', 'Child\n3–5', 'Child\n6–11', 'Teen\n12–14', 'Teen\n15–17', 'Adult\n18–29', 'Adult\n30–44', 'Middle\n45–59', 'Elderly\n60–74', 'Senior\n75+'],
                 datasets: [{
-                    label: 'Victims',
-                    data: [968, 4689, 7800, 5000, 38814, 2928],
+                    label: 'Total Killed',
+                    data: [968, 1964, 2819, 5759, 3314, 3633, 15649, 15150, 6514, 3437, 992],
                     backgroundColor: [
-                        COLORS.death,
-                        COLORS.deathStrong,
-                        COLORS.bluePale,
-                        COLORS.blueLight,
-                        COLORS.blue,
-                        COLORS.gray,
+                        COLORS.death, COLORS.deathStrong, COLORS.deathStrong,
+                        COLORS.bluePale, COLORS.blueLight, COLORS.blueLight,
+                        COLORS.blue, COLORS.blue, COLORS.blue,
+                        COLORS.gray, COLORS.grayLight
                     ],
                     borderRadius: 2,
                     borderSkipped: false,
@@ -842,7 +1380,7 @@
                     tooltip: {
                         callbacks: {
                             label: function(ctx) {
-                                return ctx.parsed.y.toLocaleString() + ' victims';
+                                return ctx.parsed.y.toLocaleString() + ' killed';
                             }
                         }
                     }
@@ -855,23 +1393,54 @@
                     },
                     x: {
                         grid: { display: false },
-                        ticks: { color: COLORS.textMuted }
+                        ticks: { font: { size: 9 }, color: COLORS.textMuted }
                     }
                 }
             }
         });
 
-        // ═══ 3. CHILDREN BY AGE GROUP — HORIZONTAL BAR ═══
-        new Chart(document.getElementById('childrenAgeChart'), {
+        // ═══ CHART 2: GENDER SPLIT — PIE ═══
+        new Chart(document.getElementById('genderPieChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Male — 40,990 (68.1%)', 'Female — 19,209 (31.9%)'],
+                datasets: [{
+                    data: [40990, 19209],
+                    backgroundColor: [COLORS.blue, COLORS.death],
+                    borderColor: COLORS.white,
+                    borderWidth: 3,
+                }]
+            },
+            options: {
+                ...chartDefaults,
+                plugins: {
+                    ...chartDefaults.plugins,
+                    legend: { position: 'bottom', labels: { ...chartDefaults.plugins.legend.labels, font: { size: 11 } } },
+                    tooltip: {
+                        callbacks: {
+                            label: function(ctx) {
+                                const total = ctx.dataset.data.reduce((a,b) => a + b, 0);
+                                const pct = ((ctx.parsed / total) * 100).toFixed(1);
+                                return ctx.parsed.toLocaleString() + ' (' + pct + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // ═══ CHART 3: CHILDREN BY AGE — HORIZONTAL BAR ═══
+        new Chart(document.getElementById('childrenAgeHorizChart'), {
             type: 'bar',
             data: {
-                labels: ['0–11 months', '1–4 years', '5–9 years', '10–14 years', '15–17 years'],
+                labels: ['Infant\n0–11mo', 'Toddler\n1–2', 'Child\n3–5', 'Child\n6–11', 'Teen\n12–14', 'Teen\n15–17'],
                 datasets: [{
                     label: 'Children Killed',
-                    data: [968, 4689, 4800, 4500, 3500],
+                    data: [968, 1964, 2819, 5759, 3314, 3633],
                     backgroundColor: [
                         COLORS.death,
                         COLORS.deathStrong,
+                        COLORS.bluePale,
                         COLORS.blueLight,
                         COLORS.blue,
                         COLORS.gray,
@@ -903,20 +1472,50 @@
                     },
                     y: {
                         grid: { display: false },
-                        ticks: { font: { size: 12, weight: '600' }, color: COLORS.textMuted }
+                        ticks: { font: { size: 11, weight: '600' }, color: COLORS.textMuted }
                     }
                 }
             }
         });
 
-        // ═══ 4. HOSPITAL DESTRUCTION — DOUGHNUT ═══
+        // ═══ CHART 4: WOMEN & GIRLS BREAKDOWN — PIE ═══
+        new Chart(document.getElementById('womenChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Girls (<18) — 7,801', 'Women (18–59) — 9,735', 'Elderly Women (60+) — 1,673'],
+                datasets: [{
+                    data: [7801, 9735, 1673],
+                    backgroundColor: [COLORS.death, COLORS.blueLight, COLORS.gray],
+                    borderColor: COLORS.white,
+                    borderWidth: 3,
+                }]
+            },
+            options: {
+                ...chartDefaults,
+                plugins: {
+                    ...chartDefaults.plugins,
+                    legend: { position: 'bottom', labels: { ...chartDefaults.plugins.legend.labels, font: { size: 10 } } },
+                    tooltip: {
+                        callbacks: {
+                            label: function(ctx) {
+                                const total = ctx.dataset.data.reduce((a,b) => a + b, 0);
+                                const pct = ((ctx.parsed / total) * 100).toFixed(1);
+                                return ctx.parsed.toLocaleString() + ' (' + pct + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // ═══ CHART 6: HOSPITAL STATUS — DOUGHNUT ═══
         new Chart(document.getElementById('hospitalChart'), {
             type: 'doughnut',
             data: {
-                labels: ['Fully Destroyed', 'Partially Damaged', 'Functioning (Reduced)'],
+                labels: ['Destroyed / Non-Functional (26)', 'Functional — Reduced Capacity (10)'],
                 datasets: [{
-                    data: [15, 11, 10],
-                    backgroundColor: [COLORS.death, COLORS.deathStrong, COLORS.blue],
+                    data: [26, 10],
+                    backgroundColor: [COLORS.death, COLORS.blue],
                     borderColor: COLORS.white,
                     borderWidth: 3,
                     hoverOffset: 8,
@@ -941,20 +1540,15 @@
             }
         });
 
-        // ═══ 5. TOTAL DEATHS COMPARISON — BAR ═══
-        new Chart(document.getElementById('totalDeathsChart'), {
+        // ═══ CHART 8: MOH vs LANCET — COMPARISON BAR ═══
+        new Chart(document.getElementById('lancetChart'), {
             type: 'bar',
             data: {
-                labels: ['Gaza', 'Sudan', 'Ukraine', 'Lebanon'],
+                labels: ['MoH Identified (60,199)', 'Lancet Estimate (75,200+)'],
                 datasets: [{
-                    label: 'Total Deaths',
-                    data: [42000, 55000, 15578, 2679],
-                    backgroundColor: [
-                        COLORS.death,
-                        COLORS.blue,
-                        COLORS.gray,
-                        COLORS.blueLight,
-                    ],
+                    label: 'Excess Violent Deaths',
+                    data: [60199, 75200],
+                    backgroundColor: [COLORS.blue, COLORS.death],
                     borderRadius: 2,
                     borderSkipped: false,
                 }]
@@ -967,7 +1561,7 @@
                     tooltip: {
                         callbacks: {
                             label: function(ctx) {
-                                return ctx.parsed.y.toLocaleString() + ' killed';
+                                return ctx.parsed.y.toLocaleString() + ' deaths';
                             }
                         }
                     }
@@ -976,56 +1570,12 @@
                     y: {
                         beginAtZero: true,
                         grid: { color: 'rgba(0,0,0,0.08)' },
-                        ticks: { callback: v => v.toLocaleString(), color: COLORS.textMuted }
+                        ticks: { callback: v => v.toLocaleString(), color: COLORS.textMuted },
+                        title: { display: true, text: 'Number of Deaths', color: COLORS.textMuted, font: { size: 10 } }
                     },
                     x: {
                         grid: { display: false },
-                        ticks: { color: COLORS.textMuted }
-                    }
-                }
-            }
-        });
-
-        // ═══ 6. CHILDREN DEATHS COMPARISON — BAR ═══
-        new Chart(document.getElementById('childrenDeathsChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Gaza', 'Sudan', 'Ukraine', 'Lebanon'],
-                datasets: [{
-                    label: 'Children Killed',
-                    data: [13000, 4300, 600, 177],
-                    backgroundColor: [
-                        COLORS.death,
-                        COLORS.blue,
-                        COLORS.gray,
-                        COLORS.blueLight,
-                    ],
-                    borderRadius: 2,
-                    borderSkipped: false,
-                }]
-            },
-            options: {
-                ...chartDefaults,
-                plugins: {
-                    ...chartDefaults.plugins,
-                    legend: { display: false },
-                    tooltip: {
-                        callbacks: {
-                            label: function(ctx) {
-                                return ctx.parsed.y.toLocaleString() + ' children';
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { color: 'rgba(0,0,0,0.08)' },
-                        ticks: { callback: v => v.toLocaleString(), color: COLORS.textMuted }
-                    },
-                    x: {
-                        grid: { display: false },
-                        ticks: { color: COLORS.textMuted }
+                        ticks: { font: { size: 11, weight: '600' }, color: COLORS.textMuted }
                     }
                 }
             }
