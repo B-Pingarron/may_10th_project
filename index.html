@@ -6,25 +6,33 @@
     <title>Palestine: The Human Cost — Mothers & Children in the Crossfire</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* ══ Index of Repression Design System ══ */
+        /* ══ UI UX Pro Max — Pink/Red/Burgundy/Purple Design System ══ */
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
         :root {
-            --bg: #000000;
-            --surface: #f3f4f6;
-            --surface-dark: #111111;
-            --border: #d1d5db;
-            --border-strong: #9ca3af;
-            --text: #030712;
-            --text-muted: #6b7280;
-            --text-on-dark: #f3f4f6;
-            --text-on-dark-muted: #9ca3af;
-            --accent: #1e40af;
-            --accent-light: #2563eb;
-            --death: #fca5a5;
-            --death-strong: #f87171;
-            --red-pal: #dc2626;
+            --bg: #FDF2F8;
+            --surface: #FFFFFF;
+            --surface-dark: #FFFFFF;
+            --border: #FBCFE8;
+            --border-strong: #F9A8D4;
+            --text: #831843;
+            --text-muted: #9D174D;
+            --text-on-dark: #831843;
+            --text-on-dark-muted: #9D174D;
+            --accent: #9D174D;
+            --accent-light: #EC4899;
+            --secondary: #EC4899;
+            --purple: #7C3AED;
+            --cta: #F59E0B;
+            --death: #DC2626;
+            --death-strong: #DC2626;
+            --red-pal: #DC2626;
             --green-pal: #16a34a;
             --black-pal: #000000;
-            --radius: 2px;
+            --radius: 8px;
+            --shadow: 0 1px 3px rgba(157, 23, 77, 0.08);
+            --shadow-hover: 0 4px 12px rgba(157, 23, 77, 0.12);
+            --transition: all 200ms ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,11 +40,12 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Neue Montreal', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Fira Sans', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             line-height: 1.5;
-            color: var(--text-on-dark);
-            background: var(--bg);
+            color: var(--text);
+            background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 50%, #FBCFE8 100%);
+            background-attachment: fixed;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -44,6 +53,10 @@
             font-weight: 700;
             letter-spacing: -0.01em;
             line-height: 1.2;
+        }
+
+        code, pre, .stat-number, .num, .big-number, .confidence-badge {
+            font-family: 'Fira Code', monospace;
         }
 
         .container {
@@ -82,7 +95,7 @@
         .site-header .flag-bar .black { background: var(--black-pal); }
         .site-header h1 {
             font-size: 2.2em;
-            color: var(--text-on-dark);
+            color: var(--text);
             text-transform: uppercase;
             letter-spacing: 0.06em;
             margin-bottom: 2px;
@@ -102,19 +115,25 @@
         }
         .site-header .date-line {
             font-size: 0.82em;
-            color: var(--text-on-dark-muted);
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.06em;
         }
 
         /* ══ Tribute ══ */
         .tribute {
-            background: #1a0a0a;
+            background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%);
+            border: 1px solid var(--border);
             padding: 36px 32px;
             margin-bottom: 28px;
-            border-top: 2px solid var(--red-pal);
-            border-bottom: 2px solid var(--red-pal);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--death);
             position: relative;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .tribute:hover {
+            box-shadow: var(--shadow-hover);
         }
         .tribute::before {
             content: '🕊';
@@ -122,7 +141,7 @@
             top: 12px;
             right: 20px;
             font-size: 1.6em;
-            opacity: 0.15;
+            opacity: 0.12;
         }
         .tribute h2 {
             color: var(--death);
@@ -133,7 +152,7 @@
             letter-spacing: 0.04em;
         }
         .tribute p {
-            color: var(--text-on-dark-muted);
+            color: var(--text-muted);
             font-size: 0.95em;
             max-width: 740px;
             line-height: 1.7;
@@ -145,9 +164,16 @@
         /* ══ Cards ══ */
         .card {
             background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
             padding: 24px 28px;
             margin-bottom: 24px;
-            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+            border-color: var(--border-strong);
         }
         .card h2 {
             color: var(--text);
@@ -172,7 +198,7 @@
             color: var(--text);
         }
 
-        /* ══ Stats Grid ══ */
+        /* ══ KPI Stats Grid ══ */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -180,9 +206,19 @@
             margin: 16px 0;
         }
         .stat-card {
-            padding: 20px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
+            padding: 20px 16px;
             text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: default;
+        }
+        .stat-card:hover {
+            box-shadow: var(--shadow-hover);
+            border-color: var(--border-strong);
+            transform: translateY(-2px);
         }
         .stat-card .stat-number {
             font-size: 2.4em;
@@ -190,48 +226,54 @@
             display: block;
             margin-bottom: 4px;
             line-height: 1.1;
+            letter-spacing: -0.02em;
         }
         .stat-card .stat-label {
             font-size: 0.82em;
             line-height: 1.4;
+            color: var(--text-muted);
+            font-weight: 500;
         }
         .stat-card.death {
-            background: var(--surface-dark);
+            border-color: #FECACA;
+            border-left: 3px solid var(--death);
         }
         .stat-card.death .stat-number {
             color: var(--death);
         }
         .stat-card.death .stat-label {
-            color: var(--text-on-dark-muted);
+            color: var(--text-muted);
         }
         .stat-card.dark {
-            background: var(--surface-dark);
+            border-color: var(--border);
+            border-left: 3px solid var(--purple);
         }
         .stat-card.dark .stat-number {
-            color: var(--text-on-dark);
+            color: var(--purple);
         }
         .stat-card.dark .stat-label {
-            color: var(--text-on-dark-muted);
+            color: var(--text-muted);
         }
         .stat-card.outlined {
-            background: transparent;
+            background: var(--surface);
             border: 1px solid var(--border-strong);
+            border-left: 3px solid var(--accent);
         }
         .stat-card.outlined .stat-number {
-            color: var(--text-on-dark);
+            color: var(--accent);
         }
         .stat-card.outlined .stat-label {
-            color: var(--text-on-dark-muted);
+            color: var(--text-muted);
         }
         .stat-card.accent {
-            background: var(--surface-dark);
-            border: 1px solid var(--accent);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--cta);
         }
         .stat-card.accent .stat-number {
-            color: var(--accent-light);
+            color: var(--cta);
         }
         .stat-card.accent .stat-label {
-            color: var(--text-on-dark-muted);
+            color: var(--text-muted);
         }
 
         /* ══ Chart Containers ══ */
@@ -242,9 +284,15 @@
             margin: 16px 0;
         }
         .chart-box {
-            padding: 16px;
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
+            padding: 16px;
+            transition: var(--transition);
+        }
+        .chart-box:hover {
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow);
         }
         .chart-box h3 {
             color: var(--text);
@@ -267,12 +315,17 @@
 
         /* ══ Baby Highlight ══ */
         .baby-highlight {
-            background: var(--surface-dark);
+            background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 50%, #FECDD3 100%);
             padding: 32px 28px;
             margin: 28px 0;
             text-align: center;
-            border-top: 2px solid var(--death);
-            border-bottom: 2px solid var(--death);
+            border-radius: var(--radius);
+            border: 1px solid #FECACA;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .baby-highlight:hover {
+            box-shadow: var(--shadow-hover);
         }
         .baby-highlight .big-number {
             font-size: 4.5em;
@@ -282,13 +335,13 @@
             margin-bottom: 6px;
         }
         .baby-highlight .big-label {
-            color: var(--text-on-dark);
+            color: var(--text);
             font-size: 1.2em;
             font-weight: 600;
             letter-spacing: 0.02em;
         }
         .baby-highlight .big-sub {
-            color: var(--text-on-dark-muted);
+            color: var(--text-muted);
             font-size: 0.85em;
             margin-top: 6px;
         }
@@ -298,7 +351,7 @@
             gap: 48px;
             margin-top: 20px;
             padding-top: 20px;
-            border-top: 1px solid var(--border-strong);
+            border-top: 1px solid var(--border);
         }
         .baby-highlight .sub-stat {
             text-align: center;
@@ -306,22 +359,28 @@
         .baby-highlight .sub-stat .num {
             font-size: 1.8em;
             font-weight: 700;
-            color: var(--text-on-dark);
+            color: var(--accent);
         }
         .baby-highlight .sub-stat .lbl {
             font-size: 0.8em;
-            color: var(--text-on-dark-muted);
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         /* ══ Big Number Block (for under-3 highlight) ══ */
         .big-block {
-            background: var(--surface-dark);
+            background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 50%, #FECDD3 100%);
+            border: 1px solid #FECACA;
+            border-radius: var(--radius);
             padding: 28px 24px;
             margin: 20px 0;
             text-align: center;
-            border-left: 3px solid var(--death);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .big-block:hover {
+            box-shadow: var(--shadow-hover);
         }
         .big-block .number {
             font-size: 3.2em;
@@ -330,14 +389,14 @@
             line-height: 1;
         }
         .big-block .label {
-            color: var(--text-on-dark);
+            color: var(--text);
             font-size: 1em;
             font-weight: 600;
             letter-spacing: 0.02em;
             margin-top: 4px;
         }
         .big-block .sub {
-            color: var(--text-on-dark-muted);
+            color: var(--text-muted);
             font-size: 0.82em;
             margin-top: 8px;
         }
@@ -353,6 +412,11 @@
             grid-template-columns: 150px 1fr 44px;
             align-items: center;
             gap: 10px;
+            transition: var(--transition);
+        }
+        .progress-item:hover {
+            background: rgba(251, 207, 232, 0.3);
+            border-radius: 4px;
         }
         .progress-item .label {
             font-size: 0.82em;
@@ -362,25 +426,26 @@
         }
         .progress-track {
             height: 18px;
-            background: var(--border);
-            border-radius: 0;
+            background: #FCE7F3;
+            border-radius: 4px;
             overflow: hidden;
         }
         .progress-fill {
             height: 100%;
-            border-radius: 0;
+            border-radius: 4px;
             transition: width 1s ease;
         }
         .progress-fill.blue {
-            background: var(--accent);
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
         }
         .progress-fill.death {
-            background: var(--death);
+            background: linear-gradient(90deg, #DC2626, #EF4444);
         }
         .progress-item .pct {
             font-weight: 600;
             font-size: 0.85em;
             color: var(--text);
+            font-family: 'Fira Code', monospace;
         }
 
         /* ══ Health Cards ══ */
@@ -396,6 +461,13 @@
             padding: 20px 16px;
             text-align: center;
             background: var(--surface);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .health-card:hover {
+            box-shadow: var(--shadow-hover);
+            border-color: var(--border-strong);
+            transform: translateY(-2px);
         }
         .health-card .num {
             font-size: 1.8em;
@@ -409,16 +481,17 @@
             margin-top: 4px;
             text-transform: uppercase;
             letter-spacing: 0.04em;
+            font-weight: 500;
         }
         .health-card.dark-card {
-            background: var(--surface-dark);
-            border-color: var(--border-strong);
+            background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%);
+            border-color: #FECACA;
         }
         .health-card.dark-card .num {
             color: var(--death);
         }
         .health-card.dark-card .label {
-            color: var(--text-on-dark-muted);
+            color: var(--text-muted);
         }
 
         /* ══ Source List ══ */
@@ -432,6 +505,11 @@
             padding: 12px 14px;
             border-left: 2px solid var(--accent);
             border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .source-item:hover {
+            border-left-color: var(--accent-light);
+            background: rgba(251, 207, 232, 0.15);
         }
         .source-item strong {
             color: var(--text);
@@ -446,13 +524,13 @@
 
         .confidence-badge {
             display: inline-block;
-            padding: 1px 8px;
+            padding: 2px 10px;
             font-size: 0.7em;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.04em;
             margin-left: 6px;
-            border-radius: 0;
+            border-radius: 4px;
         }
         .verified {
             background: var(--accent);
@@ -464,7 +542,7 @@
         }
         .estimated {
             background: var(--death);
-            color: #000;
+            color: #fff;
         }
 
         /* ══ Detail Table ══ */
@@ -499,7 +577,7 @@
             font-weight: 700;
         }
         .data-table tr:hover {
-            background: rgba(30, 64, 175, 0.04);
+            background: rgba(236, 72, 153, 0.06);
         }
 
         /* ══ Methodology ══ */
@@ -508,6 +586,7 @@
             border: 1px solid var(--border);
             border-radius: var(--radius);
             margin-top: 16px;
+            background: var(--surface);
         }
         .methodology p {
             margin-bottom: 10px;
@@ -524,24 +603,30 @@
 
         /* ══ Discrepancy note ══ */
         .note-box {
-            background: var(--surface-dark);
+            background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%);
+            border: 1px solid var(--border);
             border-left: 3px solid var(--accent-light);
+            border-radius: var(--radius);
             padding: 16px 20px;
             margin: 16px 0;
+            transition: var(--transition);
+        }
+        .note-box:hover {
+            border-color: var(--border-strong);
         }
         .note-box p {
-            color: var(--text-on-dark-muted);
+            color: var(--text-muted);
             font-size: 0.85em;
         }
         .note-box strong {
-            color: var(--text-on-dark);
+            color: var(--text);
         }
 
         /* ══ Footer ══ */
         .site-footer {
             text-align: center;
             padding: 32px 24px;
-            color: var(--text-on-dark-muted);
+            color: var(--text-muted);
             border-top: 1px solid var(--border);
             margin-top: 16px;
         }
@@ -550,25 +635,30 @@
             margin-bottom: 2px;
         }
         .site-footer .dot {
-            color: var(--text-on-dark-muted);
+            color: var(--text-muted);
             margin: 0 6px;
         }
 
         /* ══ Animations ══ */
         .fade-in {
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.6s ease;
         }
         .fade-in.visible {
             opacity: 1;
         }
 
         /* ══ Responsive ══ */
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 900px) {
             .chart-grid { grid-template-columns: 1fr; }
             .site-header h1 { font-size: 1.7em; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .progress-item { grid-template-columns: 120px 1fr 36px; }
+        }
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 640px) {
             .site-header { padding: 28px 0 20px; }
@@ -598,7 +688,7 @@
 
         /* ══ Print ══ */
         @media print {
-            body { background: #fff; color: #000; }
+            body { background: #fff !important; color: #000; }
             .card { border: 1px solid #ddd; break-inside: avoid; }
             .site-header { border-color: #ddd; }
             .stat-card.death, .stat-card.dark { background: #f5f5f5; }
@@ -1229,15 +1319,15 @@
             </div>
 
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
-                <div class="big-block" style="margin:0;border-left-color:var(--accent);">
-                    <div class="number" style="font-size:2.2em;color:var(--accent-light);">60,199</div>
-                    <div class="label" style="font-size:0.85em;">MoH Identified</div>
-                    <div class="sub" style="font-size:0.75em;">Verified name-by-name count</div>
+                <div class="big-block" style="margin:0;border-left:4px solid var(--accent);">
+                    <div class="number" style="font-size:2.2em;color:var(--accent);">60,199</div>
+                    <div class="label" style="font-size:0.85em;color:var(--text-muted);">MoH Identified</div>
+                    <div class="sub" style="font-size:0.75em;color:var(--text-muted);">Verified name-by-name count</div>
                 </div>
-                <div class="big-block" style="margin:0;">
+                <div class="big-block" style="margin:0;border-left:4px solid var(--death);">
                     <div class="number" style="font-size:2.2em;">75,200+</div>
-                    <div class="label" style="font-size:0.85em;">Lancet Estimate</div>
-                    <div class="sub" style="font-size:0.75em;">34.7% higher — including unrecovered bodies</div>
+                    <div class="label" style="font-size:0.85em;color:var(--text-muted);">Lancet Estimate</div>
+                    <div class="sub" style="font-size:0.75em;color:var(--text-muted);">34.7% higher — including unrecovered bodies</div>
                 </div>
             </div>
 
@@ -1326,16 +1416,18 @@
     <script>
         // ══ Colors — Index of Repression Palette ══
         const COLORS = {
-            blue:       '#1e40af',
-            blueLight:  '#2563eb',
-            bluePale:   '#60a5fa',
-            death:      '#fca5a5',
-            deathStrong:'#f87171',
-            gray:       '#6b7280',
-            grayLight:  '#9ca3af',
-            white:      '#f3f4f6',
-            text:       '#030712',
-            textMuted:  '#374151',
+            blue:       '#9D174D',
+            blueLight:  '#EC4899',
+            bluePale:   '#FBCFE8',
+            death:      '#DC2626',
+            deathStrong:'#DC2626',
+            purple:     '#7C3AED',
+            amber:      '#F59E0B',
+            gray:       '#9D174D',
+            grayLight:  '#EC4899',
+            white:      '#FFFFFF',
+            text:       '#831843',
+            textMuted:  '#9D174D',
         };
 
         const chartDefaults = {
@@ -1344,7 +1436,7 @@
             plugins: {
                 legend: {
                     labels: {
-                        font: { family: "'Helvetica Neue', Arial, sans-serif", size: 11 },
+                        font: { family: "'Fira Sans', sans-serif", size: 11 },
                         color: COLORS.textMuted,
                         padding: 12,
                         usePointStyle: true,
