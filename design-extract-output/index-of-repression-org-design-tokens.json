@@ -1,0 +1,169 @@
+{
+  "$metadata": {
+    "generator": "designlang",
+    "version": "7.0.0",
+    "spec": "https://design-tokens.github.io/community-group/format/",
+    "source": "https://www.index-of-repression.org/de/platform",
+    "generatedAt": "2026-05-09T18:39:00.400Z"
+  },
+  "primitive": {
+    "color": {
+      "brand": {
+        "primary": {
+          "$value": "#030712",
+          "$type": "color"
+        },
+        "secondary": {
+          "$value": "#f3f4f6",
+          "$type": "color"
+        }
+      },
+      "neutral": {
+        "n100": {
+          "$value": "#e5e7eb",
+          "$type": "color"
+        },
+        "n200": {
+          "$value": "#000000",
+          "$type": "color"
+        },
+        "n300": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "n400": {
+          "$value": "#b3b3b3",
+          "$type": "color"
+        }
+      },
+      "background": {
+        "bg0": {
+          "$value": "#000000",
+          "$type": "color"
+        },
+        "bg1": {
+          "$value": "#030712",
+          "$type": "color"
+        },
+        "bg2": {
+          "$value": "#1e40af",
+          "$type": "color"
+        }
+      },
+      "text": {
+        "text0": {
+          "$value": "#000000",
+          "$type": "color"
+        },
+        "text1": {
+          "$value": "#2c3e50",
+          "$type": "color"
+        },
+        "text2": {
+          "$value": "#f3f4f6",
+          "$type": "color"
+        },
+        "text3": {
+          "$value": "#030712",
+          "$type": "color"
+        },
+        "text4": {
+          "$value": "#ffffff",
+          "$type": "color"
+        }
+      }
+    },
+    "spacing": {
+      "s0": {
+        "$value": "4px",
+        "$type": "dimension"
+      },
+      "s1": {
+        "$value": "64px",
+        "$type": "dimension"
+      }
+    },
+    "radius": {
+      "r0": {
+        "$value": "1px",
+        "$type": "dimension"
+      },
+      "r1": {
+        "$value": "4px",
+        "$type": "dimension"
+      },
+      "r2": {
+        "$value": "9999px",
+        "$type": "dimension"
+      }
+    },
+    "shadow": {},
+    "fontFamily": {
+      "f0": {
+        "$value": "Neue Montreal",
+        "$type": "fontFamily"
+      },
+      "f1": {
+        "$value": "Supply",
+        "$type": "fontFamily"
+      },
+      "f2": {
+        "$value": "ui-monospace",
+        "$type": "fontFamily"
+      },
+      "f3": {
+        "$value": "Helvetica Neue",
+        "$type": "fontFamily"
+      }
+    }
+  },
+  "semantic": {
+    "color": {
+      "action": {
+        "primary": {
+          "$value": "{primitive.color.brand.primary}",
+          "$type": "color"
+        },
+        "secondary": {
+          "$value": "{primitive.color.brand.secondary}",
+          "$type": "color"
+        }
+      },
+      "surface": {
+        "default": {
+          "$value": "{primitive.color.background.bg0}",
+          "$type": "color"
+        }
+      },
+      "text": {
+        "body": {
+          "$value": "{primitive.color.text.text0}",
+          "$type": "color"
+        }
+      }
+    },
+    "typography": {
+      "body": {
+        "$value": {
+          "fontFamily": "Neue Montreal",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "28px"
+        },
+        "$type": "typography"
+      }
+    },
+    "radius": {
+      "control": {
+        "$value": "{primitive.radius.r0}",
+        "$type": "dimension"
+      }
+    },
+    "shadow": {
+      "elevated": {
+        "$value": "{primitive.shadow.sh0}",
+        "$type": "shadow"
+      }
+    }
+  }
+}

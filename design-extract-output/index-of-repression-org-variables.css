@@ -1,0 +1,116 @@
+:root {
+  /* Colors — Primary */
+  --color-primary: #030712;
+  --color-secondary: #f3f4f6;
+  --color-accent: #fca5a5;
+
+  /* Colors — Neutrals */
+  --color-neutral-50: #e5e7eb;
+  --color-neutral-100: #000000;
+  --color-neutral-200: #ffffff;
+  --color-neutral-300: #b3b3b3;
+
+  /* Colors — Backgrounds */
+  --color-bg: #000000;
+  --color-bg-1: #030712;
+  --color-bg-2: #1e40af;
+
+  /* Colors — Text */
+  --color-text: #000000;
+  --color-text-1: #2c3e50;
+  --color-text-2: #f3f4f6;
+  --color-text-3: #030712;
+  --color-text-4: #ffffff;
+
+  /* Typography — Families */
+  --font-body: 'Neue Montreal', sans-serif;
+  --font-body: 'Supply', sans-serif;
+  --font-body: 'ui-monospace', sans-serif;
+  --font-body: 'Helvetica Neue', sans-serif;
+
+  /* Typography — Scale */
+  --font-size-20: 20px;
+  --font-size-18: 18px;
+  --font-size-16: 16px;
+  --font-size-14: 14px;
+  --font-size-12.8: 12.8px;
+  --font-size-12: 12px;
+  --font-size-9.6: 9.6px;
+
+  /* Spacing */
+  --spacing-4: 4px;
+  --spacing-64: 64px;
+
+  /* Border Radius */
+  --radius-xs: 1px;
+  --radius-sm: 4px;
+  --radius-full: 9999px;
+
+  /* Original Site Variables */
+  /* — colors — */
+  --color-primary: "black";
+  --color-secondary: "white";
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-inset: ;
+  --tw-border-spacing-x: 0;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-border-spacing-y: 0;
+  --tw-ring-color: rgb(59 130 246 / .5);
+  --tw-ring-offset-color: #fff;
+  /* — spacing — */
+  --tw-contain-size: ;
+  --tw-numeric-spacing: ;
+  /* — typography — */
+  --font-neue-montreal: "Neue Montreal";
+  --font-supply: "Supply";
+  /* — shadows — */
+  --tw-shadow: 0 0 #0000;
+  --tw-drop-shadow: ;
+  /* — other — */
+  --tw-contrast: ;
+  --tw-backdrop-sepia: ;
+  --tw-sepia: ;
+  --tw-skew-x: 0;
+  --tw-ordinal: ;
+  --tw-backdrop-saturate: ;
+  --tw-contain-style: ;
+  --tw-backdrop-blur: ;
+  --tw-translate-x: 0;
+  --tw-gradient-via-position: ;
+  --tw-backdrop-invert: ;
+  --tw-saturate: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-grayscale: ;
+  --tw-scale-x: 1;
+  --tw-backdrop-hue-rotate: ;
+  --tw-gradient-to-position: ;
+  --tw-brightness: ;
+  --tw-numeric-fraction: ;
+  --tw-backdrop-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-scale-y: 1;
+  --tw-pan-y: ;
+  --tw-backdrop-contrast: ;
+  --tw-skew-y: 0;
+  --tw-backdrop-brightness: ;
+  --tw-slashed-zero: ;
+  --tw-blur: ;
+  --tw-invert: ;
+  --tw-pan-x: ;
+  --tw-translate-y: 0;
+  --tw-backdrop-opacity: ;
+  --tw-gradient-from-position: ;
+  --tw-numeric-figure: ;
+  --tw-rotate: 0;
+  --tw-pinch-zoom: ;
+  --tw-contain-paint: ;
+  --tw-contain-layout: ;
+  /* — semantic — */
+  success: [object Object];
+  warning: [object Object];
+  error: [object Object];
+  info: [object Object];
+
+}

@@ -1,0 +1,152 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "slug": "primary",
+          "color": "#030712",
+          "name": "Primary"
+        },
+        {
+          "slug": "secondary",
+          "color": "#f3f4f6",
+          "name": "Secondary"
+        },
+        {
+          "slug": "accent",
+          "color": "#fca5a5",
+          "name": "Accent"
+        },
+        {
+          "slug": "neutral-1",
+          "color": "#e5e7eb",
+          "name": "Neutral 1"
+        },
+        {
+          "slug": "neutral-2",
+          "color": "#000000",
+          "name": "Neutral 2"
+        },
+        {
+          "slug": "neutral-3",
+          "color": "#ffffff",
+          "name": "Neutral 3"
+        },
+        {
+          "slug": "neutral-4",
+          "color": "#b3b3b3",
+          "name": "Neutral 4"
+        },
+        {
+          "slug": "bg-000000",
+          "color": "#000000",
+          "name": "Background #000000"
+        },
+        {
+          "slug": "bg-030712",
+          "color": "#030712",
+          "name": "Background #030712"
+        },
+        {
+          "slug": "bg-1e40af",
+          "color": "#1e40af",
+          "name": "Background #1e40af"
+        }
+      ],
+      "gradients": []
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "Neue Montreal",
+          "slug": "neue-montreal",
+          "name": "Neue Montreal"
+        },
+        {
+          "fontFamily": "Supply",
+          "slug": "supply",
+          "name": "Supply"
+        },
+        {
+          "fontFamily": "ui-monospace",
+          "slug": "ui-monospace",
+          "name": "ui-monospace"
+        },
+        {
+          "fontFamily": "Helvetica Neue",
+          "slug": "helvetica-neue",
+          "name": "Helvetica Neue"
+        }
+      ],
+      "fontSizes": [
+        {
+          "size": "20px",
+          "slug": "size-20",
+          "name": "20px"
+        },
+        {
+          "size": "18px",
+          "slug": "size-18",
+          "name": "18px"
+        },
+        {
+          "size": "16px",
+          "slug": "size-16",
+          "name": "16px"
+        },
+        {
+          "size": "14px",
+          "slug": "size-14",
+          "name": "14px"
+        },
+        {
+          "size": "12.8px",
+          "slug": "size-12.8",
+          "name": "12.8px"
+        },
+        {
+          "size": "12px",
+          "slug": "size-12",
+          "name": "12px"
+        },
+        {
+          "size": "9.6px",
+          "slug": "size-9.6",
+          "name": "9.6px"
+        }
+      ]
+    },
+    "spacing": {
+      "spacingSizes": [
+        {
+          "size": "4px",
+          "slug": "spacing-4",
+          "name": "4px"
+        },
+        {
+          "size": "64px",
+          "slug": "spacing-64",
+          "name": "64px"
+        }
+      ]
+    },
+    "layout": {
+      "contentSize": "1200px",
+      "wideSize": "1400px"
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#000000",
+      "text": "#000000"
+    },
+    "typography": {
+      "fontSize": "12px",
+      "lineHeight": "16px",
+      "fontFamily": "Neue Montreal"
+    },
+    "spacing": {}
+  }
+}

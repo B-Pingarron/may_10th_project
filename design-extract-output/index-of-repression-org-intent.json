@@ -1,0 +1,17 @@
+{
+  "pageIntent": {
+    "type": "unknown",
+    "confidence": 0,
+    "path": "/de/platform",
+    "title": "Index of Repression",
+    "description": "Index of Repression — by ELSC and Forensis/Forensic Architecture — is a database on the systematic repression of Palestinian Solidarity in Germany",
+    "signals": [],
+    "alternates": [],
+    "needsSmart": true
+  },
+  "sectionRoles": {
+    "sections": [],
+    "counts": {},
+    "readingOrder": []
+  }
+}

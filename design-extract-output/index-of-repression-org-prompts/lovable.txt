@@ -1,0 +1,13 @@
+Clone the design language of this unknown page and build a fresh equivalent.
+Visual feel: flat. Tone: neutral · Headings: unknown · CTA verbs: [object Object], [object Object], [object Object]
+Primary palette: #e5e7eb, #030712, #f3f4f6, #000000, #1f2937.
+Typography: [object Object], [object Object], [object Object], [object Object].
+Corner radius vocabulary: 1, 4, 9999.
+Shadow vocabulary: (none).
+Use: Use plain Tailwind CSS without a component library.
+Page structure:
+- hero
+- features
+- social proof
+- cta
+- footer

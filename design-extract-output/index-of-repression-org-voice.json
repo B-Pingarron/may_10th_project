@@ -1,0 +1,39 @@
+{
+  "tone": "neutral",
+  "pronoun": "third-person",
+  "headingStyle": "unknown",
+  "headingLengthClass": "tight",
+  "ctaVerbs": [
+    {
+      "value": "proportions",
+      "count": 1
+    },
+    {
+      "value": "map",
+      "count": 1
+    },
+    {
+      "value": "show",
+      "count": 1
+    }
+  ],
+  "buttonPatterns": [
+    {
+      "value": "proportions",
+      "count": 1
+    },
+    {
+      "value": "map",
+      "count": 1
+    },
+    {
+      "value": "show timeline of incidents",
+      "count": 1
+    }
+  ],
+  "sampleHeadings": [],
+  "stats": {
+    "buttons": 3,
+    "headings": 0
+  }
+}

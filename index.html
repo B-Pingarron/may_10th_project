@@ -3,36 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palestine: The Human Cost — Mothers & Children in the Crossfire</title>
+    <title>PALESTINE: THE EVIDENCE — Forensic Investigation of Identified Deaths in Gaza</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* ══ UI UX Pro Max — Pink/Red/Burgundy/Purple Design System ══ */
+        /* ══ FORENSIC ARCHITECTURE — Evidence Investigation Design System ══ */
+        /* Every pixel serves the evidence. No decorative elements.          */
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap');
 
         :root {
-            --bg: #FDF2F8;
-            --surface: #FFFFFF;
-            --surface-dark: #FFFFFF;
-            --border: #FBCFE8;
-            --border-strong: #F9A8D4;
-            --text: #831843;
-            --text-muted: #9D174D;
-            --text-on-dark: #831843;
-            --text-on-dark-muted: #9D174D;
-            --accent: #9D174D;
-            --accent-light: #EC4899;
-            --secondary: #EC4899;
-            --purple: #7C3AED;
-            --cta: #F59E0B;
-            --death: #DC2626;
-            --death-strong: #DC2626;
-            --red-pal: #DC2626;
-            --green-pal: #16a34a;
-            --black-pal: #000000;
-            --radius: 8px;
-            --shadow: 0 1px 3px rgba(157, 23, 77, 0.08);
-            --shadow-hover: 0 4px 12px rgba(157, 23, 77, 0.12);
-            --transition: all 200ms ease;
+            --bg:             #0A0A0A;
+            --surface:        #1A1A1A;
+            --surface-hover:  #2A2A2A;
+            --border:         #333333;
+            --border-light:   #2A2A2A;
+            --text:           #FAFAFA;
+            --text-secondary: #A0A0A0;
+            --text-muted:     #666666;
+            --death:          #DC2626;
+            --death-dim:      rgba(220, 38, 38, 0.15);
+            --death-glow:     rgba(220, 38, 38, 0.08);
+            --accent-white:   #FFFFFF;
+            --flag-green:     #16A34A;
+            --flag-red:       #DC2626;
+            --flag-black:     #000000;
+            --card-radius:    0px;
+            --transition:     all 150ms ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,267 +35,274 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Fira Sans', 'Helvetica Neue', sans-serif;
+            font-family: 'Fira Sans', sans-serif;
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.6;
             color: var(--text);
-            background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 50%, #FBCFE8 100%);
-            background-attachment: fixed;
+            background: var(--bg);
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: var(--death);
+            color: var(--text);
         }
 
         h1, h2, h3, h4 {
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: -0.01em;
-            line-height: 1.2;
+            line-height: 1.15;
         }
 
-        code, pre, .stat-number, .num, .big-number, .confidence-badge {
+        code, pre, .stat-number, .num, .big-number, .evidence-number, .mono {
             font-family: 'Fira Code', monospace;
+            font-variant-numeric: tabular-nums;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1120px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* ══ Header ══ */
-        .site-header {
-            padding: 48px 0 28px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 32px;
-            position: relative;
-        }
-        .site-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 20px;
-            width: calc(100% - 40px);
-            height: 3px;
-            background: linear-gradient(90deg, var(--green-pal) 0%, var(--green-pal) 25%, var(--death) 25%, var(--death) 50%, var(--black-pal) 50%, var(--black-pal) 100%);
-        }
-        .site-header .flag-bar {
+        /* ══ FLAG BAR — Top of Document ══ */
+        .flag-bar-container {
+            width: 100%;
+            height: 4px;
             display: flex;
-            gap: 0;
-            height: 3px;
-            margin-bottom: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
         }
-        .site-header .flag-bar span {
+        .flag-bar-container .flag-segment {
             flex: 1;
         }
-        .site-header .flag-bar .green { background: var(--green-pal); }
-        .site-header .flag-bar .red { background: var(--red-pal); }
-        .site-header .flag-bar .black { background: var(--black-pal); }
-        .site-header h1 {
-            font-size: 2.2em;
-            color: var(--text);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 2px;
-        }
-        .site-header .sub-title {
-            font-size: 1.1em;
-            color: var(--death);
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            margin-bottom: 4px;
-        }
-        .site-header .accent-line {
-            width: 48px;
-            height: 2px;
-            background: var(--death);
-            margin: 10px 0 12px;
-        }
-        .site-header .date-line {
-            font-size: 0.82em;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
+        .flag-bar-container .flag-segment.green  { background: var(--flag-green); }
+        .flag-bar-container .flag-segment.red    { background: var(--flag-red); }
+        .flag-bar-container .flag-segment.black  { background: var(--flag-black); }
 
-        /* ══ Tribute ══ */
-        .tribute {
-            background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%);
-            border: 1px solid var(--border);
-            padding: 36px 32px;
-            margin-bottom: 28px;
-            border-radius: var(--radius);
-            border-left: 4px solid var(--death);
-            position: relative;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        .tribute:hover {
-            box-shadow: var(--shadow-hover);
-        }
-        .tribute::before {
-            content: '🕊';
-            position: absolute;
-            top: 12px;
-            right: 20px;
-            font-size: 1.6em;
-            opacity: 0.12;
-        }
-        .tribute h2 {
-            color: var(--death);
-            font-size: 1.3em;
-            font-weight: 700;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        .tribute p {
-            color: var(--text-muted);
-            font-size: 0.95em;
-            max-width: 740px;
-            line-height: 1.7;
-        }
-        .tribute p strong {
-            color: var(--death);
-        }
-
-        /* ══ Cards ══ */
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 24px 28px;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        .card:hover {
-            box-shadow: var(--shadow-hover);
-            border-color: var(--border-strong);
-        }
-        .card h2 {
-            color: var(--text);
-            font-size: 1.25em;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
+        /* ══ EVIDENCE HEADER ══ */
+        .evidence-header {
+            padding: 64px 0 32px;
             border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+            position: relative;
         }
-        .card h3 {
-            color: var(--accent);
-            font-size: 1em;
-            margin: 16px 0 10px;
-            font-weight: 600;
+        .evidence-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 120px;
+            height: 1px;
+            background: var(--death);
         }
-        .card p {
+        .evidence-header .document-id {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7em;
             color: var(--text-muted);
-            font-size: 0.95em;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
         }
-        .card p strong {
-            color: var(--text);
+        .evidence-header h1 {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--accent-white);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            line-height: 1.05;
+            margin-bottom: 8px;
+        }
+        .evidence-header .sub-title {
+            font-size: 1.05em;
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            max-width: 700px;
+            margin-bottom: 16px;
+        }
+        .evidence-header .classification {
+            display: inline-block;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.65em;
+            color: var(--text-muted);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+        }
+        .evidence-header .date-line {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7em;
+            color: var(--text-muted);
+            margin-top: 12px;
+            letter-spacing: 0.06em;
         }
 
-        /* ══ KPI Stats Grid ══ */
-        .stats-grid {
+        /* ══ EVIDENCE INTRO ══ */
+        .evidence-intro {
+            padding: 28px 0 36px;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 36px;
+        }
+        .evidence-intro p {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            max-width: 780px;
+            line-height: 1.8;
+        }
+        .evidence-intro p strong {
+            color: var(--accent-white);
+        }
+        .evidence-intro p .death-text {
+            color: var(--death);
+        }
+
+        /* ══ KEY FINDINGS — Top Stats Row ══ */
+        .findings-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            margin: 16px 0;
-        }
-        .stat-card {
-            background: var(--surface);
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            margin-bottom: 40px;
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 20px 16px;
+        }
+        .finding-item {
+            background: var(--surface);
+            padding: 28px 20px;
             text-align: center;
-            box-shadow: var(--shadow);
+            position: relative;
             transition: var(--transition);
-            cursor: default;
         }
-        .stat-card:hover {
-            box-shadow: var(--shadow-hover);
-            border-color: var(--border-strong);
-            transform: translateY(-2px);
+        .finding-item:hover {
+            background: var(--surface-hover);
         }
-        .stat-card .stat-number {
-            font-size: 2.4em;
+        .finding-item .evidence-number {
+            font-size: 2.8em;
             font-weight: 700;
             display: block;
-            margin-bottom: 4px;
-            line-height: 1.1;
+            line-height: 1;
             letter-spacing: -0.02em;
         }
-        .stat-card .stat-label {
-            font-size: 0.82em;
-            line-height: 1.4;
-            color: var(--text-muted);
+        .finding-item .evidence-label {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-top: 8px;
             font-weight: 500;
         }
-        .stat-card.death {
-            border-color: #FECACA;
-            border-left: 3px solid var(--death);
-        }
-        .stat-card.death .stat-number {
-            color: var(--death);
-        }
-        .stat-card.death .stat-label {
+        .finding-item .evidence-sub {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.6em;
             color: var(--text-muted);
+            margin-top: 4px;
         }
-        .stat-card.dark {
-            border-color: var(--border);
-            border-left: 3px solid var(--purple);
-        }
-        .stat-card.dark .stat-number {
-            color: var(--purple);
-        }
-        .stat-card.dark .stat-label {
-            color: var(--text-muted);
-        }
-        .stat-card.outlined {
-            background: var(--surface);
-            border: 1px solid var(--border-strong);
-            border-left: 3px solid var(--accent);
-        }
-        .stat-card.outlined .stat-number {
-            color: var(--accent);
-        }
-        .stat-card.outlined .stat-label {
-            color: var(--text-muted);
-        }
-        .stat-card.accent {
+        .finding-item.death .evidence-number { color: var(--death); }
+        .finding-item.white .evidence-number { color: var(--accent-white); }
+        .finding-item.muted .evidence-number { color: var(--text-secondary); }
+
+        .findings-secondary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            margin-bottom: 40px;
             border: 1px solid var(--border);
-            border-left: 3px solid var(--cta);
         }
-        .stat-card.accent .stat-number {
-            color: var(--cta);
-        }
-        .stat-card.accent .stat-label {
-            color: var(--text-muted);
+        .finding-item.small .evidence-number {
+            font-size: 2em;
         }
 
-        /* ══ Chart Containers ══ */
+        /* ══ CARDS — Evidence Files ══ */
+        .evidence-file {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            margin-bottom: 28px;
+            padding: 32px 32px 36px;
+            transition: var(--transition);
+        }
+        .evidence-file:hover {
+            border-color: #444;
+        }
+        .evidence-file .file-header {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .evidence-file .file-number {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7em;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+        }
+        .evidence-file .file-tag {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.6em;
+            color: var(--death);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 1px solid var(--death-dim);
+            padding: 2px 8px;
+        }
+        .evidence-file h2 {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: var(--accent-white);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            flex: 1;
+        }
+        .evidence-file h2 .red-accent {
+            color: var(--death);
+        }
+        .evidence-file .file-body {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            line-height: 1.7;
+        }
+        .evidence-file .file-body strong {
+            color: var(--accent-white);
+        }
+        .evidence-file .file-body .death-highlight {
+            color: var(--death);
+            font-weight: 600;
+        }
+        .evidence-file .file-body p {
+            margin-bottom: 14px;
+        }
+
+        /* ═══ CHART GRID ═══ */
         .chart-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 16px 0;
+            gap: 1px;
+            background: var(--border);
+            margin: 20px 0;
+            border: 1px solid var(--border);
         }
         .chart-box {
             background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 16px;
+            padding: 20px 20px 24px;
             transition: var(--transition);
         }
         .chart-box:hover {
-            border-color: var(--border-strong);
-            box-shadow: var(--shadow);
+            background: var(--surface-hover);
         }
         .chart-box h3 {
-            color: var(--text);
-            font-size: 0.9em;
+            color: var(--text-secondary);
+            font-size: 0.75em;
             font-weight: 600;
-            margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.06em;
+            margin-bottom: 16px;
+            font-family: 'Fira Code', monospace;
         }
         .chart-container {
             position: relative;
@@ -313,1121 +315,1275 @@
             height: 240px;
         }
 
-        /* ══ Baby Highlight ══ */
-        .baby-highlight {
-            background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 50%, #FECDD3 100%);
-            padding: 32px 28px;
+        /* ═══ DATA TABLES — Evidence Ledgers ═══ */
+        .evidence-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.78em;
+        }
+        .evidence-table thead th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.7em;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-family: 'Fira Sans', sans-serif;
+        }
+        .evidence-table tbody td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            font-variant-numeric: tabular-nums;
+        }
+        .evidence-table tbody td.num {
+            text-align: right;
+            font-weight: 500;
+            color: var(--accent-white);
+        }
+        .evidence-table tbody tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+        .evidence-table tbody tr.total td {
+            border-top: 2px solid var(--border);
+            color: var(--accent-white);
+            font-weight: 600;
+        }
+        .evidence-table tbody tr.total td.num {
+            color: var(--accent-white);
+        }
+        .evidence-table tbody tr.death-row td {
+            border-left: 2px solid var(--death);
+        }
+        .evidence-table .source-note {
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 0.7em;
+            color: var(--text-muted);
+            margin-top: 8px;
+            padding-left: 12px;
+        }
+
+        /* ═══ BABY HIGHLIGHT — Evidence Card ═══ */
+        .evidence-highlight {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 36px 32px;
             margin: 28px 0;
             text-align: center;
-            border-radius: var(--radius);
-            border: 1px solid #FECACA;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            position: relative;
         }
-        .baby-highlight:hover {
-            box-shadow: var(--shadow-hover);
+        .evidence-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--death);
         }
-        .baby-highlight .big-number {
+        .evidence-highlight .big-number {
+            font-family: 'Fira Code', monospace;
             font-size: 4.5em;
             font-weight: 700;
             color: var(--death);
             line-height: 1;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            letter-spacing: -0.03em;
         }
-        .baby-highlight .big-label {
-            color: var(--text);
-            font-size: 1.2em;
-            font-weight: 600;
-            letter-spacing: 0.02em;
+        .evidence-highlight .big-label {
+            color: var(--accent-white);
+            font-size: 1.1em;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
         }
-        .baby-highlight .big-sub {
+        .evidence-highlight .big-sub {
             color: var(--text-muted);
-            font-size: 0.85em;
-            margin-top: 6px;
+            font-size: 0.8em;
+            margin-top: 8px;
+            font-family: 'Fira Code', monospace;
         }
-        .baby-highlight .sub-stats {
+        .evidence-highlight .sub-stats {
             display: flex;
             justify-content: center;
-            gap: 48px;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
+            gap: 56px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-light);
         }
-        .baby-highlight .sub-stat {
+        .evidence-highlight .sub-stat {
             text-align: center;
         }
-        .baby-highlight .sub-stat .num {
+        .evidence-highlight .sub-stat .num {
             font-size: 1.8em;
-            font-weight: 700;
-            color: var(--accent);
+            font-weight: 600;
+            color: var(--accent-white);
         }
-        .baby-highlight .sub-stat .lbl {
-            font-size: 0.8em;
+        .evidence-highlight .sub-stat .lbl {
+            font-size: 0.65em;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
+            margin-top: 4px;
+        }
+        .evidence-highlight .sub-stat .death .num {
+            color: var(--death);
         }
 
-        /* ══ Big Number Block (for under-3 highlight) ══ */
-        .big-block {
-            background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 50%, #FECDD3 100%);
-            border: 1px solid #FECACA;
-            border-radius: var(--radius);
+        /* ═══ EVIDENCE BLOCK (Large numbered blocks) ═══ */
+        .evidence-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
             padding: 28px 24px;
             margin: 20px 0;
             text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
         }
-        .big-block:hover {
-            box-shadow: var(--shadow-hover);
-        }
-        .big-block .number {
-            font-size: 3.2em;
+        .evidence-block .number {
+            font-family: 'Fira Code', monospace;
+            font-size: 3em;
             font-weight: 700;
-            color: var(--death);
             line-height: 1;
+            letter-spacing: -0.02em;
         }
-        .big-block .label {
-            color: var(--text);
-            font-size: 1em;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-            margin-top: 4px;
+        .evidence-block .label {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
         }
-        .big-block .sub {
+        .evidence-block .sub {
+            font-size: 0.75em;
             color: var(--text-muted);
-            font-size: 0.82em;
             margin-top: 8px;
         }
+        .evidence-block.red-border {
+            border-top: 2px solid var(--death);
+        }
+        .evidence-block .number.red { color: var(--death); }
+        .evidence-block .number.white { color: var(--accent-white); }
 
-        /* ══ Progress Bars ══ */
-        .progress-group {
+        /* ═══ HEALTH METRICS ═══ */
+        .health-metrics {
             display: grid;
-            gap: 10px;
-            margin: 16px 0;
-        }
-        .progress-item {
-            display: grid;
-            grid-template-columns: 150px 1fr 44px;
-            align-items: center;
-            gap: 10px;
-            transition: var(--transition);
-        }
-        .progress-item:hover {
-            background: rgba(251, 207, 232, 0.3);
-            border-radius: 4px;
-        }
-        .progress-item .label {
-            font-size: 0.82em;
-            font-weight: 600;
-            color: var(--text);
-            text-align: right;
-        }
-        .progress-track {
-            height: 18px;
-            background: #FCE7F3;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        .progress-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 1s ease;
-        }
-        .progress-fill.blue {
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-        }
-        .progress-fill.death {
-            background: linear-gradient(90deg, #DC2626, #EF4444);
-        }
-        .progress-item .pct {
-            font-weight: 600;
-            font-size: 0.85em;
-            color: var(--text);
-            font-family: 'Fira Code', monospace;
-        }
-
-        /* ══ Health Cards ══ */
-        .health-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            margin: 16px 0;
-        }
-        .health-card {
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1px;
+            background: var(--border);
+            margin: 20px 0;
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 20px 16px;
-            text-align: center;
+        }
+        .health-metric {
             background: var(--surface);
-            box-shadow: var(--shadow);
+            padding: 24px 16px;
+            text-align: center;
             transition: var(--transition);
         }
-        .health-card:hover {
-            box-shadow: var(--shadow-hover);
-            border-color: var(--border-strong);
-            transform: translateY(-2px);
+        .health-metric:hover {
+            background: var(--surface-hover);
         }
-        .health-card .num {
-            font-size: 1.8em;
+        .health-metric .num {
+            font-family: 'Fira Code', monospace;
+            font-size: 2em;
             font-weight: 700;
             color: var(--death);
             line-height: 1.2;
         }
-        .health-card .label {
-            font-size: 0.8em;
+        .health-metric .label {
+            font-size: 0.7em;
             color: var(--text-muted);
-            margin-top: 4px;
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        /* ═══ PROGRESS / BAR METRICS ═══ */
+        .bar-group {
+            display: grid;
+            gap: 8px;
+            margin: 16px 0;
+        }
+        .bar-item {
+            display: grid;
+            grid-template-columns: 140px 1fr 48px;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+        }
+        .bar-item .label {
+            font-size: 0.75em;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-align: right;
             text-transform: uppercase;
             letter-spacing: 0.04em;
+        }
+        .bar-track {
+            height: 14px;
+            background: rgba(255,255,255,0.04);
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            transition: width 1.2s ease;
+            background: var(--border);
+        }
+        .bar-fill.death { background: var(--death); }
+        .bar-fill.white { background: var(--accent-white); opacity: 0.3; }
+        .bar-item .pct {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8em;
             font-weight: 500;
-        }
-        .health-card.dark-card {
-            background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%);
-            border-color: #FECACA;
-        }
-        .health-card.dark-card .num {
-            color: var(--death);
-        }
-        .health-card.dark-card .label {
             color: var(--text-muted);
         }
 
-        /* ══ Source List ══ */
+        /* ═══ SOURCE DIRECTORY ═══ */
         .source-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1px;
+            background: var(--border);
             margin: 16px 0;
+            border: 1px solid var(--border);
         }
         .source-item {
-            padding: 12px 14px;
-            border-left: 2px solid var(--accent);
-            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+            padding: 16px 18px;
             transition: var(--transition);
         }
         .source-item:hover {
-            border-left-color: var(--accent-light);
-            background: rgba(251, 207, 232, 0.15);
+            background: var(--surface-hover);
         }
         .source-item strong {
-            color: var(--text);
-            font-size: 0.9em;
+            color: var(--accent-white);
+            font-size: 0.85em;
+            font-family: 'Fira Code', monospace;
         }
         .source-item small {
             display: block;
             color: var(--text-muted);
-            margin-top: 2px;
-            font-size: 0.8em;
+            margin-top: 4px;
+            font-size: 0.75em;
+            line-height: 1.5;
         }
 
         .confidence-badge {
             display: inline-block;
+            font-family: 'Fira Code', monospace;
             padding: 2px 10px;
-            font-size: 0.7em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            margin-left: 6px;
-            border-radius: 4px;
-        }
-        .verified {
-            background: var(--accent);
-            color: #fff;
-        }
-        .reported {
-            background: var(--text-muted);
-            color: #fff;
-        }
-        .estimated {
-            background: var(--death);
-            color: #fff;
-        }
-
-        /* ══ Detail Table ══ */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 16px 0;
-            font-size: 0.85em;
-        }
-        .data-table th {
-            text-align: left;
-            padding: 8px 10px;
-            border-bottom: 2px solid var(--border);
-            color: var(--text);
-            font-weight: 700;
-            font-size: 0.8em;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        .data-table td {
-            padding: 6px 10px;
-            border-bottom: 1px solid var(--border);
-            color: var(--text);
-        }
-        .data-table td.num {
-            text-align: right;
+            font-size: 0.6em;
             font-weight: 600;
-            font-variant-numeric: tabular-nums;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-left: 6px;
         }
-        .data-table tr.total td {
-            border-top: 2px solid var(--text);
-            font-weight: 700;
+        .verified  { background: rgba(22, 163, 74, 0.15); color: var(--flag-green); border: 1px solid rgba(22, 163, 74, 0.3); }
+        .reported  { background: rgba(160, 160, 160, 0.1); color: var(--text-secondary); border: 1px solid rgba(160, 160, 160, 0.2); }
+        .estimated { background: var(--death-dim); color: var(--death); border: 1px solid rgba(220, 38, 38, 0.3); }
+
+        /* ═══ EVIDENCE NOTE ═══ */
+        .evidence-note {
+            border: 1px solid var(--border);
+            padding: 16px 20px;
+            margin: 16px 0;
+            border-left: 2px solid var(--text-muted);
         }
-        .data-table tr:hover {
-            background: rgba(236, 72, 153, 0.06);
+        .evidence-note p {
+            color: var(--text-muted);
+            font-size: 0.8em;
+            line-height: 1.7;
+        }
+        .evidence-note strong {
+            color: var(--text-secondary);
+        }
+        .evidence-note.red-note {
+            border-left-color: var(--death);
+        }
+        .evidence-note.red-note p strong {
+            color: var(--death);
         }
 
-        /* ══ Methodology ══ */
+        /* ═══ METHODOLOGY ═══ */
         .methodology {
             padding: 20px;
             border: 1px solid var(--border);
-            border-radius: var(--radius);
             margin-top: 16px;
-            background: var(--surface);
         }
         .methodology p {
             margin-bottom: 10px;
-            font-size: 0.9em;
+            font-size: 0.85em;
+            color: var(--text-secondary);
+        }
+        .methodology p strong {
+            color: var(--accent-white);
         }
         .methodology ul {
             margin-left: 20px;
             margin-bottom: 10px;
         }
         .methodology ul li {
-            margin-bottom: 4px;
-            font-size: 0.9em;
-        }
-
-        /* ══ Discrepancy note ══ */
-        .note-box {
-            background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%);
-            border: 1px solid var(--border);
-            border-left: 3px solid var(--accent-light);
-            border-radius: var(--radius);
-            padding: 16px 20px;
-            margin: 16px 0;
-            transition: var(--transition);
-        }
-        .note-box:hover {
-            border-color: var(--border-strong);
-        }
-        .note-box p {
-            color: var(--text-muted);
+            margin-bottom: 6px;
             font-size: 0.85em;
-        }
-        .note-box strong {
-            color: var(--text);
+            color: var(--text-secondary);
         }
 
-        /* ══ Footer ══ */
-        .site-footer {
+        /* ═══ FULL-WIDTH COMPARISON CARDS ═══ */
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            margin: 16px 0;
+            border: 1px solid var(--border);
+        }
+        .comparison-card {
+            background: var(--surface);
+            padding: 24px 20px;
             text-align: center;
-            padding: 32px 24px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-            margin-top: 16px;
         }
-        .site-footer p {
-            font-size: 0.8em;
-            margin-bottom: 2px;
+        .comparison-card .number {
+            font-family: 'Fira Code', monospace;
+            font-size: 2.2em;
+            font-weight: 700;
+            line-height: 1.1;
         }
-        .site-footer .dot {
+        .comparison-card .label {
+            font-size: 0.75em;
             color: var(--text-muted);
-            margin: 0 6px;
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .comparison-card .sub {
+            font-size: 0.7em;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .comparison-card .number.moh { color: var(--text-secondary); }
+        .comparison-card .number.lancet { color: var(--death); }
+        .comparison-card.moh-side {
+            border-top: 2px solid var(--text-muted);
+        }
+        .comparison-card.lancet-side {
+            border-top: 2px solid var(--death);
         }
 
-        /* ══ Animations ══ */
+        /* ═══ HEALTHCARE WORKER BREAKDOWN ═══ */
+        .worker-breakdown {
+            margin-top: 16px;
+            text-align: left;
+        }
+        .worker-breakdown .worker-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.82em;
+        }
+        .worker-breakdown .worker-row:last-child {
+            border-bottom: none;
+        }
+        .worker-breakdown .worker-row .role {
+            color: var(--text-secondary);
+        }
+        .worker-breakdown .worker-row .count {
+            font-family: 'Fira Code', monospace;
+            color: var(--accent-white);
+            font-weight: 500;
+        }
+
+        /* ═══ MATERNAL STATS GRID ═══ */
+        .maternal-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            margin: 16px 0;
+            border: 1px solid var(--border);
+        }
+        .maternal-stat {
+            background: var(--surface);
+            padding: 20px 16px;
+            text-align: center;
+        }
+        .maternal-stat .num {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.6em;
+            font-weight: 600;
+            color: var(--accent-white);
+        }
+        .maternal-stat .label {
+            font-size: 0.65em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 4px;
+        }
+
+        /* ═══ FOOTER ═══ */
+        .evidence-footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            margin-top: 24px;
+        }
+        .evidence-footer p {
+            font-size: 0.75em;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .evidence-footer .divider {
+            color: var(--text-muted);
+            margin: 0 8px;
+        }
+        .evidence-footer .memorial {
+            margin-top: 12px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.65em;
+            color: #444;
+            letter-spacing: 0.08em;
+        }
+
+        /* ═══ SCROLL REVEAL ═══ */
         .fade-in {
             opacity: 0;
-            transition: opacity 0.6s ease;
+            transition: opacity 0.5s ease;
         }
         .fade-in.visible {
             opacity: 1;
         }
 
-        /* ══ Responsive ══ */
+        /* ═══ RESPONSIVE ═══ */
         @media (max-width: 1024px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .findings-row { grid-template-columns: repeat(2, 1fr); }
+            .evidence-header h1 { font-size: 2.4em; }
         }
         @media (max-width: 900px) {
             .chart-grid { grid-template-columns: 1fr; }
-            .site-header h1 { font-size: 1.7em; }
-            .progress-item { grid-template-columns: 120px 1fr 36px; }
+            .evidence-header h1 { font-size: 2em; }
+            .bar-item { grid-template-columns: 110px 1fr 40px; }
         }
         @media (max-width: 768px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .findings-row { grid-template-columns: repeat(2, 1fr); }
+            .findings-secondary { grid-template-columns: 1fr; }
         }
         @media (max-width: 640px) {
-            .site-header { padding: 28px 0 20px; }
-            .site-header h1 { font-size: 1.4em; }
-            .site-header .sub-title { font-size: 0.9em; }
-            .card { padding: 18px 16px; }
-            .card h2 { font-size: 1.05em; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .stat-card .stat-number { font-size: 1.9em; }
-            .baby-highlight { padding: 24px 16px; }
-            .baby-highlight .big-number { font-size: 3em; }
-            .baby-highlight .sub-stats { flex-direction: column; gap: 12px; }
-            .tribute { padding: 24px 16px; }
-            .tribute h2 { font-size: 1.05em; }
-            .progress-item { grid-template-columns: 1fr; gap: 2px; }
-            .progress-item .label { text-align: left; }
+            .evidence-header { padding: 48px 0 24px; }
+            .evidence-header h1 { font-size: 1.5em; letter-spacing: 0.06em; }
+            .evidence-header .sub-title { font-size: 0.85em; }
+            .evidence-file { padding: 20px 16px; }
+            .evidence-file h2 { font-size: 0.95em; }
+            .findings-row { grid-template-columns: 1fr 1fr; gap: 0; }
+            .finding-item { padding: 20px 12px; }
+            .finding-item .evidence-number { font-size: 2em; }
+            .evidence-highlight { padding: 24px 16px; }
+            .evidence-highlight .big-number { font-size: 3em; }
+            .evidence-highlight .sub-stats { flex-direction: column; gap: 16px; }
             .chart-container { height: 260px; }
             .chart-container.tall { height: 340px; }
-            .health-grid { grid-template-columns: 1fr 1fr; }
+            .health-metrics { grid-template-columns: 1fr 1fr; }
+            .comparison-row { grid-template-columns: 1fr; }
+            .maternal-stats { grid-template-columns: 1fr 1fr; }
             .source-grid { grid-template-columns: 1fr; }
-            .big-block .number { font-size: 2.4em; }
+            .bar-item { grid-template-columns: 1fr; gap: 2px; }
+            .bar-item .label { text-align: left; }
+            .evidence-block .number { font-size: 2.2em; }
         }
         @media (max-width: 400px) {
-            .health-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr; }
+            .findings-row { grid-template-columns: 1fr; }
+            .health-metrics { grid-template-columns: 1fr; }
         }
 
-        /* ══ Print ══ */
+        /* ══ PRINT ══ */
         @media print {
             body { background: #fff !important; color: #000; }
-            .card { border: 1px solid #ddd; break-inside: avoid; }
-            .site-header { border-color: #ddd; }
-            .stat-card.death, .stat-card.dark { background: #f5f5f5; }
-            .stat-card.death .stat-number { color: #c00; }
-            .stat-card.dark .stat-number { color: #000; }
-            .baby-highlight { background: #f5f5f5; border-color: #c00; }
-            .big-block { background: #f5f5f5; }
-            .tribute { background: #fef2f2; border-color: #c00; }
-            .tribute::before { display: none; }
+            .evidence-file { border: 1px solid #ccc; break-inside: avoid; }
+            .flag-bar-container { position: absolute; }
+            .finding-item { background: #f5f5f5; }
+            .finding-item .evidence-number { color: #000 !important; }
+            .finding-item.death .evidence-number { color: #c00 !important; }
+            .evidence-highlight { border: 1px solid #c00; }
+            .evidence-highlight::before { background: #c00; }
+            .evidence-note { border-color: #ccc; }
+            .chart-box:hover { background: #fff; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ═══ HEADER ═══ -->
-    <header class="site-header">
+    <!-- ═══ PALESTINIAN FLAG BAR ═══ -->
+    <div class="flag-bar-container">
+        <div class="flag-segment green"></div>
+        <div class="flag-segment red"></div>
+        <div class="flag-segment black"></div>
+    </div>
+
+    <!-- ═══ EVIDENCE HEADER ═══ -->
+    <header class="evidence-header">
         <div class="container">
-            <div class="flag-bar">
-                <span class="green"></span>
-                <span class="red"></span>
-                <span class="black"></span>
-            </div>
-            <div class="sub-title">Mother's Day Conflict Death Toll Study</div>
-            <h1>Palestine: The Human Cost</h1>
-            <div class="accent-line"></div>
-            <p style="font-size:1em;color:var(--text-on-dark-muted);margin-bottom:6px;">
-                <strong style="color:var(--death);">Mothers &amp; Children in the Crossfire</strong>
-            </p>
-            <p class="date-line">May 10, 2026 — Data as of May 8</p>
+            <div class="document-id">╱╱ EVIDENCE FILE ∥ MAY 10TH PROJECT ∥ CLASSIFICATION: OPEN SOURCE</div>
+            <h1>Palestine: The Evidence</h1>
+            <p class="sub-title">Forensic investigation of identified deaths in Gaza — demographic breakdown of 60,199 verified victims</p>
+            <span class="classification">&#x25B6; Verified Data ∥ Open Source Intelligence</span>
+            <p class="date-line">Filed: May 10, 2026 ∥ Data Window: Oct 2023 – May 2026 ∥ Source: Gaza Ministry of Health / TechForPalestine</p>
         </div>
     </header>
 
     <div class="container">
 
-        <!-- ═══ SECTION 1: TRIBUTE ═══ -->
-        <div class="tribute fade-in">
-            <h2>In Memory of Palestine's Mothers and Children</h2>
+        <!-- ═══ EVIDENCE INTRO ═══ -->
+        <div class="evidence-intro fade-in">
             <p>
-                This Mother's Day, we bear witness to the <strong>60,199 identified lives lost</strong> in Gaza — 
-                a number that represents not a final count but a floor. Among the dead are <strong>18,457 children</strong>,
-                including <strong>968 infants under one year old</strong>. An estimated <strong>10,000+ additional people</strong>
-                lie buried under rubble, their names still unrecorded. In a territory of 2.3 million people, this is a loss
-                at a scale and rate that the 21st century has rarely seen. Every statistic is a stolen future — a mother
-                who will never hold her child again, a child who will never know their mother's love.
+                This document presents a <strong>forensic demographic analysis</strong> of <span class="death-text">60,199 identified</span> individuals killed in Gaza since October 2023. Every figure in this report represents a verified, name-by-name count — the most granular documentation of conflict-related death in the 21st century. The data reveals a population under systematic erasure: <strong>18,457 children</strong> (30.7%), <strong>19,209 women and girls</strong> (31.9%), and <strong>968 infants under one year</strong> who never saw their first birthday.
             </p>
         </div>
 
-        <!-- ═══ SECTION 2: KEY NUMBERS ═══ -->
-        <div class="card fade-in">
-            <h2>Key Numbers — Gaza Death Toll</h2>
-            <p style="color:var(--text-muted);margin-bottom:16px;">
-                The Gaza Ministry of Health, in coordination with the Palestinian Ministry of Health in Ramallah and
-                hospital directors across the Gaza Strip, has identified <strong>60,199</strong> individuals killed since
-                the escalation of hostilities. This is the most detailed, granular count of any conflict zone in the world.
-            </p>
-            <div class="stats-grid">
-                <div class="stat-card death">
-                    <span class="stat-number">60,199</span>
-                    <span class="stat-label">Identified Killed in Gaza</span>
-                </div>
-                <div class="stat-card death">
-                    <span class="stat-number">18,457</span>
-                    <span class="stat-label">Children Under 18</span>
-                </div>
-                <div class="stat-card death">
-                    <span class="stat-number">968</span>
-                    <span class="stat-label">Babies Under 1 Year</span>
-                </div>
-                <div class="stat-card dark">
-                    <span class="stat-number">19,209</span>
-                    <span class="stat-label">Women &amp; Girls Killed</span>
-                </div>
+        <!-- ═══ KEY FINDINGS — PRIMARY METRICS ═══ -->
+        <div class="findings-row fade-in">
+            <div class="finding-item death">
+                <span class="evidence-number">60,199</span>
+                <span class="evidence-label">Identified Killed</span>
+                <span class="evidence-sub">verified name-by-name</span>
             </div>
-            <div class="stats-grid" style="grid-template-columns:1fr 1fr;">
-                <div class="stat-card outlined">
-                    <span class="stat-number">30.7%</span>
-                    <span class="stat-label">Of All Killed Were Children</span>
-                </div>
-                <div class="stat-card outlined">
-                    <span class="stat-number">31.9%</span>
-                    <span class="stat-label">Of All Killed Were Female</span>
-                </div>
+            <div class="finding-item white">
+                <span class="evidence-number">18,457</span>
+                <span class="evidence-label">Children Under 18</span>
+                <span class="evidence-sub">30.7% of total victims</span>
             </div>
-            <div class="note-box" style="margin-top:12px;">
-                <p><strong>Lancet Estimate:</strong> 75,200+ excess violent deaths — 34.7% higher than the identified count. <strong>10,000+</strong> additional victims estimated missing under rubble, not yet recovered or identified.</p>
+            <div class="finding-item death">
+                <span class="evidence-number">968</span>
+                <span class="evidence-label">Babies Under 1 Year</span>
+                <span class="evidence-sub">infants — 1.6% of total</span>
+            </div>
+            <div class="finding-item muted">
+                <span class="evidence-number">19,209</span>
+                <span class="evidence-label">Women &amp; Girls</span>
+                <span class="evidence-sub">31.9% of total victims</span>
             </div>
         </div>
 
-        <!-- ═══ SECTION 3: GENDER SPLIT + AGE DISTRIBUTION ═══ -->
-        <div class="card fade-in">
-            <h2>Victim Demographics — Who Was Killed</h2>
-            <p style="color:var(--text-muted);margin-bottom:16px;">
-                A detailed demographic breakdown of all <strong>60,199 identified victims</strong>. Of these,
-                <strong>40,990 (68.1%)</strong> are male and <strong>19,209 (31.9%)</strong> are female.
-                More than two-thirds of adult victims are men, but among children the split narrows:
-                <strong>10,656 boys (57.7%)</strong> and <strong>7,801 girls (42.3%)</strong>.
-            </p>
-
-            <!-- Charts 1 & 2: Age Distribution Bar + Gender Pie -->
-            <div class="chart-grid">
-                <div class="chart-box">
-                    <h3>Chart 1: Age Distribution — All 11 Age Groups</h3>
-                    <div class="chart-container tall">
-                        <canvas id="ageDistChart"></canvas>
-                    </div>
-                </div>
-                <div class="chart-box">
-                    <h3>Chart 2: Gender Split</h3>
-                    <div class="chart-container">
-                        <canvas id="genderPieChart"></canvas>
-                    </div>
-                </div>
+        <!-- SECONDARY FINDINGS -->
+        <div class="findings-secondary fade-in">
+            <div class="finding-item small muted">
+                <span class="evidence-number">30.7%</span>
+                <span class="evidence-label">Of All Killed Were Children</span>
             </div>
-
-            <!-- Full Data Table -->
-            <h3>Complete Demographic Breakdown</h3>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Age Group</th>
-                        <th>Total</th>
-                        <th>%</th>
-                        <th>Male</th>
-                        <th>Female</th>
-                        <th>M%</th>
-                        <th>F%</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Infant (0–11 mo)</td>
-                        <td class="num">968</td>
-                        <td class="num">1.6%</td>
-                        <td class="num">518</td>
-                        <td class="num">450</td>
-                        <td class="num">53.5%</td>
-                        <td class="num">46.5%</td>
-                    </tr>
-                    <tr>
-                        <td>Toddler (1–2)</td>
-                        <td class="num">1,964</td>
-                        <td class="num">3.3%</td>
-                        <td class="num">1,011</td>
-                        <td class="num">953</td>
-                        <td class="num">51.5%</td>
-                        <td class="num">48.5%</td>
-                    </tr>
-                    <tr>
-                        <td>Child (3–5)</td>
-                        <td class="num">2,819</td>
-                        <td class="num">4.7%</td>
-                        <td class="num">1,495</td>
-                        <td class="num">1,324</td>
-                        <td class="num">53.0%</td>
-                        <td class="num">47.0%</td>
-                    </tr>
-                    <tr>
-                        <td>Child (6–11)</td>
-                        <td class="num">5,759</td>
-                        <td class="num">9.6%</td>
-                        <td class="num">3,086</td>
-                        <td class="num">2,673</td>
-                        <td class="num">53.6%</td>
-                        <td class="num">46.4%</td>
-                    </tr>
-                    <tr>
-                        <td>Teen (12–14)</td>
-                        <td class="num">3,314</td>
-                        <td class="num">5.5%</td>
-                        <td class="num">2,042</td>
-                        <td class="num">1,272</td>
-                        <td class="num">61.6%</td>
-                        <td class="num">38.4%</td>
-                    </tr>
-                    <tr>
-                        <td>Teen (15–17)</td>
-                        <td class="num">3,633</td>
-                        <td class="num">6.0%</td>
-                        <td class="num">2,504</td>
-                        <td class="num">1,129</td>
-                        <td class="num">68.9%</td>
-                        <td class="num">31.1%</td>
-                    </tr>
-                    <tr>
-                        <td>Young Adult (18–29)</td>
-                        <td class="num">15,649</td>
-                        <td class="num">26.0%</td>
-                        <td class="num">11,663</td>
-                        <td class="num">3,986</td>
-                        <td class="num">74.5%</td>
-                        <td class="num">25.5%</td>
-                    </tr>
-                    <tr>
-                        <td>Adult (30–44)</td>
-                        <td class="num">15,150</td>
-                        <td class="num">25.2%</td>
-                        <td class="num">11,471</td>
-                        <td class="num">3,679</td>
-                        <td class="num">75.7%</td>
-                        <td class="num">24.3%</td>
-                    </tr>
-                    <tr>
-                        <td>Middle Age (45–59)</td>
-                        <td class="num">6,514</td>
-                        <td class="num">10.8%</td>
-                        <td class="num">4,444</td>
-                        <td class="num">2,070</td>
-                        <td class="num">68.2%</td>
-                        <td class="num">31.8%</td>
-                    </tr>
-                    <tr>
-                        <td>Elderly (60–74)</td>
-                        <td class="num">3,437</td>
-                        <td class="num">5.7%</td>
-                        <td class="num">2,217</td>
-                        <td class="num">1,220</td>
-                        <td class="num">64.5%</td>
-                        <td class="num">35.5%</td>
-                    </tr>
-                    <tr>
-                        <td>Senior (75+)</td>
-                        <td class="num">992</td>
-                        <td class="num">1.6%</td>
-                        <td class="num">539</td>
-                        <td class="num">453</td>
-                        <td class="num">54.3%</td>
-                        <td class="num">45.7%</td>
-                    </tr>
-                    <tr class="total">
-                        <td>Total</td>
-                        <td class="num">60,199</td>
-                        <td class="num">100%</td>
-                        <td class="num">40,990</td>
-                        <td class="num">19,209</td>
-                        <td class="num">68.1%</td>
-                        <td class="num">31.9%</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="font-size:0.78em;color:var(--text-muted);margin-top:6px;">
-                Source: Gaza Ministry of Health / Palestinian Ministry of Health — Identified victims with full documentation
-            </p>
-        </div>
-
-        <!-- ═══ SECTION 4: CHILDREN UNDER 18 ═══ -->
-        <div class="card fade-in">
-            <h2>Children — 18,457 Lost</h2>
-            <p style="color:var(--text-muted);margin-bottom:8px;">
-                Of the <strong>60,199 identified victims, 18,457 (30.7%) are children under 18</strong>.
-                The majority of these children — <strong>10,656 (57.7%)</strong> are boys and
-                <strong>7,801 (42.3%)</strong> are girls. Below is the detailed breakdown across
-                all childhood age groups.
-            </p>
-
-            <h3>Children Under 18 by Age Group</h3>
-
-            <!-- Chart 3: Children by Age Horizontal Bar -->
-            <div class="chart-container tall">
-                <canvas id="childrenAgeHorizChart"></canvas>
-            </div>
-
-            <h3>Children Sub-Totals</h3>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Total</th>
-                        <th>% of Children</th>
-                        <th>Boys</th>
-                        <th>Girls</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Infant (0–11 mo)</td>
-                        <td class="num">968</td>
-                        <td class="num">5.2%</td>
-                        <td class="num">518</td>
-                        <td class="num">450</td>
-                    </tr>
-                    <tr>
-                        <td>Toddler (1–2)</td>
-                        <td class="num">1,964</td>
-                        <td class="num">10.6%</td>
-                        <td class="num">1,011</td>
-                        <td class="num">953</td>
-                    </tr>
-                    <tr>
-                        <td>Child (3–5)</td>
-                        <td class="num">2,819</td>
-                        <td class="num">15.3%</td>
-                        <td class="num">1,495</td>
-                        <td class="num">1,324</td>
-                    </tr>
-                    <tr>
-                        <td>Child (6–11)</td>
-                        <td class="num">5,759</td>
-                        <td class="num">31.2%</td>
-                        <td class="num">3,086</td>
-                        <td class="num">2,673</td>
-                    </tr>
-                    <tr>
-                        <td>Teen (12–14)</td>
-                        <td class="num">3,314</td>
-                        <td class="num">18.0%</td>
-                        <td class="num">2,042</td>
-                        <td class="num">1,272</td>
-                    </tr>
-                    <tr>
-                        <td>Teen (15–17)</td>
-                        <td class="num">3,633</td>
-                        <td class="num">19.7%</td>
-                        <td class="num">2,504</td>
-                        <td class="num">1,129</td>
-                    </tr>
-                    <tr class="total">
-                        <td>Total Children</td>
-                        <td class="num">18,457</td>
-                        <td class="num">100%</td>
-                        <td class="num">10,656</td>
-                        <td class="num">7,801</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- ═══ SECTION 5: BABIES & TODDLERS (Under 3) ═══ -->
-        <div class="fade-in">
-            <div class="big-block">
-                <div class="number">2,932</div>
-                <div class="label">Children Under 3 Years Old Killed</div>
-                <div class="sub">Infants under 1 year: <strong style="color:var(--death);">968</strong> &nbsp;·&nbsp; Toddlers 1–2 years: <strong style="color:var(--death);">1,964</strong></div>
+            <div class="finding-item small muted">
+                <span class="evidence-number">31.9%</span>
+                <span class="evidence-label">Of All Killed Were Female</span>
             </div>
         </div>
 
-        <!-- ═══ SECTION 6: BABIES UNDER 1 HIGHLIGHT (CHART 5) ═══ -->
-        <div class="fade-in">
-            <div class="baby-highlight">
-                <div class="big-number">968</div>
-                <div class="big-label">Babies Under 1 Year Old Killed</div>
-                <div class="big-sub">Infants who never saw their first birthday — 1.6% of all identified victims</div>
-                <div class="sub-stats">
-                    <div class="sub-stat">
-                        <div class="num">518</div>
-                        <div class="lbl">Boys</div>
+        <!-- ═══ SECTION: AGE DISTRIBUTION + GENDER ═══ -->
+        <div class="evidence-file fade-in">
+            <div class="file-header">
+                <span class="file-number">EXHIBIT A</span>
+                <h2>Victim Demographics — <span class="red-accent">Age &amp; Gender Distribution</span></h2>
+                <span class="file-tag">verified</span>
+            </div>
+            <div class="file-body">
+                <p>
+                    A detailed demographic breakdown of all <strong>60,199 identified victims</strong>. Of these,
+                    <strong>40,990 (68.1%)</strong> are male and <strong>19,209 (31.9%)</strong> are female.
+                    Among children under 18, the gender split narrows: <strong>10,656 boys (57.7%)</strong>
+                    and <strong>7,801 girls (42.3%)</strong>.
+                </p>
+
+                <!-- Charts 1 & 2: Age Distribution + Gender Pie -->
+                <div class="chart-grid">
+                    <div class="chart-box">
+                        <h3>Chart 1 ∥ Age Distribution — All 11 Age Groups</h3>
+                        <div class="chart-container tall">
+                            <canvas id="ageDistChart"></canvas>
+                        </div>
                     </div>
-                    <div class="sub-stat">
-                        <div class="num">450</div>
-                        <div class="lbl">Girls</div>
+                    <div class="chart-box">
+                        <h3>Chart 2 ∥ Gender Split — Male vs Female</h3>
+                        <div class="chart-container">
+                            <canvas id="genderPieChart"></canvas>
+                        </div>
                     </div>
-                    <div class="sub-stat">
-                        <div class="num">53.5%</div>
-                        <div class="lbl">Male</div>
-                    </div>
-                    <div class="sub-stat">
-                        <div class="num">46.5%</div>
-                        <div class="lbl">Female</div>
-                    </div>
+                </div>
+
+                <h3 style="color:var(--text-secondary);font-size:0.8em;text-transform:uppercase;letter-spacing:0.06em;margin:20px 0 12px;font-family:'Fira Code',monospace;">
+                    Demographic Ledger — Complete Breakdown
+                </h3>
+                <table class="evidence-table">
+                    <thead>
+                        <tr>
+                            <th>Age Group</th>
+                            <th>Total</th>
+                            <th>%</th>
+                            <th>Male</th>
+                            <th>Female</th>
+                            <th>M%</th>
+                            <th>F%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Infant (0–11 mo)</td>
+                            <td class="num">968</td>
+                            <td class="num">1.6%</td>
+                            <td class="num">518</td>
+                            <td class="num">450</td>
+                            <td class="num">53.5%</td>
+                            <td class="num">46.5%</td>
+                        </tr>
+                        <tr>
+                            <td>Toddler (1–2)</td>
+                            <td class="num">1,964</td>
+                            <td class="num">3.3%</td>
+                            <td class="num">1,011</td>
+                            <td class="num">953</td>
+                            <td class="num">51.5%</td>
+                            <td class="num">48.5%</td>
+                        </tr>
+                        <tr>
+                            <td>Child (3–5)</td>
+                            <td class="num">2,819</td>
+                            <td class="num">4.7%</td>
+                            <td class="num">1,495</td>
+                            <td class="num">1,324</td>
+                            <td class="num">53.0%</td>
+                            <td class="num">47.0%</td>
+                        </tr>
+                        <tr>
+                            <td>Child (6–11)</td>
+                            <td class="num">5,759</td>
+                            <td class="num">9.6%</td>
+                            <td class="num">3,086</td>
+                            <td class="num">2,673</td>
+                            <td class="num">53.6%</td>
+                            <td class="num">46.4%</td>
+                        </tr>
+                        <tr>
+                            <td>Teen (12–14)</td>
+                            <td class="num">3,314</td>
+                            <td class="num">5.5%</td>
+                            <td class="num">2,042</td>
+                            <td class="num">1,272</td>
+                            <td class="num">61.6%</td>
+                            <td class="num">38.4%</td>
+                        </tr>
+                        <tr>
+                            <td>Teen (15–17)</td>
+                            <td class="num">3,633</td>
+                            <td class="num">6.0%</td>
+                            <td class="num">2,504</td>
+                            <td class="num">1,129</td>
+                            <td class="num">68.9%</td>
+                            <td class="num">31.1%</td>
+                        </tr>
+                        <tr>
+                            <td>Young Adult (18–29)</td>
+                            <td class="num">15,649</td>
+                            <td class="num">26.0%</td>
+                            <td class="num">11,663</td>
+                            <td class="num">3,986</td>
+                            <td class="num">74.5%</td>
+                            <td class="num">25.5%</td>
+                        </tr>
+                        <tr>
+                            <td>Adult (30–44)</td>
+                            <td class="num">15,150</td>
+                            <td class="num">25.2%</td>
+                            <td class="num">11,471</td>
+                            <td class="num">3,679</td>
+                            <td class="num">75.7%</td>
+                            <td class="num">24.3%</td>
+                        </tr>
+                        <tr>
+                            <td>Middle Age (45–59)</td>
+                            <td class="num">6,514</td>
+                            <td class="num">10.8%</td>
+                            <td class="num">4,444</td>
+                            <td class="num">2,070</td>
+                            <td class="num">68.2%</td>
+                            <td class="num">31.8%</td>
+                        </tr>
+                        <tr>
+                            <td>Elderly (60–74)</td>
+                            <td class="num">3,437</td>
+                            <td class="num">5.7%</td>
+                            <td class="num">2,217</td>
+                            <td class="num">1,220</td>
+                            <td class="num">64.5%</td>
+                            <td class="num">35.5%</td>
+                        </tr>
+                        <tr>
+                            <td>Senior (75+)</td>
+                            <td class="num">992</td>
+                            <td class="num">1.6%</td>
+                            <td class="num">539</td>
+                            <td class="num">453</td>
+                            <td class="num">54.3%</td>
+                            <td class="num">45.7%</td>
+                        </tr>
+                        <tr class="total">
+                            <td>Total</td>
+                            <td class="num">60,199</td>
+                            <td class="num">100%</td>
+                            <td class="num">40,990</td>
+                            <td class="num">19,209</td>
+                            <td class="num">68.1%</td>
+                            <td class="num">31.9%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="source-note">Source: Gaza Ministry of Health / Palestinian Ministry of Health — Identified victims with full documentation</p>
+            </div>
+        </div>
+
+        <!-- ═══ SECTION: CHILDREN & BABIES ═══ -->
+        <div class="evidence-file fade-in">
+            <div class="file-header">
+                <span class="file-number">EXHIBIT B</span>
+                <h2>Children — <span class="red-accent">18,457 Lost</span></h2>
+                <span class="file-tag">verified</span>
+            </div>
+            <div class="file-body">
+                <p>
+                    Of the <strong>60,199 identified victims, 18,457 (30.7%) are children under 18</strong>.
+                    The majority — <strong>10,656 (57.7%)</strong> are boys and
+                    <strong>7,801 (42.3%)</strong> are girls. The largest single childhood cohort is
+                    children aged 6–11, with <strong>5,759 victims</strong> — nearly one-third of all children killed.
+                </p>
+
+                <h3 style="color:var(--text-secondary);font-size:0.75em;text-transform:uppercase;letter-spacing:0.06em;margin:16px 0 12px;font-family:'Fira Code',monospace;">
+                    Chart 3 ∥ Children by Age Group
+                </h3>
+                <div class="chart-container tall">
+                    <canvas id="childrenAgeHorizChart"></canvas>
+                </div>
+
+                <h3 style="color:var(--text-secondary);font-size:0.75em;text-transform:uppercase;letter-spacing:0.06em;margin:20px 0 12px;font-family:'Fira Code',monospace;">
+                    Children Sub-Totals
+                </h3>
+                <table class="evidence-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Total</th>
+                            <th>% of Children</th>
+                            <th>Boys</th>
+                            <th>Girls</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Infant (0–11 mo)</td>
+                            <td class="num">968</td>
+                            <td class="num">5.2%</td>
+                            <td class="num">518</td>
+                            <td class="num">450</td>
+                        </tr>
+                        <tr>
+                            <td>Toddler (1–2)</td>
+                            <td class="num">1,964</td>
+                            <td class="num">10.6%</td>
+                            <td class="num">1,011</td>
+                            <td class="num">953</td>
+                        </tr>
+                        <tr>
+                            <td>Child (3–5)</td>
+                            <td class="num">2,819</td>
+                            <td class="num">15.3%</td>
+                            <td class="num">1,495</td>
+                            <td class="num">1,324</td>
+                        </tr>
+                        <tr>
+                            <td>Child (6–11)</td>
+                            <td class="num">5,759</td>
+                            <td class="num">31.2%</td>
+                            <td class="num">3,086</td>
+                            <td class="num">2,673</td>
+                        </tr>
+                        <tr>
+                            <td>Teen (12–14)</td>
+                            <td class="num">3,314</td>
+                            <td class="num">18.0%</td>
+                            <td class="num">2,042</td>
+                            <td class="num">1,272</td>
+                        </tr>
+                        <tr>
+                            <td>Teen (15–17)</td>
+                            <td class="num">3,633</td>
+                            <td class="num">19.7%</td>
+                            <td class="num">2,504</td>
+                            <td class="num">1,129</td>
+                        </tr>
+                        <tr class="total">
+                            <td>Total Children</td>
+                            <td class="num">18,457</td>
+                            <td class="num">100%</td>
+                            <td class="num">10,656</td>
+                            <td class="num">7,801</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ═══ CHILDREN UNDER 3 — EVIDENCE BLOCK ═══ -->
+        <div class="evidence-block red-border fade-in">
+            <div class="number red">2,932</div>
+            <div class="label">Children Under 3 Years Old Killed</div>
+            <div class="sub">Infants under 1 year: <strong style="color:var(--death);">968</strong> &nbsp;·&nbsp; Toddlers 1–2 years: <strong style="color:var(--death);">1,964</strong></div>
+        </div>
+
+        <!-- ═══ BABIES UNDER 1 — HIGHLIGHT (CHART 5) ═══ -->
+        <div class="evidence-highlight fade-in">
+            <div class="big-number">968</div>
+            <div class="big-label">Babies Under 1 Year Old Killed</div>
+            <div class="big-sub">Infants who never saw their first birthday — 1.6% of all identified victims</div>
+            <div class="sub-stats">
+                <div class="sub-stat">
+                    <div class="num">518</div>
+                    <div class="lbl">Boys</div>
+                </div>
+                <div class="sub-stat">
+                    <div class="num">450</div>
+                    <div class="lbl">Girls</div>
+                </div>
+                <div class="sub-stat">
+                    <div class="num death">53.5%</div>
+                    <div class="lbl">Male</div>
+                </div>
+                <div class="sub-stat">
+                    <div class="num death">46.5%</div>
+                    <div class="lbl">Female</div>
                 </div>
             </div>
         </div>
 
-        <!-- ═══ SECTION 7: WOMEN & GIRLS ═══ -->
-        <div class="card fade-in">
-            <h2>Women &amp; Girls — 19,209 Killed</h2>
-            <p style="color:var(--text-muted);margin-bottom:16px;">
-                Women and girls constitute <strong>31.9%</strong> of all identified victims. The breakdown by age
-                reveals the life stages at which these losses occurred — from infant girls to elderly women.
-                <strong>7,801 girls (40.6%)</strong> were under 18. <strong>9,735 women (50.7%)</strong>
-                were of reproductive age (18–59). <strong>1,673 elderly women (8.7%)</strong> were 60 or older.
-            </p>
-
-            <!-- Chart 4: Women & Girls Breakdown -->
-            <div class="chart-grid">
-                <div class="chart-box">
-                    <h3>Chart 4: Women &amp; Girls by Life Stage</h3>
-                    <div class="chart-container">
-                        <canvas id="womenChart"></canvas>
-                    </div>
-                </div>
-                <div class="chart-box">
-                    <h3>Female Victims by Age Group</h3>
-                    <div class="progress-group" style="margin-top:16px;">
-                        <div class="progress-item">
-                            <span class="label">Infant (0–11mo)</span>
-                            <div class="progress-track">
-                                <div class="progress-fill death" style="width:2.3%"></div>
-                            </div>
-                            <span class="pct">450</span>
-                        </div>
-                        <div class="progress-item">
-                            <span class="label">Toddler (1–2)</span>
-                            <div class="progress-track">
-                                <div class="progress-fill death" style="width:5.0%"></div>
-                            </div>
-                            <span class="pct">953</span>
-                        </div>
-                        <div class="progress-item">
-                            <span class="label">Child (3–11)</span>
-                            <div class="progress-track">
-                                <div class="progress-fill death" style="width:20.8%"></div>
-                            </div>
-                            <span class="pct">3,997</span>
-                        </div>
-                        <div class="progress-item">
-                            <span class="label">Teen (12–17)</span>
-                            <div class="progress-track">
-                                <div class="progress-fill death" style="width:12.5%"></div>
-                            </div>
-                            <span class="pct">2,401</span>
-                        </div>
-                        <div class="progress-item">
-                            <span class="label">Adult (18–44)</span>
-                            <div class="progress-track">
-                                <div class="progress-fill blue" style="width:39.9%"></div>
-                            </div>
-                            <span class="pct">7,665</span>
-                        </div>
-                        <div class="progress-item">
-                            <span class="label">Middle (45–59)</span>
-                            <div class="progress-track">
-                                <div class="progress-fill blue" style="width:10.8%"></div>
-                            </div>
-                            <span class="pct">2,070</span>
-                        </div>
-                        <div class="progress-item">
-                            <span class="label">Elderly (60+)</span>
-                            <div class="progress-track">
-                                <div class="progress-fill blue" style="width:8.7%"></div>
-                            </div>
-                            <span class="pct">1,673</span>
-                        </div>
-                    </div>
-                </div>
+        <!-- ═══ SECTION: WOMEN & GIRLS ═══ -->
+        <div class="evidence-file fade-in">
+            <div class="file-header">
+                <span class="file-number">EXHIBIT C</span>
+                <h2>Women &amp; Girls — <span class="red-accent">19,209 Killed</span></h2>
+                <span class="file-tag">verified</span>
             </div>
+            <div class="file-body">
+                <p>
+                    Women and girls constitute <strong>31.9%</strong> of all identified victims.
+                    <strong>7,801 girls (40.6%)</strong> were under 18. <strong>9,735 women (50.7%)</strong>
+                    were of reproductive age (18–59). <strong>1,673 elderly women (8.7%)</strong> were 60 or older.
+                    The data reveals a population killed across every stage of life — from infancy to old age.
+                </p>
 
-            <h3>Female Victims Detail</h3>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Age Range</th>
-                        <th>Total</th>
-                        <th>% of Female Victims</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Girls</td>
-                        <td>Under 18</td>
-                        <td class="num">7,801</td>
-                        <td class="num">40.6%</td>
-                    </tr>
-                    <tr>
-                        <td>Women (reproductive age)</td>
-                        <td>18–59</td>
-                        <td class="num">9,735</td>
-                        <td class="num">50.7%</td>
-                    </tr>
-                    <tr>
-                        <td>Elderly Women</td>
-                        <td>60+</td>
-                        <td class="num">1,673</td>
-                        <td class="num">8.7%</td>
-                    </tr>
-                    <tr class="total">
-                        <td>Total Female</td>
-                        <td>All ages</td>
-                        <td class="num">19,209</td>
-                        <td class="num">100%</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- ═══ SECTION 8: HEALTHCARE DESTRUCTION ═══ -->
-        <div class="card fade-in">
-            <h2>Healthcare Under Attack</h2>
-            <p style="color:var(--text-muted);margin-bottom:16px;">
-                Gaza's healthcare system has been systematically dismantled. Of <strong>36 hospitals</strong> operating
-                before the conflict, only <strong>10 (28%) remain functional</strong> — and those at severely reduced
-                capacity. <strong>1,722 healthcare workers</strong> have been killed, crippling the system's ability
-                to respond to the overwhelming number of casualties.
-            </p>
-
-            <!-- Chart 6: Hospital Status Donut -->
-            <div class="chart-grid">
-                <div class="chart-box">
-                    <h3>Chart 6: Hospital Status — 36 Pre-War Hospitals</h3>
-                    <div class="chart-container short">
-                        <canvas id="hospitalChart"></canvas>
-                    </div>
-                </div>
-                <div class="chart-box">
-                    <h3>Healthcare Workers Killed</h3>
-                    <div style="text-align:center;padding:30px 0;">
-                        <div style="font-size:4em;font-weight:700;color:var(--death);line-height:1;">1,722</div>
-                        <div style="font-size:0.85em;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.04em;">
-                            Healthcare Workers Killed
-                        </div>
-                        <div style="margin-top:24px;font-size:0.8em;color:var(--text-muted);text-align:left;">
-                            <div style="padding:6px 0;border-bottom:1px solid var(--border);">Doctors: <strong style="color:var(--text);">764</strong></div>
-                            <div style="padding:6px 0;border-bottom:1px solid var(--border);">Nurses: <strong style="color:var(--text);">528</strong></div>
-                            <div style="padding:6px 0;border-bottom:1px solid var(--border);">Paramedics: <strong style="color:var(--text);">312</strong></div>
-                            <div style="padding:6px 0;">Other Staff: <strong style="color:var(--text);">118</strong></div>
+                <!-- Chart 4: Women & Girls Breakdown Pie + Progress bars -->
+                <div class="chart-grid">
+                    <div class="chart-box">
+                        <h3>Chart 4 ∥ Women &amp; Girls by Life Stage</h3>
+                        <div class="chart-container">
+                            <canvas id="womenChart"></canvas>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <h3>Infrastructure Destruction</h3>
-            <div class="progress-group">
-                <div class="progress-item">
-                    <span class="label">Housing</span>
-                    <div class="progress-track">
-                        <div class="progress-fill blue" style="width:70%"></div>
-                    </div>
-                    <span class="pct">70%</span>
-                </div>
-                <div class="progress-item">
-                    <span class="label">Healthcare</span>
-                    <div class="progress-track">
-                        <div class="progress-fill death" style="width:72%"></div>
-                    </div>
-                    <span class="pct">72%</span>
-                </div>
-                <div class="progress-item">
-                    <span class="label">Schools</span>
-                    <div class="progress-track">
-                        <div class="progress-fill blue" style="width:85%"></div>
-                    </div>
-                    <span class="pct">85%</span>
-                </div>
-                <div class="progress-item">
-                    <span class="label">Water Systems</span>
-                    <div class="progress-track">
-                        <div class="progress-fill blue" style="width:80%"></div>
-                    </div>
-                    <span class="pct">80%</span>
-                </div>
-            </div>
-
-            <div class="note-box" style="margin-top:12px;">
-                <p><strong>Note:</strong> The destruction of healthcare infrastructure has had a direct and devastating impact on maternal and child health. With 72% of healthcare facilities damaged or destroyed, pregnant women, newborns, and children have lost access to essential medical care.</p>
-            </div>
-        </div>
-
-        <!-- ═══ SECTION 9: MATERNAL HEALTH CRISIS (CHART 7) ═══ -->
-        <div class="card fade-in">
-            <h2>Maternal Health Crisis</h2>
-            <p style="color:var(--text-muted);margin-bottom:14px;">
-                The war has created an unprecedented maternal health catastrophe in Gaza. With the healthcare system
-                in ruins and <strong>1,722 medical workers killed</strong>, pregnant women face impossible choices.
-                The data reveals a devastating toll on mothers, babies, and the very infrastructure of life itself.
-            </p>
-
-            <!-- Chart 7: Maternal Health Stats -->
-            <div class="health-grid">
-                <div class="health-card dark-card">
-                    <div class="num">155,000</div>
-                    <div class="label">Pregnant Women Denied Care</div>
-                </div>
-                <div class="health-card dark-card">
-                    <div class="num">3×</div>
-                    <div class="label">Increase in Maternal Deaths</div>
-                </div>
-                <div class="health-card dark-card">
-                    <div class="num">5,000+</div>
-                    <div class="label">Embryos Destroyed in IVF Banks</div>
-                </div>
-                <div class="health-card dark-card">
-                    <div class="num">9</div>
-                    <div class="label">IVF Clinics Destroyed</div>
-                </div>
-            </div>
-
-            <div class="chart-grid">
-                <div class="chart-box">
-                    <h3>Maternal Health Impact</h3>
-                    <div style="text-align:center;padding:20px 0;">
-                        <div style="font-size:0.9em;color:var(--text-muted);margin-bottom:16px;">
-                            Before the war, Gaza had one of the region's highest maternal mortality rates — now it has worsened by 3×.
-                        </div>
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-                            <div style="border:1px solid var(--border);padding:16px 8px;">
-                                <div style="font-size:1.8em;font-weight:700;color:var(--accent);">36</div>
-                                <div style="font-size:0.7em;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Pre-War Hospitals</div>
+                    <div class="chart-box">
+                        <h3>Female Victims by Age Group</h3>
+                        <div class="bar-group" style="margin-top:16px;">
+                            <div class="bar-item">
+                                <span class="label">Infant (0–11mo)</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill death" style="width:2.3%"></div>
+                                </div>
+                                <span class="pct">450</span>
                             </div>
-                            <div style="border:1px solid var(--border);padding:16px 8px;">
-                                <div style="font-size:1.8em;font-weight:700;color:var(--death);">10</div>
-                                <div style="font-size:0.7em;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Functional Hospitals</div>
+                            <div class="bar-item">
+                                <span class="label">Toddler (1–2)</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill death" style="width:5.0%"></div>
+                                </div>
+                                <span class="pct">953</span>
+                            </div>
+                            <div class="bar-item">
+                                <span class="label">Child (3–11)</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill death" style="width:20.8%"></div>
+                                </div>
+                                <span class="pct">3,997</span>
+                            </div>
+                            <div class="bar-item">
+                                <span class="label">Teen (12–17)</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill death" style="width:12.5%"></div>
+                                </div>
+                                <span class="pct">2,401</span>
+                            </div>
+                            <div class="bar-item">
+                                <span class="label">Adult (18–44)</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill white" style="width:39.9%"></div>
+                                </div>
+                                <span class="pct">7,665</span>
+                            </div>
+                            <div class="bar-item">
+                                <span class="label">Middle (45–59)</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill white" style="width:10.8%"></div>
+                                </div>
+                                <span class="pct">2,070</span>
+                            </div>
+                            <div class="bar-item">
+                                <span class="label">Elderly (60+)</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill white" style="width:8.7%"></div>
+                                </div>
+                                <span class="pct">1,673</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="chart-box">
-                    <h3>Embryo Destruction Detail</h3>
-                    <div style="text-align:center;padding:20px 0;">
-                        <div style="font-size:3.2em;font-weight:700;color:var(--death);line-height:1;">5,000+</div>
-                        <div style="font-size:0.85em;color:var(--text-muted);margin:6px 0 16px;text-transform:uppercase;letter-spacing:0.04em;">
-                            Embryos Lost
+
+                <h3 style="color:var(--text-secondary);font-size:0.75em;text-transform:uppercase;letter-spacing:0.06em;margin:20px 0 12px;font-family:'Fira Code',monospace;">
+                    Female Victims Detail
+                </h3>
+                <table class="evidence-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Age Range</th>
+                            <th>Total</th>
+                            <th>% of Female Victims</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Girls</td>
+                            <td>Under 18</td>
+                            <td class="num">7,801</td>
+                            <td class="num">40.6%</td>
+                        </tr>
+                        <tr>
+                            <td>Women (reproductive age)</td>
+                            <td>18–59</td>
+                            <td class="num">9,735</td>
+                            <td class="num">50.7%</td>
+                        </tr>
+                        <tr>
+                            <td>Elderly Women</td>
+                            <td>60+</td>
+                            <td class="num">1,673</td>
+                            <td class="num">8.7%</td>
+                        </tr>
+                        <tr class="total">
+                            <td>Total Female</td>
+                            <td>All ages</td>
+                            <td class="num">19,209</td>
+                            <td class="num">100%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ═══ SECTION: HEALTHCARE DESTRUCTION ═══ -->
+        <div class="evidence-file fade-in">
+            <div class="file-header">
+                <span class="file-number">EXHIBIT D</span>
+                <h2>Healthcare Under Attack — <span class="red-accent">Infrastructure Analysis</span></h2>
+                <span class="file-tag">verified</span>
+            </div>
+            <div class="file-body">
+                <p>
+                    Gaza's healthcare system has been systematically dismantled. Of <strong>36 hospitals</strong> operating
+                    before the conflict, only <strong>10 (28%) remain functional</strong> — and those at severely reduced
+                    capacity. <strong>1,722 healthcare workers</strong> have been killed, crippling the system's ability
+                    to respond to the overwhelming number of casualties.
+                </p>
+
+                <!-- Chart 6: Hospital Status Donut + Healthcare Workers -->
+                <div class="chart-grid">
+                    <div class="chart-box">
+                        <h3>Chart 6 ∥ Hospital Status — 36 Pre-War Hospitals</h3>
+                        <div class="chart-container short">
+                            <canvas id="hospitalChart"></canvas>
                         </div>
-                        <div style="font-size:0.8em;color:var(--text-muted);text-align:left;line-height:1.7;">
-                            The destruction of <strong style="color:var(--text);">9 IVF clinics</strong> and their
-                            cryopreservation banks has resulted in the loss of thousands of frozen embryos — 
-                            representing not just failed treatments but the annihilation of potential life,
-                            of families' hopes for children, and of the reproductive future for countless families.
+                    </div>
+                    <div class="chart-box">
+                        <h3>Healthcare Workers Killed — 1,722</h3>
+                        <div style="text-align:center;padding:20px 0;">
+                            <div style="font-family:'Fira Code',monospace;font-size:3.6em;font-weight:700;color:var(--death);line-height:1;">1,722</div>
+                            <div style="font-size:0.7em;color:var(--text-muted);margin-top:6px;text-transform:uppercase;letter-spacing:0.06em;">
+                                Healthcare Workers Killed
+                            </div>
+                            <div class="worker-breakdown">
+                                <div class="worker-row">
+                                    <span class="role">Doctors</span>
+                                    <span class="count">764</span>
+                                </div>
+                                <div class="worker-row">
+                                    <span class="role">Nurses</span>
+                                    <span class="count">528</span>
+                                </div>
+                                <div class="worker-row">
+                                    <span class="role">Paramedics</span>
+                                    <span class="count">312</span>
+                                </div>
+                                <div class="worker-row">
+                                    <span class="role">Other Staff</span>
+                                    <span class="count">118</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="color:var(--text-secondary);font-size:0.75em;text-transform:uppercase;letter-spacing:0.06em;margin:20px 0 12px;font-family:'Fira Code',monospace;">
+                    Infrastructure Destruction — Damage Assessment
+                </h3>
+                <div class="bar-group">
+                    <div class="bar-item">
+                        <span class="label">Housing</span>
+                        <div class="bar-track">
+                            <div class="bar-fill white" style="width:70%"></div>
+                        </div>
+                        <span class="pct">70%</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="label">Healthcare</span>
+                        <div class="bar-track">
+                            <div class="bar-fill death" style="width:72%"></div>
+                        </div>
+                        <span class="pct">72%</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="label">Schools</span>
+                        <div class="bar-track">
+                            <div class="bar-fill white" style="width:85%"></div>
+                        </div>
+                        <span class="pct">85%</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="label">Water Systems</span>
+                        <div class="bar-track">
+                            <div class="bar-fill white" style="width:80%"></div>
+                        </div>
+                        <span class="pct">80%</span>
+                    </div>
+                </div>
+
+                <div class="evidence-note red-note">
+                    <p><strong>Finding:</strong> The destruction of healthcare infrastructure has had a direct and devastating impact on maternal and child health. With 72% of healthcare facilities damaged or destroyed, pregnant women, newborns, and children have lost access to essential medical care.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ SECTION: MATERNAL HEALTH CRISIS ═══ -->
+        <div class="evidence-file fade-in">
+            <div class="file-header">
+                <span class="file-number">EXHIBIT E</span>
+                <h2>Maternal Health — <span class="red-accent">Crisis Assessment</span></h2>
+                <span class="file-tag">reported</span>
+            </div>
+            <div class="file-body">
+                <p>
+                    The war has created an unprecedented maternal health catastrophe in Gaza. With the healthcare system
+                    in ruins and <strong>1,722 medical workers killed</strong>, pregnant women face impossible choices.
+                    The data reveals a devastating toll on mothers, babies, and the infrastructure of life itself.
+                </p>
+
+                <div class="health-metrics">
+                    <div class="health-metric">
+                        <div class="num">155,000</div>
+                        <div class="label">Pregnant Women Denied Care</div>
+                    </div>
+                    <div class="health-metric">
+                        <div class="num">3×</div>
+                        <div class="label">Increase in Maternal Deaths</div>
+                    </div>
+                    <div class="health-metric">
+                        <div class="num">5,000+</div>
+                        <div class="label">Embryos Destroyed in IVF Banks</div>
+                    </div>
+                    <div class="health-metric">
+                        <div class="num">9</div>
+                        <div class="label">IVF Clinics Destroyed</div>
+                    </div>
+                </div>
+
+                <div class="chart-grid">
+                    <div class="chart-box">
+                        <h3>Maternal Health — Pre/Post Conflict</h3>
+                        <div style="text-align:center;padding:20px 0;">
+                            <div style="font-size:0.85em;color:var(--text-muted);margin-bottom:20px;">
+                                Before the war, Gaza had one of the region's highest maternal mortality rates — now it has worsened by 3×.
+                            </div>
+                            <div class="maternal-stats">
+                                <div class="maternal-stat">
+                                    <div class="num">36</div>
+                                    <div class="label">Pre-War Hospitals</div>
+                                </div>
+                                <div class="maternal-stat">
+                                    <div class="num" style="color:var(--death);">10</div>
+                                    <div class="label" style="color:var(--text-muted);">Functional Hospitals</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-box">
+                        <h3>Embryo Destruction Detail</h3>
+                        <div style="text-align:center;padding:20px 0;">
+                            <div style="font-family:'Fira Code',monospace;font-size:3em;font-weight:700;color:var(--death);line-height:1;">5,000+</div>
+                            <div style="font-size:0.75em;color:var(--text-muted);margin:8px 0 16px;text-transform:uppercase;letter-spacing:0.06em;">
+                                Embryos Lost
+                            </div>
+                            <div style="font-size:0.8em;color:var(--text-muted);text-align:left;line-height:1.8;">
+                                The destruction of <strong style="color:var(--accent-white);">9 IVF clinics</strong> and their
+                                cryopreservation banks has resulted in the loss of thousands of frozen embryos —
+                                representing not just failed treatments but the annihilation of potential life,
+                                of families' hopes for children, and of the reproductive future for countless families.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ═══ SECTION 10: MOH vs LANCET COMPARISON (CHART 8) ═══ -->
-        <div class="card fade-in">
-            <h2>MoH vs. Lancet — 34.7% Higher</h2>
-            <p style="color:var(--text-muted);margin-bottom:16px;">
-                The <strong>60,199 identified victims</strong> documented by the Gaza Ministry of Health represents
-                a verified, name-by-name count. However, a <strong>Lancet</strong> study published in January 2025
-                estimated the true number of excess violent deaths at <strong>75,200+</strong> — a figure
-                <strong>34.7% higher</strong>. The discrepancy is largely driven by an estimated <strong>10,000+ people</strong>
-                still buried under rubble who have not been recovered or identified.
-            </p>
-
-            <!-- Chart 8: MoH vs Lancet Comparison -->
-            <div class="chart-container" style="height:260px;">
-                <canvas id="lancetChart"></canvas>
+        <!-- ═══ SECTION: MoH vs LANCET COMPARISON (CHART 8) ═══ -->
+        <div class="evidence-file fade-in">
+            <div class="file-header">
+                <span class="file-number">EXHIBIT F</span>
+                <h2>MoH vs. Lancet — <span class="red-accent">34.7% Higher</span></h2>
+                <span class="file-tag">estimated</span>
             </div>
+            <div class="file-body">
+                <p>
+                    The <strong>60,199 identified victims</strong> documented by the Gaza Ministry of Health represents
+                    a verified, name-by-name count. However, a <strong>The Lancet</strong> study published in January 2025
+                    estimated the true number of excess violent deaths at <strong>75,200+</strong> — a figure
+                    <strong>34.7% higher</strong>. The discrepancy is largely driven by an estimated <strong>10,000+ people</strong>
+                    still buried under rubble who have not been recovered or identified.
+                </p>
 
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
-                <div class="big-block" style="margin:0;border-left:4px solid var(--accent);">
-                    <div class="number" style="font-size:2.2em;color:var(--accent);">60,199</div>
-                    <div class="label" style="font-size:0.85em;color:var(--text-muted);">MoH Identified</div>
-                    <div class="sub" style="font-size:0.75em;color:var(--text-muted);">Verified name-by-name count</div>
+                <!-- Chart 8: MoH vs Lancet Comparison -->
+                <h3 style="color:var(--text-secondary);font-size:0.75em;text-transform:uppercase;letter-spacing:0.06em;margin:16px 0 12px;font-family:'Fira Code',monospace;">
+                    Chart 8 ∥ Verified vs. Estimated Death Toll
+                </h3>
+                <div class="chart-container" style="height:260px;">
+                    <canvas id="lancetChart"></canvas>
                 </div>
-                <div class="big-block" style="margin:0;border-left:4px solid var(--death);">
-                    <div class="number" style="font-size:2.2em;">75,200+</div>
-                    <div class="label" style="font-size:0.85em;color:var(--text-muted);">Lancet Estimate</div>
-                    <div class="sub" style="font-size:0.75em;color:var(--text-muted);">34.7% higher — including unrecovered bodies</div>
-                </div>
-            </div>
 
-            <div class="note-box" style="margin-top:16px;">
-                <p><strong>Methodological note:</strong> The Lancet estimate uses statistical modeling based on
-                multiple data sources including hospital reports, burial records, media reports, and morgue counts.
-                The 10,000+ missing under rubble represent victims who died but whose bodies could not be recovered
-                due to ongoing hostilities, lack of heavy equipment, and the destruction of civil defense infrastructure.
-                The true toll likely falls somewhere between these two figures.</p>
+                <div class="comparison-row">
+                    <div class="comparison-card moh-side">
+                        <div class="number moh">60,199</div>
+                        <div class="label">MoH Identified Count</div>
+                        <div class="sub">Verified name-by-name</div>
+                    </div>
+                    <div class="comparison-card lancet-side">
+                        <div class="number lancet">75,200+</div>
+                        <div class="label">Lancet Estimate</div>
+                        <div class="sub">34.7% higher — including unrecovered bodies</div>
+                    </div>
+                </div>
+
+                <div class="evidence-note red-note">
+                    <p><strong>Methodological note:</strong> The Lancet estimate uses statistical modeling based on
+                    multiple data sources including hospital reports, burial records, media reports, and morgue counts.
+                    The 10,000+ missing under rubble represent victims who died but whose bodies could not be recovered
+                    due to ongoing hostilities, lack of heavy equipment, and the destruction of civil defense infrastructure.
+                    The true toll likely falls somewhere between these two figures.</p>
+                </div>
             </div>
         </div>
 
-        <!-- ═══ SECTION 11: DATA SOURCES & METHODOLOGY ═══ -->
-        <div class="card fade-in">
-            <h2>Data Sources &amp; Methodology</h2>
-            <div class="methodology">
-                <p><strong>Data Collection:</strong> The Gaza Ministry of Health, in coordination with the Palestinian
-                Ministry of Health in Ramallah, maintains a detailed registry of all identified victims. Each entry
-                includes name, age, sex, and ID number, cross-referenced with hospital admission records, burial
-                permits, and family testimonies.</p>
-                <p><strong>Confidence Levels:</strong></p>
-                <ul>
-                    <li><span class="confidence-badge verified">Verified</span> — Confirmed by multiple authoritative sources including UN, WHO, and independent researchers</li>
-                    <li><span class="confidence-badge reported">Reported</span> — Reported by reliable sources but requiring additional cross-verification</li>
-                    <li><span class="confidence-badge estimated">Estimated</span> — Statistical estimates based on available data and modeling</li>
-                </ul>
-                <p><strong>Last Updated:</strong> May 8, 2026</p>
+        <!-- ═══ SECTION: DATA SOURCES & METHODOLOGY ═══ -->
+        <div class="evidence-file fade-in">
+            <div class="file-header">
+                <span class="file-number">EXHIBIT G</span>
+                <h2>Data Sources &amp; <span class="red-accent">Methodology</span></h2>
+                <span class="file-tag">archive</span>
             </div>
+            <div class="file-body">
+                <div class="methodology">
+                    <p><strong>Data Collection:</strong> The Gaza Ministry of Health, in coordination with the Palestinian
+                    Ministry of Health in Ramallah, maintains a detailed registry of all identified victims. Each entry
+                    includes name, age, sex, and ID number, cross-referenced with hospital admission records, burial
+                    permits, and family testimonies.</p>
+                    <p><strong>Confidence Levels:</strong></p>
+                    <ul>
+                        <li><span class="confidence-badge verified">Verified</span> — Confirmed by multiple authoritative sources including UN, WHO, and independent researchers</li>
+                        <li><span class="confidence-badge reported">Reported</span> — Reported by reliable sources but requiring additional cross-verification</li>
+                        <li><span class="confidence-badge estimated">Estimated</span> — Statistical estimates based on available data and modeling</li>
+                    </ul>
+                    <p><strong>Last Updated:</strong> May 8, 2026</p>
+                </div>
 
-            <h3 style="margin-top:24px;">Source Organizations</h3>
-            <div class="source-grid">
-                <div class="source-item">
-                    <strong>TechForPalestine</strong>
-                    <small>Data aggregation, verification, and open-source intelligence</small>
+                <h3 style="color:var(--text-secondary);font-size:0.75em;text-transform:uppercase;letter-spacing:0.06em;margin:24px 0 12px;font-family:'Fira Code',monospace;">
+                    Source Organizations
+                </h3>
+                <div class="source-grid">
+                    <div class="source-item">
+                        <strong>TechForPalestine</strong>
+                        <small>Data aggregation, verification, and open-source intelligence</small>
+                    </div>
+                    <div class="source-item">
+                        <strong>Gaza Ministry of Health</strong>
+                        <small>Primary source — identified victim registry with full demographic data</small>
+                    </div>
+                    <div class="source-item">
+                        <strong>The Lancet</strong>
+                        <small>Statistical estimate of excess violent deaths published January 2025</small>
+                    </div>
+                    <div class="source-item">
+                        <strong>World Health Organization (WHO)</strong>
+                        <small>Hospital functionality tracking, healthcare worker casualties</small>
+                    </div>
+                    <div class="source-item">
+                        <strong>UN OCHA</strong>
+                        <small>Humanitarian situation reports, infrastructure damage assessment</small>
+                    </div>
+                    <div class="source-item">
+                        <strong>UNICEF</strong>
+                        <small>Child protection monitoring, maternal health impact assessments</small>
+                    </div>
+                    <div class="source-item">
+                        <strong>Francesca Albanese</strong>
+                        <small>UN Special Rapporteur on the occupied Palestinian territories — testimony and reports</small>
+                    </div>
+                    <div class="source-item">
+                        <strong>Human Rights Watch / Amnesty International</strong>
+                        <small>Independent documentation and verification of conflict-related deaths</small>
+                    </div>
                 </div>
-                <div class="source-item">
-                    <strong>Gaza Ministry of Health</strong>
-                    <small>Primary source — identified victim registry with full demographic data</small>
-                </div>
-                <div class="source-item">
-                    <strong>The Lancet</strong>
-                    <small>Statistical estimate of excess violent deaths published January 2025</small>
-                </div>
-                <div class="source-item">
-                    <strong>World Health Organization (WHO)</strong>
-                    <small>Hospital functionality tracking, healthcare worker casualties</small>
-                </div>
-                <div class="source-item">
-                    <strong>UN OCHA</strong>
-                    <small>Humanitarian situation reports, infrastructure damage assessment</small>
-                </div>
-                <div class="source-item">
-                    <strong>UNICEF</strong>
-                    <small>Child protection monitoring, maternal health impact assessments</small>
-                </div>
-                <div class="source-item">
-                    <strong>Francesca Albanese</strong>
-                    <small>UN Special Rapporteur on the occupied Palestinian territories — testimony and reports</small>
-                </div>
-                <div class="source-item">
-                    <strong>Human Rights Watch / Amnesty International</strong>
-                    <small>Independent documentation and verification of conflict-related deaths</small>
-                </div>
-            </div>
 
-            <div class="note-box" style="margin-top:16px;">
-                <p><strong>What this report does not include:</strong> This report focuses exclusively on identified
-                victims in Gaza with full demographic documentation. It does not include the estimated 10,000+
-                additional victims still buried under rubble and not yet recovered. It does not include victims
-                in the West Bank, where over 112 children have been killed since October 2023. The true total
-                of Palestinian lives lost is higher than what is presented here.</p>
+                <div class="evidence-note">
+                    <p><strong>What this report does not include:</strong> This report focuses exclusively on identified
+                    victims in Gaza with full demographic documentation. It does not include the estimated 10,000+
+                    additional victims still buried under rubble and not yet recovered. It does not include victims
+                    in the West Bank, where over 112 children have been killed since October 2023. The true total
+                    of Palestinian lives lost is higher than what is presented here.</p>
+                </div>
             </div>
         </div>
 
     </div>
 
     <!-- ═══ FOOTER ═══ -->
-    <footer class="site-footer">
-        <p>May 10th Project <span class="dot">•</span> Palestine: The Human Cost</p>
-        <p>Mother's Day Conflict Death Toll Study — Gaza Focus</p>
-        <p style="margin-top:6px;font-size:0.75em;color:var(--text-on-dark-muted);opacity:0.6;">
-            In memory of every mother and child lost — may their names never be forgotten
-        </p>
+    <footer class="evidence-footer">
+        <p>May 10th Project <span class="divider">∥</span> Palestine: The Evidence</p>
+        <p>Forensic Investigation of Identified Deaths in Gaza <span class="divider">∥</span> Mother's Day Study</p>
+        <p class="memorial">In memory of every mother and child lost — may their names never be forgotten</p>
     </footer>
 
     <script>
-        // ══ Colors — Index of Repression Palette ══
+        // ══ FORENSIC COLOR PALETTE — Evidence Design System ══
+        // No decorative colors. Every pixel serves the evidence.
         const COLORS = {
-            blue:       '#9D174D',
-            blueLight:  '#EC4899',
-            bluePale:   '#FBCFE8',
             death:      '#DC2626',
-            deathStrong:'#DC2626',
-            purple:     '#7C3AED',
-            amber:      '#F59E0B',
-            gray:       '#9D174D',
-            grayLight:  '#EC4899',
-            white:      '#FFFFFF',
-            text:       '#831843',
-            textMuted:  '#9D174D',
+            deathDim:   'rgba(220, 38, 38, 0.35)',
+            deathPale:  'rgba(220, 38, 38, 0.15)',
+            white:      '#FAFAFA',
+            whiteDim:   'rgba(250, 250, 250, 0.3)',
+            gray:       '#666666',
+            grayDim:    'rgba(102, 102, 102, 0.3)',
+            textSec:    '#A0A0A0',
+            bg:         '#0A0A0A',
+            surface:    '#1A1A1A',
         };
 
         const chartDefaults = {
@@ -1437,78 +1593,125 @@
                 legend: {
                     labels: {
                         font: { family: "'Fira Sans', sans-serif", size: 11 },
-                        color: COLORS.textMuted,
-                        padding: 12,
+                        color: COLORS.textSec,
+                        padding: 14,
                         usePointStyle: true,
                         pointStyle: 'circle',
                     }
+                },
+                tooltip: {
+                    backgroundColor: '#1A1A1A',
+                    titleFont: { family: "'Fira Sans', sans-serif", size: 12, weight: '600' },
+                    bodyFont: { family: "'Fira Code', monospace", size: 11 },
+                    padding: 12,
+                    borderColor: '#333333',
+                    borderWidth: 1,
+                    cornerRadius: 0,
+                    titleColor: '#FAFAFA',
+                    bodyColor: '#A0A0A0',
+                    boxPadding: 6,
+                    usePointStyle: true,
                 }
             }
         };
 
-        // ═══ CHART 1: AGE DISTRIBUTION — ALL 11 GROUPS ═══
+        // ═══ CHART 1: AGE DISTRIBUTION — ALL 11 GROUPS (HORIZONTAL BAR) ═══
         new Chart(document.getElementById('ageDistChart'), {
             type: 'bar',
             data: {
-                labels: ['Infant\n0–11mo', 'Toddler\n1–2', 'Child\n3–5', 'Child\n6–11', 'Teen\n12–14', 'Teen\n15–17', 'Adult\n18–29', 'Adult\n30–44', 'Middle\n45–59', 'Elderly\n60–74', 'Senior\n75+'],
+                labels: ['Infant\n0–11mo', 'Toddler\n1–2', 'Child\n3–5', 'Child\n6–11', 'Teen\n12–14', 'Teen\n15–17', 'Young Adult\n18–29', 'Adult\n30–44', 'Middle\n45–59', 'Elderly\n60–74', 'Senior\n75+'],
                 datasets: [{
-                    label: 'Total Killed',
+                    label: 'Killed',
                     data: [968, 1964, 2819, 5759, 3314, 3633, 15649, 15150, 6514, 3437, 992],
                     backgroundColor: [
-                        COLORS.death, COLORS.deathStrong, COLORS.deathStrong,
-                        COLORS.bluePale, COLORS.blueLight, COLORS.blueLight,
-                        COLORS.blue, COLORS.blue, COLORS.blue,
-                        COLORS.gray, COLORS.grayLight
+                        COLORS.death, COLORS.death, COLORS.death, COLORS.death,
+                        COLORS.deathDim, COLORS.deathDim,
+                        COLORS.whiteDim, COLORS.whiteDim, COLORS.whiteDim,
+                        COLORS.grayDim, COLORS.grayDim
                     ],
-                    borderRadius: 2,
+                    borderRadius: 0,
                     borderSkipped: false,
+                    hoverBackgroundColor: [
+                        COLORS.death, COLORS.death, COLORS.death, COLORS.death,
+                        COLORS.death, COLORS.death,
+                        COLORS.whiteDim, COLORS.whiteDim, COLORS.whiteDim,
+                        COLORS.grayDim, COLORS.grayDim
+                    ],
                 }]
             },
             options: {
                 ...chartDefaults,
+                indexAxis: 'y',
                 plugins: {
                     ...chartDefaults.plugins,
                     legend: { display: false },
                     tooltip: {
+                        ...chartDefaults.plugins.tooltip,
                         callbacks: {
                             label: function(ctx) {
-                                return ctx.parsed.y.toLocaleString() + ' killed';
+                                const v = ctx.parsed.x;
+                                const total = 60199;
+                                const pct = ((v / total) * 100).toFixed(1);
+                                return v.toLocaleString() + ' killed (' + pct + '% of total)';
                             }
                         }
                     }
                 },
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { color: 'rgba(0,0,0,0.08)' },
-                        ticks: { callback: v => v.toLocaleString(), color: COLORS.textMuted }
-                    },
                     x: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255,255,255,0.04)' },
+                        ticks: {
+                            callback: v => v.toLocaleString(),
+                            color: COLORS.gray,
+                            font: { family: "'Fira Code', monospace", size: 9 }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Victims',
+                            color: COLORS.gray,
+                            font: { family: "'Fira Sans', sans-serif", size: 9 }
+                        }
+                    },
+                    y: {
                         grid: { display: false },
-                        ticks: { font: { size: 9 }, color: COLORS.textMuted }
+                        ticks: {
+                            font: { family: "'Fira Sans', sans-serif", size: 9, weight: '500' },
+                            color: COLORS.textSec
+                        }
                     }
                 }
             }
         });
 
-        // ═══ CHART 2: GENDER SPLIT — PIE ═══
+        // ═══ CHART 2: GENDER SPLIT — DONUT ═══
         new Chart(document.getElementById('genderPieChart'), {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 labels: ['Male — 40,990 (68.1%)', 'Female — 19,209 (31.9%)'],
                 datasets: [{
                     data: [40990, 19209],
-                    backgroundColor: [COLORS.blue, COLORS.death],
-                    borderColor: COLORS.white,
+                    backgroundColor: [COLORS.grayDim, COLORS.death],
+                    borderColor: COLORS.bg,
                     borderWidth: 3,
+                    hoverOffset: 12,
                 }]
             },
             options: {
                 ...chartDefaults,
+                cutout: '55%',
                 plugins: {
                     ...chartDefaults.plugins,
-                    legend: { position: 'bottom', labels: { ...chartDefaults.plugins.legend.labels, font: { size: 11 } } },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            ...chartDefaults.plugins.legend.labels,
+                            font: { family: "'Fira Sans', sans-serif", size: 11 },
+                            padding: 16,
+                        }
+                    },
                     tooltip: {
+                        ...chartDefaults.plugins.tooltip,
                         callbacks: {
                             label: function(ctx) {
                                 const total = ctx.dataset.data.reduce((a,b) => a + b, 0);
@@ -1521,7 +1724,7 @@
             }
         });
 
-        // ═══ CHART 3: CHILDREN BY AGE — HORIZONTAL BAR ═══
+        // ═══ CHART 3: CHILDREN BY AGE — VERTICAL BAR ═══
         new Chart(document.getElementById('childrenAgeHorizChart'), {
             type: 'bar',
             data: {
@@ -1531,40 +1734,63 @@
                     data: [968, 1964, 2819, 5759, 3314, 3633],
                     backgroundColor: [
                         COLORS.death,
-                        COLORS.deathStrong,
-                        COLORS.bluePale,
-                        COLORS.blueLight,
-                        COLORS.blue,
-                        COLORS.gray,
+                        COLORS.death,
+                        COLORS.deathDim,
+                        COLORS.deathDim,
+                        COLORS.whiteDim,
+                        COLORS.whiteDim,
                     ],
-                    borderRadius: 2,
+                    borderRadius: 0,
                     borderSkipped: false,
+                    hoverBackgroundColor: [
+                        COLORS.death,
+                        COLORS.death,
+                        COLORS.death,
+                        COLORS.death,
+                        COLORS.whiteDim,
+                        COLORS.whiteDim,
+                    ],
                 }]
             },
             options: {
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
+                ...chartDefaults,
                 plugins: {
+                    ...chartDefaults.plugins,
                     legend: { display: false },
                     tooltip: {
+                        ...chartDefaults.plugins.tooltip,
                         callbacks: {
                             label: function(ctx) {
-                                return ctx.parsed.x.toLocaleString() + ' children';
+                                const v = ctx.parsed.y;
+                                const childrenTotal = 18457;
+                                const pct = ((v / childrenTotal) * 100).toFixed(1);
+                                return v.toLocaleString() + ' children (' + pct + '% of child victims)';
                             }
                         }
                     }
                 },
                 scales: {
-                    x: {
-                        beginAtZero: true,
-                        grid: { color: 'rgba(0,0,0,0.08)' },
-                        ticks: { callback: v => v.toLocaleString(), color: COLORS.textMuted },
-                        title: { display: true, text: 'Number of Children', color: COLORS.textMuted, font: { size: 10 } }
-                    },
                     y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255,255,255,0.04)' },
+                        ticks: {
+                            callback: v => v.toLocaleString(),
+                            color: COLORS.gray,
+                            font: { family: "'Fira Code', monospace", size: 9 }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Children',
+                            color: COLORS.gray,
+                            font: { family: "'Fira Sans', sans-serif", size: 9 }
+                        }
+                    },
+                    x: {
                         grid: { display: false },
-                        ticks: { font: { size: 11, weight: '600' }, color: COLORS.textMuted }
+                        ticks: {
+                            font: { family: "'Fira Sans', sans-serif", size: 9, weight: '500' },
+                            color: COLORS.textSec
+                        }
                     }
                 }
             }
@@ -1577,17 +1803,26 @@
                 labels: ['Girls (<18) — 7,801', 'Women (18–59) — 9,735', 'Elderly Women (60+) — 1,673'],
                 datasets: [{
                     data: [7801, 9735, 1673],
-                    backgroundColor: [COLORS.death, COLORS.blueLight, COLORS.gray],
-                    borderColor: COLORS.white,
+                    backgroundColor: [COLORS.death, COLORS.deathDim, COLORS.grayDim],
+                    borderColor: COLORS.bg,
                     borderWidth: 3,
+                    hoverOffset: 12,
                 }]
             },
             options: {
                 ...chartDefaults,
                 plugins: {
                     ...chartDefaults.plugins,
-                    legend: { position: 'bottom', labels: { ...chartDefaults.plugins.legend.labels, font: { size: 10 } } },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            ...chartDefaults.plugins.legend.labels,
+                            font: { family: "'Fira Sans', sans-serif", size: 10 },
+                            padding: 14,
+                        }
+                    },
                     tooltip: {
+                        ...chartDefaults.plugins.tooltip,
                         callbacks: {
                             label: function(ctx) {
                                 const total = ctx.dataset.data.reduce((a,b) => a + b, 0);
@@ -1607,10 +1842,10 @@
                 labels: ['Destroyed / Non-Functional (26)', 'Functional — Reduced Capacity (10)'],
                 datasets: [{
                     data: [26, 10],
-                    backgroundColor: [COLORS.death, COLORS.blue],
-                    borderColor: COLORS.white,
+                    backgroundColor: [COLORS.death, COLORS.whiteDim],
+                    borderColor: COLORS.bg,
                     borderWidth: 3,
-                    hoverOffset: 8,
+                    hoverOffset: 12,
                 }]
             },
             options: {
@@ -1618,8 +1853,16 @@
                 cutout: '62%',
                 plugins: {
                     ...chartDefaults.plugins,
-                    legend: { position: 'bottom', labels: { ...chartDefaults.plugins.legend.labels, font: { size: 10 } } },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            ...chartDefaults.plugins.legend.labels,
+                            font: { family: "'Fira Sans', sans-serif", size: 10 },
+                            padding: 14,
+                        }
+                    },
                     tooltip: {
+                        ...chartDefaults.plugins.tooltip,
                         callbacks: {
                             label: function(ctx) {
                                 const total = ctx.dataset.data.reduce((a,b) => a + b, 0);
@@ -1640,9 +1883,10 @@
                 datasets: [{
                     label: 'Excess Violent Deaths',
                     data: [60199, 75200],
-                    backgroundColor: [COLORS.blue, COLORS.death],
-                    borderRadius: 2,
+                    backgroundColor: [COLORS.whiteDim, COLORS.death],
+                    borderRadius: 0,
                     borderSkipped: false,
+                    hoverBackgroundColor: [COLORS.whiteDim, COLORS.death],
                 }]
             },
             options: {
@@ -1651,9 +1895,15 @@
                     ...chartDefaults.plugins,
                     legend: { display: false },
                     tooltip: {
+                        ...chartDefaults.plugins.tooltip,
                         callbacks: {
                             label: function(ctx) {
-                                return ctx.parsed.y.toLocaleString() + ' deaths';
+                                const v = ctx.parsed.y;
+                                if (ctx.dataIndex === 1) {
+                                    const diff = ((75200 - 60199) / 60199 * 100).toFixed(1);
+                                    return v.toLocaleString() + ' deaths (' + diff + '% higher than MoH count)';
+                                }
+                                return v.toLocaleString() + ' deaths (verified)';
                             }
                         }
                     }
@@ -1661,13 +1911,25 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        grid: { color: 'rgba(0,0,0,0.08)' },
-                        ticks: { callback: v => v.toLocaleString(), color: COLORS.textMuted },
-                        title: { display: true, text: 'Number of Deaths', color: COLORS.textMuted, font: { size: 10 } }
+                        grid: { color: 'rgba(255,255,255,0.04)' },
+                        ticks: {
+                            callback: v => v.toLocaleString(),
+                            color: COLORS.gray,
+                            font: { family: "'Fira Code', monospace", size: 9 }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Deaths',
+                            color: COLORS.gray,
+                            font: { family: "'Fira Sans', sans-serif", size: 9 }
+                        }
                     },
                     x: {
                         grid: { display: false },
-                        ticks: { font: { size: 11, weight: '600' }, color: COLORS.textMuted }
+                        ticks: {
+                            font: { family: "'Fira Sans', sans-serif", size: 10, weight: '500' },
+                            color: COLORS.textSec
+                        }
                     }
                 }
             }
@@ -1682,7 +1944,7 @@
                         entry.target.classList.add('visible');
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.08 });
             els.forEach(el => obs.observe(el));
             setTimeout(() => {
                 els.forEach(el => {
