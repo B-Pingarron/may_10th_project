@@ -1,49 +1,74 @@
-# May 10th Project - Mother's Day Conflict Death Toll Study
+# Palestine: The Human Cost
 
-## Overview
-A comprehensive data study analyzing death toll figures across current world conflicts, with a special focus on mothers and children victims. This project was created for Mother's Day 2026 to honor the families affected by conflicts worldwide.
+**Live:** https://b-pingarron.github.io/may_10th_project/
 
-## Project Structure
-```
-may_10th_project/
-├── data/
-│   ├── conflicts/          # Conflict-specific data files
-│   ├── sources/            # Source documentation
-│   └── schema/             # Data schemas
-├── analysis/               # Specific studies
-│   └── mothers_day_2026/   # Mother's Day focused analysis
-├── outputs/                # Generated outputs
-│   └── static_report.html  # Main deliverable
-└── docs/                   # Documentation
-```
+## What This Is
 
-## Key Features
-- **Multi-source transparency** with confidence levels (verified/reported/estimated)
-- **Mother's Day focus** on children and mothers victims
-- **Interactive visualizations** using Chart.js
-- **Future-ready architecture** for dashboard development
+A forensic evidence file documenting 60,199 people killed in Gaza since October 7, 2023. Built with data from TechForPalestine's individual-level victim database — names, ages, genders, dates of birth.
+
+This is not a report. This is evidence.
 
 ## Data Sources
-- **Primary Pillar:** Francesca Albanese, UN Special Rapporteur
-- **UN Sources:** OCHA, WHO, UNRWA, Commission of Inquiry
-- **Government Sources:** Gaza Ministry of Health, Lebanese Ministry of Public Health
-- **Academic Sources:** ACLED, Johns Hopkins, Uppsala University
-- **NGO Sources:** HRW, Amnesty, ICRC, MSF, Save the Children
 
-## Key Findings
-- **17,589+ children killed** across documented conflicts
-- **15.6 million people displaced** globally
-- **11.6 million refugees** in neighboring countries
-- **4 major conflicts** analyzed in detail
+| Source | Records | Format |
+|--------|---------|--------|
+| **TechForPalestine** | 60,199 individual records | CSV, JSON |
+| **Lancet Gaza Mortality Survey** | 75,200+ estimated deaths | Peer-reviewed study |
+| **WHO Health Cluster** | Healthcare infrastructure data | Verified reports |
+| **UN OHCHR** | Maternal health impact | Official UN data |
+| **Gaza Ministry of Health** | Daily casualty figures | Primary source |
 
-## How to View
-Open `outputs/static_report.html` in any web browser to view the interactive report.
+## Key Numbers
 
-## Last Updated
-May 8, 2026
+- **60,199** people identified killed
+- **18,457** children under 18 (30.7%)
+- **968** babies under 1 year old
+- **19,209** women and girls
+- **10** hospitals still functional (from 36)
+- **1,722** healthcare workers killed
+- **75,200+** estimated total deaths (Lancet)
 
-## Future Enhancements
-- Interactive dashboard with filters
-- Real-time data updates
-- Additional conflict coverage
-- Multi-language support
+## How to Use
+
+```bash
+# Download the raw data
+curl -o killed-in-gaza.csv https://data.techforpalestine.org/api/v3/killed-in-gaza.csv
+
+# Or use the API
+curl https://data.techforpalestine.org/api/v3/killed-in-gaza.min.json
+```
+
+## Project Structure
+
+```
+may_10th_project/
+├── index.html                    # Main evidence file
+├── data/
+│   └── techforpalestine/         # Raw datasets
+│       ├── killed-in-gaza.csv
+│       ├── casualties_daily.json
+│       ├── infrastructure-damaged.json
+│       └── press-killed.json
+├── design-extract-output/        # Index of Repression extraction
+├── .opencode/skills/ui-ux-pro-max/  # Design intelligence
+├── docs/                         # Design specs and plans
+└── analysis/                     # Mother's Day focused data
+```
+
+## Design Philosophy
+
+Following Forensic Architecture's methodology:
+- **Every pixel serves the evidence**
+- **No decorative colors** — black = death, white = evidence, red = violence
+- **Data creates emotional impact** — not sentiment
+- **Interactive exploration** — click, filter, discover
+
+## Credits
+
+- **Data:** TechForPalestine collective
+- **Design guidance:** UI UX Pro Max, Index of Repression
+- **Methodology:** Forensic Architecture
+
+## License
+
+Data sourced from public APIs. Design and analysis original work.
