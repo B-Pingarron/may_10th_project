@@ -61,9 +61,9 @@
         }
 
         .container {
-            max-width: 1120px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
 
         /* ══ FLAG BAR — Top of Document ══ */
@@ -172,7 +172,7 @@
         }
         .finding-item {
             background: var(--surface);
-            padding: 28px 20px;
+            padding: 32px 24px;
             text-align: center;
             position: relative;
             transition: var(--transition);
@@ -313,6 +313,23 @@
         }
         .chart-container.short {
             height: 240px;
+        }
+
+        /* ═══ CHART PAIR — Side-by-Side Charts ═══ */
+        .chart-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 20px 0;
+        }
+        .chart-pair > .chart-box {
+            background: var(--surface);
+            padding: 24px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .chart-pair > .chart-box:hover {
+            border-color: #444;
         }
 
         /* ═══ DATA TABLES — Evidence Ledgers ═══ */
@@ -761,7 +778,7 @@
             background: var(--surface);
             border: 1px solid var(--border);
             margin-bottom: 40px;
-            padding: 16px 20px;
+            padding: 20px 28px;
         }
         .filter-header {
             display: flex;
@@ -858,6 +875,10 @@
         }
 
         /* ═══ RESPONSIVE ═══ */
+        @media (max-width: 1200px) {
+            .container { max-width: 100%; padding: 0 24px; }
+            .chart-pair { grid-template-columns: 1fr; }
+        }
         @media (max-width: 1024px) {
             .findings-row { grid-template-columns: repeat(2, 1fr); }
             .evidence-header h1 { font-size: 2.4em; }
@@ -870,6 +891,7 @@
         @media (max-width: 768px) {
             .findings-row { grid-template-columns: repeat(2, 1fr); }
             .findings-secondary { grid-template-columns: 1fr; }
+            .chart-pair { grid-template-columns: 1fr; }
         }
         @media (max-width: 640px) {
             .evidence-header { padding: 48px 0 24px; }
@@ -1188,29 +1210,94 @@
             </div>
         </div>
 
-        <!-- ═══ SECTION: CHILDREN & BABIES ═══ -->
+        <!-- ═══ SECTION: CHILDREN & WOMEN ═══ -->
         <div class="evidence-file fade-in">
             <div class="file-header">
                 <span class="file-number">EXHIBIT B</span>
-                <h2>Children — <span class="red-accent">18,457 Lost</span></h2>
+                <h2>Children &amp; Women — <span class="red-accent">37,666 Lost</span></h2>
                 <span class="file-tag">verified</span>
             </div>
             <div class="file-body">
                 <p>
-                    Of the <strong>60,199 identified victims, 18,457 (30.7%) are children under 18</strong>.
-                    The majority — <strong>10,656 (57.7%)</strong> are boys and
-                    <strong>7,801 (42.3%)</strong> are girls. The largest single childhood cohort is
-                    children aged 6–11, with <strong>5,759 victims</strong> — nearly one-third of all children killed.
+                    Children and women constitute <strong>37,666 identified victims (62.6%)</strong> — the
+                    overwhelming majority of those killed. Of the <strong>18,457 children</strong>,
+                    <strong>10,656 (57.7%)</strong> are boys and <strong>7,801 (42.3%)</strong> are girls.
+                    Among <strong>19,209 women and girls</strong>, <strong>7,801 (40.6%)</strong> were under 18,
+                    <strong>9,735 (50.7%)</strong> of reproductive age, and <strong>1,673 (8.7%)</strong> were elderly.
                 </p>
 
-                <h3 style="color:var(--text-secondary);font-size:0.75em;text-transform:uppercase;letter-spacing:0.06em;margin:16px 0 12px;font-family:'Fira Code',monospace;">
-                    Chart 3 ∥ Children by Age Group
-                </h3>
-                <div class="chart-container tall">
-                    <canvas id="childrenAgeHorizChart"></canvas>
+                <!-- Chart pair: Children by Age + Women pie -->
+                <div class="chart-pair">
+                    <div class="chart-box">
+                        <h3>Chart 3 ∥ Children by Age Group</h3>
+                        <div class="chart-container tall">
+                            <canvas id="childrenAgeHorizChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-box">
+                        <h3>Chart 4 ∥ Women &amp; Girls by Life Stage</h3>
+                        <div class="chart-container">
+                            <canvas id="womenChart"></canvas>
+                        </div>
+                    </div>
                 </div>
 
                 <h3 style="color:var(--text-secondary);font-size:0.75em;text-transform:uppercase;letter-spacing:0.06em;margin:20px 0 12px;font-family:'Fira Code',monospace;">
+                    Female Victims by Age Group
+                </h3>
+                <div class="bar-group">
+                    <div class="bar-item">
+                        <span class="label">Infant (0–11mo)</span>
+                        <div class="bar-track">
+                            <div class="bar-fill death" style="width:2.3%"></div>
+                        </div>
+                        <span class="pct">450</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="label">Toddler (1–2)</span>
+                        <div class="bar-track">
+                            <div class="bar-fill death" style="width:5.0%"></div>
+                        </div>
+                        <span class="pct">953</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="label">Child (3–11)</span>
+                        <div class="bar-track">
+                            <div class="bar-fill death" style="width:20.8%"></div>
+                        </div>
+                        <span class="pct">3,997</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="label">Teen (12–17)</span>
+                        <div class="bar-track">
+                            <div class="bar-fill death" style="width:12.5%"></div>
+                        </div>
+                        <span class="pct">2,401</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="label">Adult (18–44)</span>
+                        <div class="bar-track">
+                            <div class="bar-fill white" style="width:39.9%"></div>
+                        </div>
+                        <span class="pct">7,665</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="label">Middle (45–59)</span>
+                        <div class="bar-track">
+                            <div class="bar-fill white" style="width:10.8%"></div>
+                        </div>
+                        <span class="pct">2,070</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="label">Elderly (60+)</span>
+                        <div class="bar-track">
+                            <div class="bar-fill white" style="width:8.7%"></div>
+                        </div>
+                        <span class="pct">1,673</span>
+                    </div>
+                </div>
+
+                <h3 style="color:var(--text-secondary);font-size:0.8em;text-transform:uppercase;letter-spacing:0.06em;margin:24px 0 12px;font-family:'Fira Code',monospace;">
                     Children Sub-Totals
                 </h3>
                 <table class="evidence-table">
@@ -1275,121 +1362,8 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
 
-        <!-- ═══ CHILDREN UNDER 3 — EVIDENCE BLOCK ═══ -->
-        <div class="evidence-block red-border fade-in">
-            <div class="number red">2,932</div>
-            <div class="label">Children Under 3 Years Old Killed</div>
-            <div class="sub">Infants under 1 year: <strong style="color:var(--death);">968</strong> &nbsp;·&nbsp; Toddlers 1–2 years: <strong style="color:var(--death);">1,964</strong></div>
-        </div>
-
-        <!-- ═══ BABIES UNDER 1 — HIGHLIGHT (CHART 5) ═══ -->
-        <div class="evidence-highlight fade-in">
-            <div class="big-number">968</div>
-            <div class="big-label">Babies Under 1 Year Old Killed</div>
-            <div class="big-sub">Infants who never saw their first birthday — 1.6% of all identified victims</div>
-            <div class="sub-stats">
-                <div class="sub-stat">
-                    <div class="num">518</div>
-                    <div class="lbl">Boys</div>
-                </div>
-                <div class="sub-stat">
-                    <div class="num">450</div>
-                    <div class="lbl">Girls</div>
-                </div>
-                <div class="sub-stat">
-                    <div class="num death">53.5%</div>
-                    <div class="lbl">Male</div>
-                </div>
-                <div class="sub-stat">
-                    <div class="num death">46.5%</div>
-                    <div class="lbl">Female</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ═══ SECTION: WOMEN & GIRLS ═══ -->
-        <div class="evidence-file fade-in">
-            <div class="file-header">
-                <span class="file-number">EXHIBIT C</span>
-                <h2>Women &amp; Girls — <span class="red-accent">19,209 Killed</span></h2>
-                <span class="file-tag">verified</span>
-            </div>
-            <div class="file-body">
-                <p>
-                    Women and girls constitute <strong>31.9%</strong> of all identified victims.
-                    <strong>7,801 girls (40.6%)</strong> were under 18. <strong>9,735 women (50.7%)</strong>
-                    were of reproductive age (18–59). <strong>1,673 elderly women (8.7%)</strong> were 60 or older.
-                    The data reveals a population killed across every stage of life — from infancy to old age.
-                </p>
-
-                <!-- Chart 4: Women & Girls Breakdown Pie + Progress bars -->
-                <div class="chart-grid">
-                    <div class="chart-box">
-                        <h3>Chart 4 ∥ Women &amp; Girls by Life Stage</h3>
-                        <div class="chart-container">
-                            <canvas id="womenChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="chart-box">
-                        <h3>Female Victims by Age Group</h3>
-                        <div class="bar-group" style="margin-top:16px;">
-                            <div class="bar-item">
-                                <span class="label">Infant (0–11mo)</span>
-                                <div class="bar-track">
-                                    <div class="bar-fill death" style="width:2.3%"></div>
-                                </div>
-                                <span class="pct">450</span>
-                            </div>
-                            <div class="bar-item">
-                                <span class="label">Toddler (1–2)</span>
-                                <div class="bar-track">
-                                    <div class="bar-fill death" style="width:5.0%"></div>
-                                </div>
-                                <span class="pct">953</span>
-                            </div>
-                            <div class="bar-item">
-                                <span class="label">Child (3–11)</span>
-                                <div class="bar-track">
-                                    <div class="bar-fill death" style="width:20.8%"></div>
-                                </div>
-                                <span class="pct">3,997</span>
-                            </div>
-                            <div class="bar-item">
-                                <span class="label">Teen (12–17)</span>
-                                <div class="bar-track">
-                                    <div class="bar-fill death" style="width:12.5%"></div>
-                                </div>
-                                <span class="pct">2,401</span>
-                            </div>
-                            <div class="bar-item">
-                                <span class="label">Adult (18–44)</span>
-                                <div class="bar-track">
-                                    <div class="bar-fill white" style="width:39.9%"></div>
-                                </div>
-                                <span class="pct">7,665</span>
-                            </div>
-                            <div class="bar-item">
-                                <span class="label">Middle (45–59)</span>
-                                <div class="bar-track">
-                                    <div class="bar-fill white" style="width:10.8%"></div>
-                                </div>
-                                <span class="pct">2,070</span>
-                            </div>
-                            <div class="bar-item">
-                                <span class="label">Elderly (60+)</span>
-                                <div class="bar-track">
-                                    <div class="bar-fill white" style="width:8.7%"></div>
-                                </div>
-                                <span class="pct">1,673</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 style="color:var(--text-secondary);font-size:0.75em;text-transform:uppercase;letter-spacing:0.06em;margin:20px 0 12px;font-family:'Fira Code',monospace;">
+                <h3 style="color:var(--text-secondary);font-size:0.8em;text-transform:uppercase;letter-spacing:0.06em;margin:24px 0 12px;font-family:'Fira Code',monospace;">
                     Female Victims Detail
                 </h3>
                 <table class="evidence-table">
@@ -1431,94 +1405,34 @@
             </div>
         </div>
 
-        <!-- ═══ SECTION: HEALTHCARE DESTRUCTION ═══ -->
-        <div class="evidence-file fade-in">
-            <div class="file-header">
-                <span class="file-number">EXHIBIT D</span>
-                <h2>Healthcare Under Attack — <span class="red-accent">Infrastructure Analysis</span></h2>
-                <span class="file-tag">verified</span>
-            </div>
-            <div class="file-body">
-                <p>
-                    Gaza's healthcare system has been systematically dismantled. Of <strong>36 hospitals</strong> operating
-                    before the conflict, only <strong>10 (28%) remain functional</strong> — and those at severely reduced
-                    capacity. <strong>1,722 healthcare workers</strong> have been killed, crippling the system's ability
-                    to respond to the overwhelming number of casualties.
-                </p>
+        <!-- ═══ CHILDREN UNDER 3 — EVIDENCE BLOCK ═══ -->
+        <div class="evidence-block red-border fade-in">
+            <div class="number red">2,932</div>
+            <div class="label">Children Under 3 Years Old Killed</div>
+            <div class="sub">Infants under 1 year: <strong style="color:var(--death);">968</strong> &nbsp;·&nbsp; Toddlers 1–2 years: <strong style="color:var(--death);">1,964</strong></div>
+        </div>
 
-                <!-- Chart 6: Hospital Status Donut + Healthcare Workers -->
-                <div class="chart-grid">
-                    <div class="chart-box">
-                        <h3>Chart 6 ∥ Hospital Status — 36 Pre-War Hospitals</h3>
-                        <div class="chart-container short">
-                            <canvas id="hospitalChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="chart-box">
-                        <h3>Healthcare Workers Killed — 1,722</h3>
-                        <div style="text-align:center;padding:20px 0;">
-                            <div style="font-family:'Fira Code',monospace;font-size:3.6em;font-weight:700;color:var(--death);line-height:1;">1,722</div>
-                            <div style="font-size:0.7em;color:var(--text-muted);margin-top:6px;text-transform:uppercase;letter-spacing:0.06em;">
-                                Healthcare Workers Killed
-                            </div>
-                            <div class="worker-breakdown">
-                                <div class="worker-row">
-                                    <span class="role">Doctors</span>
-                                    <span class="count">764</span>
-                                </div>
-                                <div class="worker-row">
-                                    <span class="role">Nurses</span>
-                                    <span class="count">528</span>
-                                </div>
-                                <div class="worker-row">
-                                    <span class="role">Paramedics</span>
-                                    <span class="count">312</span>
-                                </div>
-                                <div class="worker-row">
-                                    <span class="role">Other Staff</span>
-                                    <span class="count">118</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- ═══ BABIES UNDER 1 — HIGHLIGHT (CHART 5) ═══ -->
+        <div class="evidence-highlight fade-in">
+            <div class="big-number">968</div>
+            <div class="big-label">Babies Under 1 Year Old Killed</div>
+            <div class="big-sub">Infants who never saw their first birthday — 1.6% of all identified victims</div>
+            <div class="sub-stats">
+                <div class="sub-stat">
+                    <div class="num">518</div>
+                    <div class="lbl">Boys</div>
                 </div>
-
-                <h3 style="color:var(--text-secondary);font-size:0.75em;text-transform:uppercase;letter-spacing:0.06em;margin:20px 0 12px;font-family:'Fira Code',monospace;">
-                    Infrastructure Destruction — Damage Assessment
-                </h3>
-                <div class="bar-group">
-                    <div class="bar-item">
-                        <span class="label">Housing</span>
-                        <div class="bar-track">
-                            <div class="bar-fill white" style="width:70%"></div>
-                        </div>
-                        <span class="pct">70%</span>
-                    </div>
-                    <div class="bar-item">
-                        <span class="label">Healthcare</span>
-                        <div class="bar-track">
-                            <div class="bar-fill death" style="width:72%"></div>
-                        </div>
-                        <span class="pct">72%</span>
-                    </div>
-                    <div class="bar-item">
-                        <span class="label">Schools</span>
-                        <div class="bar-track">
-                            <div class="bar-fill white" style="width:85%"></div>
-                        </div>
-                        <span class="pct">85%</span>
-                    </div>
-                    <div class="bar-item">
-                        <span class="label">Water Systems</span>
-                        <div class="bar-track">
-                            <div class="bar-fill white" style="width:80%"></div>
-                        </div>
-                        <span class="pct">80%</span>
-                    </div>
+                <div class="sub-stat">
+                    <div class="num">450</div>
+                    <div class="lbl">Girls</div>
                 </div>
-
-                <div class="evidence-note red-note">
-                    <p><strong>Finding:</strong> The destruction of healthcare infrastructure has had a direct and devastating impact on maternal and child health. With 72% of healthcare facilities damaged or destroyed, pregnant women, newborns, and children have lost access to essential medical care.</p>
+                <div class="sub-stat">
+                    <div class="num death">53.5%</div>
+                    <div class="lbl">Male</div>
+                </div>
+                <div class="sub-stat">
+                    <div class="num death">46.5%</div>
+                    <div class="lbl">Female</div>
                 </div>
             </div>
         </div>
@@ -1526,7 +1440,7 @@
         <!-- ═══ SECTION: MATERNAL HEALTH CRISIS ═══ -->
         <div class="evidence-file fade-in">
             <div class="file-header">
-                <span class="file-number">EXHIBIT E</span>
+                <span class="file-number">EXHIBIT C</span>
                 <h2>Maternal Health — <span class="red-accent">Crisis Assessment</span></h2>
                 <span class="file-tag">reported</span>
             </div>
@@ -1594,49 +1508,93 @@
             </div>
         </div>
 
-        <!-- ═══ SECTION: MoH vs LANCET COMPARISON (CHART 8) ═══ -->
+        <!-- ═══ SECTION: HEALTHCARE DESTRUCTION + UNDERCOUNT ═══ -->
         <div class="evidence-file fade-in">
             <div class="file-header">
-                <span class="file-number">EXHIBIT F</span>
-                <h2>MoH vs. Lancet — <span class="red-accent">34.7% Higher</span></h2>
-                <span class="file-tag">estimated</span>
+                <span class="file-number">EXHIBIT D</span>
+                <h2>Healthcare Destruction &amp; <span class="red-accent">Undercount Analysis</span></h2>
+                <span class="file-tag">verified</span>
             </div>
             <div class="file-body">
                 <p>
-                    The <strong>60,199 identified victims</strong> documented by the Gaza Ministry of Health represents
-                    a verified, name-by-name count. However, a <strong>The Lancet</strong> study published in January 2025
-                    estimated the true number of excess violent deaths at <strong>75,200+</strong> — a figure
-                    <strong>34.7% higher</strong>. The discrepancy is largely driven by an estimated <strong>10,000+ people</strong>
-                    still buried under rubble who have not been recovered or identified.
+                    Gaza's healthcare system has been systematically dismantled. Of <strong>36 hospitals</strong> operating
+                    before the conflict, only <strong>10 (28%) remain functional</strong>. Meanwhile, the verified MoH count of
+                    <strong>60,199</strong> is estimated to be <strong>34.7% lower</strong> than the true toll — The Lancet
+                    estimates <strong>75,200+</strong> excess violent deaths, with <strong>10,000+ still buried under rubble</strong>.
                 </p>
 
-                <!-- Chart 8: MoH vs Lancet Comparison -->
-                <h3 style="color:var(--text-secondary);font-size:0.75em;text-transform:uppercase;letter-spacing:0.06em;margin:16px 0 12px;font-family:'Fira Code',monospace;">
-                    Chart 8 ∥ Verified vs. Estimated Death Toll
-                </h3>
-                <div class="chart-container" style="height:260px;">
-                    <canvas id="lancetChart"></canvas>
+                <!-- Chart pair: Hospital Status + MoH vs Lancet -->
+                <div class="chart-pair">
+                    <div class="chart-box">
+                        <h3>Chart 6 ∥ Hospital Status — 36 Pre-War</h3>
+                        <div class="chart-container short">
+                            <canvas id="hospitalChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-box">
+                        <h3>Chart 8 ∥ MoH vs. Lancet Estimate</h3>
+                        <div class="chart-container short">
+                            <canvas id="lancetChart"></canvas>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="comparison-row">
-                    <div class="comparison-card moh-side">
-                        <div class="number moh">60,199</div>
-                        <div class="label">MoH Identified Count</div>
-                        <div class="sub">Verified name-by-name</div>
+                <!-- Healthcare Workers Killed -->
+                <div class="comparison-row" style="margin-top:20px;">
+                    <div class="comparison-card" style="border-top:2px solid var(--death);">
+                        <div class="number" style="color:var(--death);">1,722</div>
+                        <div class="label">Healthcare Workers Killed</div>
+                        <div class="sub">Doctors: 764 · Nurses: 528 · Paramedics: 312</div>
                     </div>
                     <div class="comparison-card lancet-side">
                         <div class="number lancet">75,200+</div>
-                        <div class="label">Lancet Estimate</div>
-                        <div class="sub">34.7% higher — including unrecovered bodies</div>
+                        <div class="label">Lancet Estimated Deaths</div>
+                        <div class="sub">34.7% higher than MoH verified count</div>
+                    </div>
+                </div>
+
+                <h3 style="color:var(--text-secondary);font-size:0.75em;text-transform:uppercase;letter-spacing:0.06em;margin:24px 0 12px;font-family:'Fira Code',monospace;">
+                    Infrastructure Destruction — Damage Assessment
+                </h3>
+                <div class="bar-group">
+                    <div class="bar-item">
+                        <span class="label">Housing</span>
+                        <div class="bar-track">
+                            <div class="bar-fill white" style="width:70%"></div>
+                        </div>
+                        <span class="pct">70%</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="label">Healthcare</span>
+                        <div class="bar-track">
+                            <div class="bar-fill death" style="width:72%"></div>
+                        </div>
+                        <span class="pct">72%</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="label">Schools</span>
+                        <div class="bar-track">
+                            <div class="bar-fill white" style="width:85%"></div>
+                        </div>
+                        <span class="pct">85%</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="label">Water Systems</span>
+                        <div class="bar-track">
+                            <div class="bar-fill white" style="width:80%"></div>
+                        </div>
+                        <span class="pct">80%</span>
                     </div>
                 </div>
 
                 <div class="evidence-note red-note">
+                    <p><strong>Finding:</strong> The destruction of healthcare infrastructure has had a direct and devastating impact on maternal and child health. With 72% of healthcare facilities damaged or destroyed, pregnant women, newborns, and children have lost access to essential medical care.</p>
+                </div>
+                <div class="evidence-note red-note">
                     <p><strong>Methodological note:</strong> The Lancet estimate uses statistical modeling based on
                     multiple data sources including hospital reports, burial records, media reports, and morgue counts.
                     The 10,000+ missing under rubble represent victims who died but whose bodies could not be recovered
-                    due to ongoing hostilities, lack of heavy equipment, and the destruction of civil defense infrastructure.
-                    The true toll likely falls somewhere between these two figures.</p>
+                    due to ongoing hostilities, lack of heavy equipment, and the destruction of civil defense infrastructure.</p>
                 </div>
             </div>
         </div>
@@ -1644,7 +1602,7 @@
         <!-- ═══ SECTION: DATA SOURCES & METHODOLOGY ═══ -->
         <div class="evidence-file fade-in">
             <div class="file-header">
-                <span class="file-number">EXHIBIT G</span>
+                <span class="file-number">EXHIBIT E</span>
                 <h2>Data Sources &amp; <span class="red-accent">Methodology</span></h2>
                 <span class="file-tag">archive</span>
             </div>
@@ -1714,7 +1672,7 @@
         <!-- ═══ SECTION: TEMPORAL ANALYSIS (EXHIBIT H) ═══ -->
         <div class="evidence-file fade-in">
             <div class="file-header">
-                <span class="file-number">EXHIBIT H</span>
+                <span class="file-number">EXHIBIT F</span>
                 <h2>Temporal Analysis — <span class="red-accent">Cumulative Deaths Over Time</span></h2>
                 <span class="file-tag">verified</span>
             </div>
