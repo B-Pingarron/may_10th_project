@@ -1,4 +1,4 @@
-# Project Status — May 9, 2026
+# Project Status — May 10, 2026 (Mother's Day)
 
 ## Current State: LIVE ✅
 
@@ -6,7 +6,8 @@
 
 ## What's Built
 - Palestine-focused evidence file with 60,199 individual victim records
-- 8 interactive Chart.js visualizations
+- 9 interactive Chart.js visualizations (8 original + temporal analysis)
+- Interactive filter panel (age group, gender, date range)
 - Forensic investigation design (black/white/red)
 - Responsive layout
 - GitHub Pages deployment
@@ -14,7 +15,7 @@
 ## Data Downloaded
 - [x] `killed-in-gaza.csv` (60,199 records)
 - [x] `killed-in-gaza.min.json` (JSON format)
-- [x] `casualties_daily.json` (daily toll)
+- [x] `casualties_daily.json` (20,544 daily records) — NOW INTEGRATED
 - [x] `infrastructure-damaged.json` (damage reports)
 - [x] `press-killed.json` (journalist data)
 
@@ -27,14 +28,20 @@
 6. Hospital Status (donut)
 7. MoH vs Lancet (comparison bar)
 8. Cumulative Deaths (line chart)
+9. **Temporal Analysis** — Cumulative deaths over time (Oct 2023–present) with children/women breakdown
+
+## Interactive Filters (NEW)
+- Age Group dropdown (14 options)
+- Gender dropdown (All/Male/Female)
+- Date range inputs (From/To)
+- Active filter badge + Reset button
+- Filters update temporal chart dynamically
 
 ## Tools Installed
 - [x] UI UX Pro Max (design intelligence)
 - [x] designlang (design system extraction)
 
 ## What's Not Done (Future Work)
-- [ ] Temporal analysis (death toll over time from casualties_daily.json)
-- [ ] Interactive filters (age, sex, date range)
 - [ ] Geographic mapping (neighborhood-level)
 - [ ] Individual names visualization (60,199 records)
 - [ ] Real-time data updates from API
@@ -42,12 +49,18 @@
 - [ ] Print-friendly version
 
 ## Known Issues
-- librarian agents fail on Ollama server (model routing issue)
-- casualties_daily.json not yet integrated into charts
 - No geographic data in TechForPalestine CSV (only in original MoH PDFs)
 
+## Git History (18 commits)
+```
+38484db feat: add temporal analysis chart and interactive filters
+c094f93 docs: add session context, status, and updated README
+7529351 feat: forensic investigation design with evidence-first aesthetic
+...
+```
+
 ## Next Session Priorities
-1. Integrate temporal analysis from casualties_daily.json
-2. Add interactive filters (age/sex/date)
-3. Consider geographic mapping if data available
-4. Optimize for mobile
+1. Consider geographic mapping if data available
+2. Individual names visualization
+3. Optimize for mobile
+4. Print-friendly version
